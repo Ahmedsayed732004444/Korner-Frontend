@@ -1,0 +1,19 @@
+@use '@/shared/styles/tokens' as *;
+
+.page {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 760px;
+  padding-block: var(--space-12) var(--space-16);
+
+  h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-extrabold);
+  }
+}
+
+.body {
+  color: var(--color-text);
+  line-height: 1.9;
+  white-space: pre-line;
+}

@@ -1,0 +1,64 @@
+@use '@/shared/styles/tokens' as *;
+
+.card {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 440px;
+  margin-inline: auto;
+  margin-block: var(--space-12);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-extrabold);
+  }
+
+  form {
+    display: grid;
+    gap: var(--space-4);
+  }
+}
+
+.text {
+  color: var(--color-text-muted);
+}
+
+.footer {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+  }
+}
+
+.hints {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+
+  .met {
+    color: var(--color-success);
+  }
+}

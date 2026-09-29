@@ -1,10 +1,11 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useLocation } from 'react-router-dom'
 import { GoogleSignInPrompt } from '@/features/auth'
 import { CartDrawer, CartDrawerProvider, mergeGuestCartIntoAccount } from '@/features/cart'
 import { sizeLabel } from '@/features/catalog'
+import { useSession } from '@/shared/api'
 import { useStoreSettings } from '@/features/store'
 import { Footer } from './Footer'
 import { Header } from './Header'
@@ -30,6 +31,14 @@ export function SiteLayout() {
       await queryClient.invalidateQueries({ queryKey: ['cart'] })
     }
   }, [queryClient])
+
+  // Any way of signing in (password, Google redirect, One Tap) ends with the guest cart joining the account cart.
+  const userId = useSession()?.user.id ?? null
+  const previousUserId = useRef(userId)
+  useEffect(() => {
+    if (userId && !previousUserId.current) void handleSignedIn()
+    previousUserId.current = userId
+  }, [userId, handleSignedIn])
 
   return (
     <CartDrawerProvider>

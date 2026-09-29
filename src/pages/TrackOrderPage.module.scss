@@ -1,0 +1,126 @@
+@use '@/shared/styles/tokens' as *;
+
+.page {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 720px;
+  padding-block: var(--space-12) var(--space-16);
+
+  h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-extrabold);
+  }
+}
+
+.intro {
+  color: var(--color-text-muted);
+}
+
+.form {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+
+  button {
+    justify-self: start;
+  }
+}
+
+.result {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.summary {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+
+  dl {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    dd {
+      margin: 0;
+      text-align: end;
+    }
+  }
+}
+
+.label {
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+}
+
+.items {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  img {
+    width: 48px;
+    height: 60px;
+    object-fit: contain;
+    background: var(--color-surface-muted);
+  }
+
+  small {
+    display: block;
+    color: var(--color-text-muted);
+  }
+}
+
+.history {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+  }
+
+  time {
+    color: var(--color-text-muted);
+  }
+}
+
+.cancel {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

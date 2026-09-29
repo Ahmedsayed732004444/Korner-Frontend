@@ -148,7 +148,60 @@
   },
   "auth": {
     "promptTitle": "Sign in with one tap",
-    "promptText": "Save your addresses, follow your orders and pay faster next time. You can still check out as a guest."
+    "promptText": "Save your addresses, follow your orders and pay faster next time. You can still check out as a guest.",
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "google": "Continue with Google",
+    "or": "or",
+    "loginTitle": "Sign in",
+    "loginText": "Sign in to follow your orders and check out faster.",
+    "loginSubmit": "Sign in",
+    "loginLink": "Sign in",
+    "backToLogin": "Back to sign in",
+    "noAccount": "No account yet?",
+    "registerLink": "Create one",
+    "haveAccount": "Already have an account?",
+    "forgot": "Forgot your password?",
+    "registerTitle": "Create account",
+    "registerText": "You can buy without an account. An account just makes following your orders easier.",
+    "registerSubmit": "Create account",
+    "checkEmailTitle": "Check your email",
+    "checkEmailText": "We sent a confirmation link to {{email}}. Open it, then sign in.",
+    "resendConfirmation": "Send the confirmation link again",
+    "confirmationSent": "We sent a new confirmation link to your email.",
+    "confirmTitle": "Confirm email",
+    "confirming": "Confirming your email",
+    "confirmedTitle": "Email confirmed",
+    "confirmedText": "You can sign in now.",
+    "confirmFailedTitle": "We couldn't confirm your email",
+    "badLinkTitle": "This link isn't valid",
+    "badLinkText": "Open the link from the email directly, or ask for a new one on the sign-in page.",
+    "forgotTitle": "Forgot password",
+    "forgotText": "Enter your email and we'll send you a link to set a new password.",
+    "sendLink": "Send link",
+    "resetSentTitle": "Check your email",
+    "resetSentText": "If that email is registered with us, a reset link is on its way.",
+    "newPasswordTitle": "New password",
+    "newPassword": "New password",
+    "resetSubmit": "Save password",
+    "resetDoneTitle": "Password changed",
+    "resetDoneText": "Sign in with your new password.",
+    "signingIn": "Signing you in",
+    "passwordRules": "Password rules",
+    "rules": {
+      "length": "At least 8 characters",
+      "lower": "A lowercase letter",
+      "upper": "An uppercase letter",
+      "digit": "A number",
+      "symbol": "A symbol such as @ or #"
+    },
+    "errors": {
+      "required": "This field is required",
+      "email": "Enter a valid email",
+      "password": "The password must meet the rules below"
+    }
   },
   "footer": {
     "securePayment": "Secure card payment by Paymob",
@@ -175,7 +228,7 @@
     "server": "We have a temporary problem. Please try again shortly.",
     "TooManyRequests": "Too many requests in a row. Wait a minute and try again.",
     "User.InvalidExternalLogin": "We couldn't sign you in with Google. Please try again.",
-    "User.DisabledUser": "This account is disabled. Please contact support.",
+    "User.DisabledUser": "This account is disabled. Contact support.",
     "Cart.VariantNotAvailable": "This product isn't available right now.",
     "Cart.InsufficientStock": "There aren't that many left in this size. Try a smaller quantity.",
     "Cart.QuantityLimit": "You reached the maximum for this item.",
@@ -192,7 +245,16 @@
     "Payment.OrderNotPayable": "This order doesn't need payment.",
     "Payment.MethodUnavailable": "That payment method isn't available.",
     "Payment.TooManyAttempts": "You reached the maximum number of payment attempts.",
-    "Order.NotFound": "We couldn't find that order."
+    "Order.NotFound": "We couldn't find that order.",
+    "User.InvalidCredentials": "Wrong email or password.",
+    "User.LockedUser": "This account is locked for a while after wrong attempts. Try again soon.",
+    "User.EmailNotConfirmed": "Please confirm your email first. Open the link we sent you.",
+    "User.DuplicatedEmail": "This email is already registered. Sign in instead.",
+    "User.InvalidCode": "This link expired or isn't valid. Ask for a new one.",
+    "User.DuplicatedConfirmation": "This email is already confirmed. Sign in.",
+    "User.InvalidRefreshToken": "Your session ended. Please sign in again.",
+    "Order.CannotCancel": "This order can't be cancelled now.",
+    "Content.PageNotFound": "This page doesn't exist."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -368,5 +430,41 @@
     "backToCart": "Back to cart",
     "unknownTitle": "No order to show a result for",
     "unknownText": "If you paid on another device, track your order with the order number and mobile number."
+  },
+  "track": {
+    "title": "Track your order",
+    "intro": "Enter the order number and the mobile number you ordered with.",
+    "number": "Order number",
+    "phone": "Mobile number",
+    "submit": "Track",
+    "errors": {
+      "number": "Enter the order number",
+      "phone": "Use 11 digits starting with 010, 011, 012 or 015"
+    },
+    "orderNumber": "Order {{number}}",
+    "expected": "Expected delivery",
+    "carrier": "Carrier",
+    "trackingNumber": "Tracking number",
+    "items": "Order items",
+    "history": "Order progress",
+    "cancel": "Cancel order",
+    "cancelConfirm": "Are you sure you want to cancel this order? If you paid, you get a full refund.",
+    "keep": "No, keep it",
+    "cancelYes": "Yes, cancel it",
+    "status": {
+      "PendingPayment": "Awaiting payment",
+      "Confirmed": "Confirmed",
+      "Processing": "Being prepared",
+      "Shipped": "Shipped",
+      "Delivered": "Delivered",
+      "ReturnedToOrigin": "Returned to us",
+      "Cancelled": "Cancelled",
+      "ReturnRequested": "Return requested",
+      "ReturnClosed": "Return closed"
+    }
+  },
+  "content": {
+    "notFound": "This page doesn't exist",
+    "notFoundText": "It may not have been added yet."
   }
 }

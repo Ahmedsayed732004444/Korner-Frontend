@@ -151,7 +151,60 @@
   },
   "auth": {
     "promptTitle": "سجّل دخول بضغطة واحدة",
-    "promptText": "احفظ عناوينك وتابع طلباتك، وادفع أسرع المرة الجاية. تقدر تكمّل كضيف عادي."
+    "promptText": "احفظ عناوينك وتابع طلباتك، وادفع أسرع المرة الجاية. تقدر تكمّل كضيف عادي.",
+    "email": "الإيميل",
+    "password": "كلمة السر",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "google": "كمّل بحساب جوجل",
+    "or": "أو",
+    "loginTitle": "تسجيل الدخول",
+    "loginText": "ادخل بحسابك عشان تتابع طلباتك وتكمّل أسرع.",
+    "loginSubmit": "دخول",
+    "loginLink": "سجّل الدخول",
+    "backToLogin": "الرجوع لتسجيل الدخول",
+    "noAccount": "معندكش حساب؟",
+    "registerLink": "أنشئ حساب",
+    "haveAccount": "عندك حساب؟",
+    "forgot": "نسيت كلمة السر؟",
+    "registerTitle": "إنشاء حساب",
+    "registerText": "الشراء ممكن من غير حساب. الحساب بس بيسهّل عليك متابعة طلباتك.",
+    "registerSubmit": "إنشاء الحساب",
+    "checkEmailTitle": "تفقّد إيميلك",
+    "checkEmailText": "بعتنا رابط التأكيد على {{email}}. اضغط عليه وبعدها سجّل الدخول.",
+    "resendConfirmation": "ابعت رابط التأكيد تاني",
+    "confirmationSent": "بعتنا رابط تأكيد جديد على إيميلك.",
+    "confirmTitle": "تأكيد الإيميل",
+    "confirming": "بنأكد إيميلك",
+    "confirmedTitle": "الإيميل اتأكد",
+    "confirmedText": "تقدر تسجّل الدخول دلوقتي.",
+    "confirmFailedTitle": "مقدرناش نأكد الإيميل",
+    "badLinkTitle": "الرابط ده مش صحيح",
+    "badLinkText": "افتح الرابط من الإيميل مباشرة، أو اطلب رابط جديد من صفحة الدخول.",
+    "forgotTitle": "نسيت كلمة السر",
+    "forgotText": "اكتب إيميلك وهنبعتلك رابط تعمل منه كلمة سر جديدة.",
+    "sendLink": "ابعت الرابط",
+    "resetSentTitle": "تفقّد إيميلك",
+    "resetSentText": "لو الإيميل ده مسجّل عندنا هيوصلك رابط إعادة التعيين.",
+    "newPasswordTitle": "كلمة سر جديدة",
+    "newPassword": "كلمة السر الجديدة",
+    "resetSubmit": "حفظ كلمة السر",
+    "resetDoneTitle": "كلمة السر اتغيّرت",
+    "resetDoneText": "سجّل الدخول بكلمة السر الجديدة.",
+    "signingIn": "بنسجّل دخولك",
+    "passwordRules": "شروط كلمة السر",
+    "rules": {
+      "length": "8 حروف على الأقل",
+      "lower": "حرف إنجليزي صغير",
+      "upper": "حرف إنجليزي كبير",
+      "digit": "رقم",
+      "symbol": "رمز مثل @ أو #"
+    },
+    "errors": {
+      "required": "الخانة دي مطلوبة",
+      "email": "اكتب إيميل صحيح",
+      "password": "كلمة السر لازم تحقق الشروط اللي تحتها"
+    }
   },
   "footer": {
     "securePayment": "دفع آمن بالكارت عن طريق Paymob",
@@ -177,8 +230,8 @@
     "network": "مفيش اتصال بالإنترنت. اتأكد من النت وحاول تاني.",
     "server": "عندنا مشكلة مؤقتة. حاول تاني بعد شوية.",
     "TooManyRequests": "طلبات كتير ورا بعض. استنى دقيقة وحاول تاني.",
-    "User.InvalidExternalLogin": "ماقدرناش نسجّل دخولك بجوجل. حاول تاني.",
-    "User.DisabledUser": "الحساب ده متوقف. كلّم خدمة العملاء.",
+    "User.InvalidExternalLogin": "مقدرناش نسجّل دخولك بجوجل. جرّب تاني.",
+    "User.DisabledUser": "الحساب ده موقوف. كلّم الدعم.",
     "Cart.VariantNotAvailable": "المنتج ده مش متاح دلوقتي.",
     "Cart.InsufficientStock": "المقاس ده مافيهوش الكمية دي. جرّب كمية أقل.",
     "Cart.QuantityLimit": "وصلت للحد الأقصى من القطعة دي.",
@@ -195,7 +248,16 @@
     "Payment.OrderNotPayable": "الطلب ده مش محتاج دفع.",
     "Payment.MethodUnavailable": "طريقة الدفع دي مش متاحة.",
     "Payment.TooManyAttempts": "وصلت للحد الأقصى من محاولات الدفع.",
-    "Order.NotFound": "مش لاقيين الطلب ده."
+    "Order.NotFound": "مش لاقيين الطلب ده.",
+    "User.InvalidCredentials": "الإيميل أو كلمة السر غلط.",
+    "User.LockedUser": "الحساب اتقفل مؤقتاً بعد محاولات غلط. جرّب بعد شوية.",
+    "User.EmailNotConfirmed": "لازم تأكد إيميلك الأول. افتح الرابط اللي بعتناه.",
+    "User.DuplicatedEmail": "الإيميل ده مسجّل قبل كده. سجّل الدخول.",
+    "User.InvalidCode": "الرابط ده انتهى أو مش صحيح. اطلب رابط جديد.",
+    "User.DuplicatedConfirmation": "الإيميل ده متأكد من قبل. سجّل الدخول.",
+    "User.InvalidRefreshToken": "الجلسة انتهت. سجّل الدخول تاني.",
+    "Order.CannotCancel": "الطلب ده مينفعش يتلغي دلوقتي.",
+    "Content.PageNotFound": "الصفحة دي مش موجودة."
   },
   "catalog": {
     "colorsAvailable": "{{count}} ألوان متاحة",
@@ -389,5 +451,41 @@
     "backToCart": "ارجع للسلة",
     "unknownTitle": "مش لاقيين طلب نعرض نتيجته",
     "unknownText": "لو دفعت من جهاز تاني، تابع طلبك برقم الطلب ورقم الموبايل."
+  },
+  "track": {
+    "title": "تابع طلبك",
+    "intro": "اكتب رقم الطلب والموبايل اللي طلبت بيه.",
+    "number": "رقم الطلب",
+    "phone": "رقم الموبايل",
+    "submit": "تتبّع",
+    "errors": {
+      "number": "اكتب رقم الطلب",
+      "phone": "اكتب 11 رقم يبدأ بـ 010 أو 011 أو 012 أو 015"
+    },
+    "orderNumber": "طلب رقم {{number}}",
+    "expected": "ميعاد التوصيل المتوقع",
+    "carrier": "شركة الشحن",
+    "trackingNumber": "رقم التتبع",
+    "items": "منتجات الطلب",
+    "history": "مراحل الطلب",
+    "cancel": "إلغاء الطلب",
+    "cancelConfirm": "متأكد إنك عايز تلغي الطلب؟ لو دفعت هنرجّعلك فلوسك كاملة.",
+    "keep": "لأ، خليه",
+    "cancelYes": "أيوه، الغيه",
+    "status": {
+      "PendingPayment": "في انتظار الدفع",
+      "Confirmed": "تم التأكيد",
+      "Processing": "جاري التجهيز",
+      "Shipped": "اتشحن",
+      "Delivered": "اتسلّم",
+      "ReturnedToOrigin": "رجع للمخزن",
+      "Cancelled": "اتلغى",
+      "ReturnRequested": "طلب استرجاع",
+      "ReturnClosed": "اتقفل الاسترجاع"
+    }
+  },
+  "content": {
+    "notFound": "الصفحة دي مش موجودة",
+    "notFoundText": "ممكن تكون لسه ما اتضافتش."
   }
 }
