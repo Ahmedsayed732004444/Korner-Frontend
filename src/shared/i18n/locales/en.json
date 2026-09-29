@@ -254,7 +254,11 @@
     "User.DuplicatedConfirmation": "This email is already confirmed. Sign in.",
     "User.InvalidRefreshToken": "Your session ended. Please sign in again.",
     "Order.CannotCancel": "This order can't be cancelled now.",
-    "Content.PageNotFound": "This page doesn't exist."
+    "Content.PageNotFound": "This page doesn't exist.",
+    "Account.AddressNotFound": "That address doesn't exist.",
+    "Account.TooManyAddresses": "You reached the maximum number of addresses. Delete one first.",
+    "Account.GovernorateNotAvailable": "We don't ship to that governorate right now.",
+    "Account.DeletionAlreadyRequested": "Your account deletion was already requested."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -466,5 +470,43 @@
   "content": {
     "notFound": "This page doesn't exist",
     "notFoundText": "It may not have been added yet."
+  },
+  "account": {
+    "hello": "Hi {{name}}",
+    "menu": "My account menu",
+    "profile": "Profile",
+    "orders": "My orders",
+    "addresses": "My addresses",
+    "preferences": "Preferences",
+    "emailLanguage": "Email language",
+    "emailLanguageHint": "We send you emails in this language",
+    "save": "Save",
+    "saved": "Saved",
+    "changePassword": "Change password",
+    "currentPassword": "Current password",
+    "passwordChanged": "Your password was changed.",
+    "deleteTitle": "Delete account",
+    "deleteText": "We close your account and, after a while and once your open orders are finished, erase your personal data. The orders themselves stay, without personal details.",
+    "deleteYes": "Yes, delete my account",
+    "noOrders": "No orders yet",
+    "noOrdersText": "Your orders will show up here.",
+    "itemsCount_one": "1 item",
+    "itemsCount_other": "{{count}} items",
+    "orderMissing": "This order doesn't exist",
+    "backToOrders": "Back to my orders",
+    "items": "Items",
+    "refunded": "Refunded",
+    "deliveryTo": "Delivery address",
+    "payNow": "Pay now",
+    "noAddresses": "No saved addresses",
+    "noAddressesText": "Save your address and it fills in at checkout.",
+    "default": "Default",
+    "edit": "Edit",
+    "delete": "Delete",
+    "addAddress": "Add address",
+    "editAddress": "Edit address",
+    "recipient": "Recipient name",
+    "makeDefault": "Make this my default address",
+    "cancelEdit": "Cancel"
   }
 }

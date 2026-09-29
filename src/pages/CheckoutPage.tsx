@@ -3,6 +3,7 @@ import { ShoppingBag } from 'lucide-react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAddresses } from '@/features/account'
 import { cartHeaders, cartKeys, useCart } from '@/features/cart'
 import { sizeLabel } from '@/features/catalog'
 import {
@@ -48,19 +49,32 @@ export function CheckoutPage() {
   const { data: settings } = useStoreSettings()
   const { data: governorates } = useGovernorates()
   const chosen = useChosenGovernorate()
-  const [governorateId, setGovernorateId] = useState<number | null>(chosen)
+  const { data: saved } = useAddresses()
+  // A signed-in customer's default saved address fills the form; anything they type replaces it, and nothing needs an effect.
+  const defaults = saved?.find((item) => item.isDefault) ?? saved?.[0]
+  const [pickedGovernorate, setGovernorateId] = useState<number | null>(null)
+  const governorateId = pickedGovernorate ?? chosen ?? defaults?.governorateId ?? null
   const activeGovernorate = governorates?.some((item) => item.id === governorateId) ? governorateId : null
   const { data: cart, isLoading } = useCart(activeGovernorate)
 
-  const [name, setName] = useState(current ? `${current.user.firstName} ${current.user.lastName}`.trim() : '')
-  const [phone, setPhone] = useState('')
-  const [email, setEmail] = useState(current?.user.email ?? '')
-  const [area, setArea] = useState('')
-  const [street, setStreet] = useState('')
-  const [building, setBuilding] = useState('')
-  const [floor, setFloor] = useState('')
-  const [apartment, setApartment] = useState('')
-  const [landmark, setLandmark] = useState('')
+  const [nameInput, setName] = useState<string | null>(null)
+  const [phoneInput, setPhone] = useState<string | null>(null)
+  const [emailInput, setEmail] = useState<string | null>(null)
+  const [areaInput, setArea] = useState<string | null>(null)
+  const [streetInput, setStreet] = useState<string | null>(null)
+  const [buildingInput, setBuilding] = useState<string | null>(null)
+  const [floorInput, setFloor] = useState<string | null>(null)
+  const [apartmentInput, setApartment] = useState<string | null>(null)
+  const [landmarkInput, setLandmark] = useState<string | null>(null)
+  const name = nameInput ?? defaults?.recipientName ?? (current ? `${current.user.firstName} ${current.user.lastName}`.trim() : '')
+  const phone = phoneInput ?? defaults?.phone ?? ''
+  const email = emailInput ?? current?.user.email ?? ''
+  const area = areaInput ?? defaults?.address.area ?? ''
+  const street = streetInput ?? defaults?.address.street ?? ''
+  const building = buildingInput ?? defaults?.address.building ?? ''
+  const floor = floorInput ?? defaults?.address.floor ?? ''
+  const apartment = apartmentInput ?? defaults?.address.apartment ?? ''
+  const landmark = landmarkInput ?? defaults?.address.landmark ?? ''
   const [method, setMethod] = useState<PaymentMethod>('Card')
   const [acceptTerms, setAcceptTerms] = useState(false)
   const [marketingConsent, setMarketingConsent] = useState(false)

@@ -1,14 +1,14 @@
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
-import { sizeLabel } from '@/features/catalog'
 import { lastOrder, isEgyptMobile, normalizeDigits } from '@/features/checkout'
 import { useCancelOrder, useTrackOrder, type TrackedOrder } from '@/features/orders'
 import { errorMessage } from '@/shared/api'
-import { useLocalize } from '@/shared/lib/localize'
 import { formatPiasters } from '@/shared/lib/money'
 import { useDocumentTitle } from '@/shared/lib/useDocumentTitle'
-import { Alert, Badge, Button, Input, Skeleton } from '@/shared/ui'
+import { isDeliveryPending } from '@/shared/lib/orderStatus'
+import { Alert, Button, Input, OrderStatusBadge, Skeleton } from '@/shared/ui'
+import { OrderHistory, OrderItems } from './order/OrderParts'
 import styles from './TrackOrderPage.module.scss'
 
 interface Lookup {
@@ -93,8 +93,8 @@ function Result({ lookup }: { lookup: Lookup }) {
   return (
     <section className={styles.result} aria-live="polite">
       <Summary order={order} language={i18n.language} />
-      <Items order={order} />
-      <History order={order} language={i18n.language} />
+      <OrderItems items={order.items} />
+      <OrderHistory history={order.history} />
 
       {order.canCancel && (
         <div className={styles.cancel}>
@@ -125,16 +125,15 @@ function Result({ lookup }: { lookup: Lookup }) {
 function Summary({ order, language }: { order: TrackedOrder; language: string }) {
   const { t } = useTranslation()
   const date = (value: string) => new Intl.DateTimeFormat(language === 'ar' ? 'ar-EG' : 'en-EG', { dateStyle: 'full' }).format(new Date(value))
-  const tone = order.status === 'Cancelled' ? 'error' : order.status === 'Delivered' ? 'success' : 'info'
 
   return (
     <div className={styles.summary}>
       <div>
         <p className={styles.label}>{t('track.orderNumber', { number: order.number })}</p>
-        <Badge tone={tone}>{t(`track.status.${order.status}`)}</Badge>
+        <OrderStatusBadge status={order.status} />
       </div>
       <dl>
-        {order.expectedDeliveryDate && !['Cancelled', 'Delivered', 'ReturnedToOrigin'].includes(order.status) && (
+        {order.expectedDeliveryDate && isDeliveryPending(order.status) && (
           <div>
             <dt>{t('track.expected')}</dt>
             <dd>{date(`${order.expectedDeliveryDate}T00:00:00`)}</dd>
@@ -166,43 +165,5 @@ function Summary({ order, language }: { order: TrackedOrder; language: string })
         </div>
       </dl>
     </div>
-  )
-}
-
-function Items({ order }: { order: TrackedOrder }) {
-  const { t, i18n } = useTranslation()
-  const localize = useLocalize()
-
-  return (
-    <ul className={styles.items} aria-label={t('track.items')}>
-      {order.items.map((item, index) => (
-        <li key={index}>
-          {item.imageUrl && <img src={item.imageUrl} alt="" width={48} height={60} loading="lazy" />}
-          <span>
-            {localize(item.productNameAr, item.productNameEn)}
-            <small>
-              {[localize(item.colorNameAr, item.colorNameEn), sizeLabel(item.size, t)].filter(Boolean).join(' · ')} × {item.quantity}
-            </small>
-          </span>
-          <span>{formatPiasters(item.lineTotalPiasters, i18n.language)}</span>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
-function History({ order, language }: { order: TrackedOrder; language: string }) {
-  const { t } = useTranslation()
-  const format = new Intl.DateTimeFormat(language === 'ar' ? 'ar-EG' : 'en-EG', { dateStyle: 'medium', timeStyle: 'short' })
-
-  return (
-    <ol className={styles.history} aria-label={t('track.history')}>
-      {[...order.history].reverse().map((step) => (
-        <li key={`${step.status}-${step.at}`}>
-          <strong>{t(`track.status.${step.status}`)}</strong>
-          <time dateTime={step.at}>{format.format(new Date(step.at.endsWith('Z') ? step.at : `${step.at}Z`))}</time>
-        </li>
-      ))}
-    </ol>
   )
 }

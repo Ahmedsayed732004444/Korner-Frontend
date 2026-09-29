@@ -10,11 +10,15 @@ import { LoginPage } from '@/pages/LoginPage'
 import { OAuthCallbackPage } from '@/pages/OAuthCallbackPage'
 import { RegisterPage } from '@/pages/RegisterPage'
 import { TrackOrderPage } from '@/pages/TrackOrderPage'
+import { AccountAddressesPage } from '@/pages/account/AccountAddressesPage'
+import { AccountLayout } from '@/pages/account/AccountLayout'
+import { AccountOrderPage } from '@/pages/account/AccountOrderPage'
+import { AccountOrdersPage } from '@/pages/account/AccountOrdersPage'
+import { AccountProfilePage } from '@/pages/account/AccountProfilePage'
 import { CategoryPage } from '@/pages/CategoryPage'
 import { HomePage } from '@/pages/HomePage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { ProductPage } from '@/pages/ProductPage'
-import { PlaceholderPage } from '@/pages/PlaceholderPage'
 import { SearchPage } from '@/pages/SearchPage'
 import { ShopPage } from '@/pages/ShopPage'
 import { SiteLayout } from './layout/SiteLayout'
@@ -22,12 +26,6 @@ import { SiteLayout } from './layout/SiteLayout'
 const developmentRoutes: RouteObject[] = env.isDevelopment
   ? [{ path: 'styleguide', lazy: async () => ({ Component: (await import('@/pages/StyleGuidePage')).StyleGuidePage }) }]
   : []
-
-// Routes from docs/DESIGN.md section 1 whose page is still to come. The ones the backend puts in emails and redirects
-// must keep these exact paths.
-const plannedRoutes = [
-  'account/*',
-]
 
 export const router = createBrowserRouter([
   {
@@ -46,9 +44,18 @@ export const router = createBrowserRouter([
       { path: 'auth/forgetPassword', element: <ForgetPasswordPage /> },
       { path: 'oauth/callback', element: <OAuthCallbackPage /> },
       { path: 'pages/:type', element: <ContentPage /> },
+      {
+        path: 'account',
+        element: <AccountLayout />,
+        children: [
+          { index: true, element: <AccountProfilePage /> },
+          { path: 'orders', element: <AccountOrdersPage /> },
+          { path: 'orders/:number', element: <AccountOrderPage /> },
+          { path: 'addresses', element: <AccountAddressesPage /> },
+        ],
+      },
       { path: 'shop', element: <ShopPage /> },
       { path: 'search', element: <SearchPage /> },
-      ...plannedRoutes.map((path) => ({ path, element: <PlaceholderPage /> })),
       ...developmentRoutes,
       { path: '*', element: <NotFoundPage /> },
     ],

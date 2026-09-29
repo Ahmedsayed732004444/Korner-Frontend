@@ -1,1 +1,1 @@
-export { progressIndex, progressSteps, useCancelOrder, useTrackOrder, type OrderStatus, type TrackedOrder } from './api'
+export { progressIndex, progressSteps, useCancelOrder, useTrackOrder, type TrackedOrder } from './api'

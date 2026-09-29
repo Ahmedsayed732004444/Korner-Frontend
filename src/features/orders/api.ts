@@ -1,16 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { http } from '@/shared/api'
+import type { OrderStatus } from '@/shared/lib/orderStatus'
 
-export type OrderStatus =
-  | 'PendingPayment'
-  | 'Confirmed'
-  | 'Processing'
-  | 'Shipped'
-  | 'Delivered'
-  | 'ReturnedToOrigin'
-  | 'Cancelled'
-  | 'ReturnRequested'
-  | 'ReturnClosed'
 
 export interface TrackedItem {
   productNameAr: string

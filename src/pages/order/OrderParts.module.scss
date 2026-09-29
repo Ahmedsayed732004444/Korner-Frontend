@@ -1,0 +1,50 @@
+@use '@/shared/styles/tokens' as *;
+
+.items {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  img {
+    width: 48px;
+    height: 60px;
+    object-fit: contain;
+    background: var(--color-surface-muted);
+  }
+
+  small {
+    display: block;
+    color: var(--color-text-muted);
+  }
+}
+
+.history {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+  }
+
+  time {
+    color: var(--color-text-muted);
+  }
+}
