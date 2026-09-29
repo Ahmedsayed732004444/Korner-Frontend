@@ -294,7 +294,29 @@
     "Color.InUse": "اللون ده مستخدم في منتجات.",
     "SizeChart.NotFound": "جدول المقاسات مش موجود.",
     "SizeChart.BrandNotFound": "الماركة مش موجودة.",
-    "SizeChart.InUse": "الجدول ده مستخدم في منتجات."
+    "SizeChart.InUse": "الجدول ده مستخدم في منتجات.",
+    "Return.NotFound": "المرتجع ده مش موجود.",
+    "Return.OrderNotDelivered": "الطلب لازم يكون اتسلّم الأول.",
+    "Return.WindowClosed": "مدة الاسترجاع انتهت.",
+    "Return.InvalidItems": "القطع أو الكميات مش صحيحة.",
+    "Return.InvalidStatus": "الإجراء ده مش متاح في حالة المرتجع الحالية.",
+    "Return.NotInspected": "لازم تفحص كل القطع قبل الرد.",
+    "Return.ItemsRestocked": "القطع دي اتردّت للمخزن بالفعل.",
+    "Return.RefundFailed": "البوابة رفضت الاسترداد. المرتجع رجع لحالة الاستلام.",
+    "Return.AlreadyInspected": "المرتجع ده اتفحص قبل كده.",
+    "Payment.NothingToRefund": "مفيش مبلغ مدفوع يتردّ.",
+    "Payment.RefundExceedsPaid": "المبلغ أكبر من المدفوع.",
+    "Payment.AttemptNotFound": "محاولة الدفع مش موجودة.",
+    "Payment.RefundNotFound": "الاسترداد مش موجود.",
+    "Payment.RefundAlreadyResolved": "الاسترداد ده اتحسم قبل كده.",
+    "Order.NotEditable": "الطلب ده مينفعش يتعدّل دلوقتي.",
+    "Order.VariantNotSwappable": "النسخة دي مينفعش تبدّل بيها (لازم نفس المنتج والسعر).",
+    "Order.GovernorateNotFound": "المحافظة مش موجودة.",
+    "Order.ShippingFeeDiffers": "المحافظة الجديدة سعر شحنها مختلف. مينفعش.",
+    "Order.NotReturnedToOrigin": "الطلب لسه ما رجعش لينا.",
+    "Order.RestockExceedsItems": "الكمية أكبر من المتاح.",
+    "Order.OutOfStock": "النسخة الجديدة مخزونها مش كفاية.",
+    "Order.ItemNotFound": "القطعة مش في الطلب."
   },
   "catalog": {
     "colorsAvailable": "{{count}} ألوان متاحة",
@@ -577,7 +599,8 @@
       "orders": "الطلبات",
       "products": "المنتجات",
       "inventory": "المخزون",
-      "catalog": "الفئات والمقاسات"
+      "catalog": "الفئات والمقاسات",
+      "returns": "المرتجعات"
     },
     "report": {
       "day": "اليوم",
@@ -790,6 +813,87 @@
         "duplicateSizes": "المقاسات لازم تكون مختلفة",
         "cells": "كل الخانات لازم تتملى"
       }
+    },
+    "returns": {
+      "status": {
+        "Requested": "مطلوب",
+        "Received": "استُلم",
+        "Refunded": "اتسترد",
+        "Rejected": "اترفض"
+      },
+      "none": "مفيش مرتجعات",
+      "noneText": "لما تفتح طلب استرجاع من صفحة الطلب هيظهر هنا.",
+      "channel": "قناة الطلب",
+      "storeFaultShort": "خطأ منّا",
+      "title": "مرتجع طلب {{number}}",
+      "back": "الرجوع للمرتجعات",
+      "missing": "المرتجع ده مش موجود",
+      "reason": "سبب الاسترجاع",
+      "rejectedBecause": "سبب الرفض",
+      "restocked": "رجع للمخزن",
+      "notRestocked": "مرجعش للمخزن",
+      "suggested": "المبلغ المقترح",
+      "receivedAt": "تاريخ الاستلام",
+      "receive": "تم استلام المرتجع",
+      "inspect": "فحص القطع",
+      "restockHint": "علّم القطع السليمة عشان ترجع للمخزن",
+      "saveInspection": "حفظ الفحص",
+      "refund": "رد المبلغ",
+      "suggestedHint": "المقترح: {{amount}}. تقدر تعدّل المبلغ.",
+      "reject": "رفض المرتجع",
+      "rejectReason": "سبب الرفض",
+      "addPhotos": "إضافة صور",
+      "create": "فتح طلب استرجاع",
+      "pickItems": "اختار القطع وكميتها (مش أكتر من المتاح)",
+      "available": "المتاح للاسترجاع: {{count}}",
+      "storeFault": "الخطأ منّا (عيب أو غلط في الطلب)",
+      "storeFaultHint": "بيأثر على المبلغ المقترح لأن الشحن بيتردّ."
+    },
+    "payments": {
+      "title": "الدفع والاسترداد",
+      "noAttempts": "مفيش محاولات دفع.",
+      "refunds": "الاستردادات",
+      "method": {
+        "Card": "كارت",
+        "Wallet": "محفظة"
+      },
+      "attempt": {
+        "Pending": "معلّق",
+        "Succeeded": "نجح",
+        "Failed": "فشل",
+        "Expired": "انتهى"
+      },
+      "refund": {
+        "Pending": "معلّق",
+        "Succeeded": "تم",
+        "Failed": "فشل",
+        "Unknown": "غير مؤكد"
+      },
+      "source": {
+        "Manual": "يدوي",
+        "OrderCancellation": "إلغاء طلب",
+        "LatePayment": "دفع متأخر",
+        "DuplicatePayment": "دفع مكرر",
+        "Return": "مرتجع"
+      },
+      "unknownHint": "البوابة ما أكدتش النتيجة. راجع لوحة Paymob الأول وبعدين حدّد.",
+      "markDone": "الاسترداد تم",
+      "markFailed": "الاسترداد فشل",
+      "refundAction": "رد مبلغ",
+      "refundable": "أقصى مبلغ ممكن رده: {{amount}}",
+      "amount": "المبلغ (جنيه)",
+      "reason": "السبب",
+      "amountRange": "المبلغ لازم يكون أكبر من صفر ومش أكتر من {{max}}"
+    },
+    "edit": {
+      "title": "تعديل الطلب",
+      "address": "تعديل العنوان",
+      "addressHint": "تغيير المحافظة لازم يفضل بنفس سعر الشحن.",
+      "swap": "تبديل مقاس: {{name}} ({{size}})",
+      "newVariant": "النسخة الجديدة",
+      "noSwap": "مفيش نسخة تانية بنفس السعر متاحة.",
+      "restock": "إرجاع للمخزن",
+      "restockHint": "الطلب رجع لينا. اكتب كمية كل قطعة سليمة."
     }
   }
 }

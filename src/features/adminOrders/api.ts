@@ -143,6 +143,24 @@ export function useCancelOrderAsAdmin(id: string) {
   return useOrderAction((reason: string) => http<void>(`admin/orders/${id}/cancel`, { method: 'POST', body: { reason } }))
 }
 
+export function useUpdateOrderAddress(id: string) {
+  return useOrderAction((input: { governorateId: number; address: { area: string; street: string; building: string; floor: string | null; apartment: string | null; landmark: string | null } }) =>
+    http<void>(`admin/orders/${id}/address`, { method: 'PUT', body: input }),
+  )
+}
+
+// Same product and same price only: the reserved stock moves to the new variant.
+export function useChangeItemVariant(orderId: string) {
+  return useOrderAction((input: { itemId: string; variantId: string }) =>
+    http<void>(`admin/orders/${orderId}/items/${input.itemId}/variant`, { method: 'PUT', body: { variantId: input.variantId } }),
+  )
+}
+
+// After a parcel came back to us, the pieces that are fine go back to stock.
+export function useRestockOrder(id: string) {
+  return useOrderAction((items: { orderItemId: string; quantity: number }[]) => http<void>(`admin/orders/${id}/restock`, { method: 'POST', body: { items } }))
+}
+
 // The note goes as a form because it can carry photos (a damaged parcel, a chat screenshot).
 export function useAddOrderNote(id: string) {
   return useOrderAction((input: { body: string; images: File[] }) => {

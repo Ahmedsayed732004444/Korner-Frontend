@@ -2,7 +2,8 @@ import { PackageX } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
 import { useAdminOrder, type AdminOrder } from '@/features/adminOrders'
-import { ApiError, errorMessage } from '@/shared/api'
+import { ApiError, errorMessage, usePermissions } from '@/shared/api'
+import { Permissions } from '@/shared/lib/permissions'
 import { asUtc } from '@/shared/lib/dates'
 import { useLocalize } from '@/shared/lib/localize'
 import { formatPiasters } from '@/shared/lib/money'
@@ -10,6 +11,9 @@ import { useDocumentTitle } from '@/shared/lib/useDocumentTitle'
 import { Alert, Badge, EmptyState, OrderStatusBadge, Skeleton } from '@/shared/ui'
 import { OrderItems } from '../order/OrderParts'
 import { OrderActions } from './AdminOrderActions'
+import { CreateReturnPanel } from './order/CreateReturnPanel'
+import { EditOrderPanel } from './order/EditOrderPanel'
+import { PaymentsPanel } from './order/PaymentsPanel'
 import styles from './Admin.module.scss'
 
 export function AdminOrderPage() {
@@ -50,6 +54,9 @@ export function AdminOrderPage() {
         </div>
         <div className={styles.stack}>
           <OrderActions order={order} />
+          <EditOrderPanel order={order} />
+          <ReturnPanel order={order} />
+          <PaymentsPanel orderId={order.id} />
           <Customer order={order} />
           <Totals order={order} />
         </div>
@@ -191,6 +198,17 @@ function Notes({ order }: { order: AdminOrder }) {
           </li>
         ))}
       </ul>
+    </section>
+  )
+}
+
+function ReturnPanel({ order }: { order: AdminOrder }) {
+  const { can } = usePermissions()
+  if (!can(Permissions.ordersWrite) || !order.canRequestReturn) return null
+
+  return (
+    <section className={styles.panel}>
+      <CreateReturnPanel order={order} />
     </section>
   )
 }

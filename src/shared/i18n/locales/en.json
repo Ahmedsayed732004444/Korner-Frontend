@@ -291,7 +291,29 @@
     "Color.InUse": "This color is used by products.",
     "SizeChart.NotFound": "That size chart doesn't exist.",
     "SizeChart.BrandNotFound": "That brand doesn't exist.",
-    "SizeChart.InUse": "This chart is used by products."
+    "SizeChart.InUse": "This chart is used by products.",
+    "Return.NotFound": "That return doesn't exist.",
+    "Return.OrderNotDelivered": "The order must be delivered first.",
+    "Return.WindowClosed": "The return period has ended.",
+    "Return.InvalidItems": "The pieces or quantities aren't valid.",
+    "Return.InvalidStatus": "That action isn't available in the return's current state.",
+    "Return.NotInspected": "Inspect every piece before refunding.",
+    "Return.ItemsRestocked": "Those pieces are already back in stock.",
+    "Return.RefundFailed": "The gateway refused the refund. The return went back to received.",
+    "Return.AlreadyInspected": "This return was already inspected.",
+    "Payment.NothingToRefund": "There is no paid amount to refund.",
+    "Payment.RefundExceedsPaid": "The amount is more than what was paid.",
+    "Payment.AttemptNotFound": "The payment attempt doesn't exist.",
+    "Payment.RefundNotFound": "The refund doesn't exist.",
+    "Payment.RefundAlreadyResolved": "That refund was already settled.",
+    "Order.NotEditable": "This order can't be edited now.",
+    "Order.VariantNotSwappable": "That variant can't replace it (same product and price required).",
+    "Order.GovernorateNotFound": "That governorate doesn't exist.",
+    "Order.ShippingFeeDiffers": "The new governorate has a different shipping fee. Not allowed.",
+    "Order.NotReturnedToOrigin": "The order hasn't come back to us yet.",
+    "Order.RestockExceedsItems": "The quantity is more than available.",
+    "Order.OutOfStock": "The new variant doesn't have enough stock.",
+    "Order.ItemNotFound": "That piece isn't in the order."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -553,7 +575,8 @@
       "orders": "Orders",
       "products": "Products",
       "inventory": "Inventory",
-      "catalog": "Categories & sizes"
+      "catalog": "Categories & sizes",
+      "returns": "Returns"
     },
     "report": {
       "day": "Day",
@@ -763,6 +786,87 @@
         "duplicateSizes": "Sizes must be different",
         "cells": "Fill in every cell"
       }
+    },
+    "returns": {
+      "status": {
+        "Requested": "Requested",
+        "Received": "Received",
+        "Refunded": "Refunded",
+        "Rejected": "Rejected"
+      },
+      "none": "No returns",
+      "noneText": "Returns you open from an order show up here.",
+      "channel": "Request channel",
+      "storeFaultShort": "Our fault",
+      "title": "Return for order {{number}}",
+      "back": "Back to returns",
+      "missing": "This return doesn't exist",
+      "reason": "Reason for return",
+      "rejectedBecause": "Reason for rejection",
+      "restocked": "Back in stock",
+      "notRestocked": "Not restocked",
+      "suggested": "Suggested amount",
+      "receivedAt": "Received on",
+      "receive": "Mark as received",
+      "inspect": "Inspect the pieces",
+      "restockHint": "Tick the pieces that are fine so they go back to stock",
+      "saveInspection": "Save inspection",
+      "refund": "Refund",
+      "suggestedHint": "Suggested: {{amount}}. You can change the amount.",
+      "reject": "Reject return",
+      "rejectReason": "Reason for rejection",
+      "addPhotos": "Add photos",
+      "create": "Open a return",
+      "pickItems": "Choose pieces and quantities (not more than available)",
+      "available": "Available to return: {{count}}",
+      "storeFault": "Our fault (defect or wrong item)",
+      "storeFaultHint": "Affects the suggested amount because shipping is refunded."
+    },
+    "payments": {
+      "title": "Payment & refunds",
+      "noAttempts": "No payment attempts.",
+      "refunds": "Refunds",
+      "method": {
+        "Card": "Card",
+        "Wallet": "Wallet"
+      },
+      "attempt": {
+        "Pending": "Pending",
+        "Succeeded": "Succeeded",
+        "Failed": "Failed",
+        "Expired": "Expired"
+      },
+      "refund": {
+        "Pending": "Pending",
+        "Succeeded": "Done",
+        "Failed": "Failed",
+        "Unknown": "Unconfirmed"
+      },
+      "source": {
+        "Manual": "Manual",
+        "OrderCancellation": "Order cancellation",
+        "LatePayment": "Late payment",
+        "DuplicatePayment": "Duplicate payment",
+        "Return": "Return"
+      },
+      "unknownHint": "The gateway never confirmed the result. Check the Paymob dashboard first, then decide.",
+      "markDone": "The refund went through",
+      "markFailed": "The refund failed",
+      "refundAction": "Refund",
+      "refundable": "Most you can refund: {{amount}}",
+      "amount": "Amount (EGP)",
+      "reason": "Reason",
+      "amountRange": "The amount must be above zero and at most {{max}}"
+    },
+    "edit": {
+      "title": "Edit order",
+      "address": "Edit address",
+      "addressHint": "A new governorate must keep the same shipping fee.",
+      "swap": "Swap size: {{name}} ({{size}})",
+      "newVariant": "New variant",
+      "noSwap": "No other variant at the same price is available.",
+      "restock": "Return to stock",
+      "restockHint": "The order came back to us. Enter the quantity of each piece that is fine."
     }
   }
 }
