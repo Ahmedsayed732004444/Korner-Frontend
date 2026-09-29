@@ -319,7 +319,14 @@
     "Order.ItemNotFound": "القطعة مش في الطلب.",
     "Content.BannerNotFound": "البانر ده مش موجود.",
     "Shipping.GovernorateNotFound": "المحافظة مش موجودة.",
-    "Shipping.GovernorateNotAvailable": "المحافظة دي مش متاحة للشحن."
+    "Shipping.GovernorateNotAvailable": "المحافظة دي مش متاحة للشحن.",
+    "Role.RoleNotFound": "الدور ده مش موجود.",
+    "Role.InvalidPermissions": "في صلاحيات مش صحيحة.",
+    "Role.ProtectedRole": "الدور ده أساسي ومينفعش يتعدّل.",
+    "Role.DuplicatedRole": "في دور بنفس الاسم.",
+    "User.ProtectedUser": "حساب الأدمن الرئيسي مينفعش يتوقف أو يشيل دوره.",
+    "User.UserNotFound": "المستخدم مش موجود.",
+    "User.NotFound": "المستخدم مش موجود."
   },
   "catalog": {
     "colorsAvailable": "{{count}} ألوان متاحة",
@@ -605,7 +612,8 @@
       "catalog": "الفئات والمقاسات",
       "returns": "المرتجعات",
       "content": "المحتوى",
-      "settings": "الإعدادات"
+      "settings": "الإعدادات",
+      "access": "الفريق والصلاحيات"
     },
     "report": {
       "day": "اليوم",
@@ -956,6 +964,41 @@
       "active": "مفعّلة",
       "fee": "سعر الشحن (جنيه)",
       "days": "مدة التوصيل (أيام)"
+    },
+    "access": {
+      "users": "الفريق",
+      "roles": "الأدوار",
+      "addUser": "إضافة عضو",
+      "editUser": "تعديل العضو",
+      "staffOnly": "الفريق فقط (من غير العملاء)",
+      "disabled": "موقوف",
+      "enable": "تفعيل",
+      "disable": "إيقاف",
+      "unlock": "فك القفل",
+      "nameLength": "3 حروف على الأقل",
+      "pickRole": "اختار دور واحد على الأقل",
+      "addRole": "إضافة دور",
+      "editRole": "تعديل الدور",
+      "roleName": "اسم الدور",
+      "builtIn": "دور أساسي مينفعش يتعدّل",
+      "pickPermission": "اختار صلاحية واحدة على الأقل",
+      "rolesHint": "الدور مجموعة صلاحيات. تقدر تدّي العضو أكتر من دور.",
+      "areas": {
+        "catalog": "الكتالوج",
+        "settings": "الإعدادات",
+        "inventory": "المخزون",
+        "payments": "المدفوعات",
+        "orders": "الطلبات",
+        "content": "المحتوى",
+        "reports": "التقارير",
+        "users": "المستخدمين",
+        "roles": "الأدوار"
+      },
+      "actions": {
+        "read": "عرض",
+        "write": "تعديل",
+        "refund": "رد فلوس"
+      }
     }
   }
 }

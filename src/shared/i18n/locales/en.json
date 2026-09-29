@@ -316,7 +316,14 @@
     "Order.ItemNotFound": "That piece isn't in the order.",
     "Content.BannerNotFound": "That banner doesn't exist.",
     "Shipping.GovernorateNotFound": "That governorate doesn't exist.",
-    "Shipping.GovernorateNotAvailable": "We don't ship to that governorate."
+    "Shipping.GovernorateNotAvailable": "We don't ship to that governorate.",
+    "Role.RoleNotFound": "That role doesn't exist.",
+    "Role.InvalidPermissions": "Some permissions aren't valid.",
+    "Role.ProtectedRole": "This is a built-in role and can't be edited.",
+    "Role.DuplicatedRole": "A role with this name already exists.",
+    "User.ProtectedUser": "The main admin account can't be disabled or lose its role.",
+    "User.UserNotFound": "That user doesn't exist.",
+    "User.NotFound": "That user doesn't exist."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -581,7 +588,8 @@
       "catalog": "Categories & sizes",
       "returns": "Returns",
       "content": "Content",
-      "settings": "Settings"
+      "settings": "Settings",
+      "access": "Team & permissions"
     },
     "report": {
       "day": "Day",
@@ -929,6 +937,41 @@
       "active": "Active",
       "fee": "Shipping fee (EGP)",
       "days": "Delivery time (days)"
+    },
+    "access": {
+      "users": "Team",
+      "roles": "Roles",
+      "addUser": "Add member",
+      "editUser": "Edit member",
+      "staffOnly": "Team only (no customers)",
+      "disabled": "Disabled",
+      "enable": "Enable",
+      "disable": "Disable",
+      "unlock": "Unlock",
+      "nameLength": "At least 3 characters",
+      "pickRole": "Choose at least one role",
+      "addRole": "Add role",
+      "editRole": "Edit role",
+      "roleName": "Role name",
+      "builtIn": "Built-in role, can't be edited",
+      "pickPermission": "Choose at least one permission",
+      "rolesHint": "A role is a set of permissions. A member can have more than one role.",
+      "areas": {
+        "catalog": "Catalog",
+        "settings": "Settings",
+        "inventory": "Inventory",
+        "payments": "Payments",
+        "orders": "Orders",
+        "content": "Content",
+        "reports": "Reports",
+        "users": "Users",
+        "roles": "Roles"
+      },
+      "actions": {
+        "read": "View",
+        "write": "Edit",
+        "refund": "Refund"
+      }
     }
   }
 }

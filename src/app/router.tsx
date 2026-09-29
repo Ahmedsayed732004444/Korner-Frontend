@@ -43,6 +43,7 @@ const adminRoutes: RouteObject = {
     { path: 'catalog', lazy: async () => ({ Component: (await import('@/pages/admin/AdminLookupsPage')).AdminLookupsPage }) },
     { path: 'content', lazy: async () => ({ Component: (await import('@/pages/admin/AdminContentPage')).AdminContentPage }) },
     { path: 'settings', lazy: async () => ({ Component: (await import('@/pages/admin/AdminSettingsPage')).AdminSettingsPage }) },
+    { path: 'access', lazy: async () => ({ Component: (await import('@/pages/admin/AdminAccessPage')).AdminAccessPage }) },
     { path: 'inventory', lazy: async () => ({ Component: (await import('@/pages/admin/AdminInventoryPage')).AdminInventoryPage }) },
   ],
 }
