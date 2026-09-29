@@ -11,6 +11,8 @@ import styles from './Admin.module.scss'
 const sections = [
   { to: '/admin', end: true, label: 'admin.nav.dashboard', permission: Permissions.reportsRead },
   { to: '/admin/orders', end: false, label: 'admin.nav.orders', permission: Permissions.ordersRead },
+  { to: '/admin/products', end: false, label: 'admin.nav.products', permission: Permissions.catalogRead },
+  { to: '/admin/inventory', end: false, label: 'admin.nav.inventory', permission: Permissions.inventoryRead },
 ]
 
 // The staff area has its own frame (no storefront header or footer). The menu shows only what the staff member may open.

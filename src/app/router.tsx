@@ -35,6 +35,10 @@ const adminRoutes: RouteObject = {
     { index: true, lazy: async () => ({ Component: (await import('@/pages/admin/AdminDashboardPage')).AdminDashboardPage }) },
     { path: 'orders', lazy: async () => ({ Component: (await import('@/pages/admin/AdminOrdersPage')).AdminOrdersPage }) },
     { path: 'orders/:id', lazy: async () => ({ Component: (await import('@/pages/admin/AdminOrderPage')).AdminOrderPage }) },
+    { path: 'products', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductsPage')).AdminProductsPage }) },
+    { path: 'products/new', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductPage')).AdminProductPage }) },
+    { path: 'products/:id', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductPage')).AdminProductPage }) },
+    { path: 'inventory', lazy: async () => ({ Component: (await import('@/pages/admin/AdminInventoryPage')).AdminInventoryPage }) },
   ],
 }
 

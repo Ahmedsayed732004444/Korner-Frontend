@@ -258,7 +258,25 @@
     "Account.AddressNotFound": "That address doesn't exist.",
     "Account.TooManyAddresses": "You reached the maximum number of addresses. Delete one first.",
     "Account.GovernorateNotAvailable": "We don't ship to that governorate right now.",
-    "Account.DeletionAlreadyRequested": "Your account deletion was already requested."
+    "Account.DeletionAlreadyRequested": "Your account deletion was already requested.",
+    "Product.NotFound": "That product doesn't exist.",
+    "Product.CategoryNotFound": "That category doesn't exist.",
+    "Product.BrandNotFound": "That brand doesn't exist.",
+    "Product.SizeChartNotFound": "That size chart doesn't exist.",
+    "Product.DuplicatedSlug": "That link is used by another product.",
+    "Product.ColorNotFound": "That color doesn't exist.",
+    "Product.ColorRequired": "A color is required for this variant.",
+    "Product.VariantNotFound": "That variant doesn't exist.",
+    "Product.DuplicatedSku": "That SKU is already used.",
+    "Product.DuplicatedVariant": "A variant with this color and size already exists.",
+    "Product.LastActiveVariant": "You can't remove the last active variant of a published product.",
+    "Product.ImageNotFound": "That photo doesn't exist.",
+    "Product.InvalidImageOrder": "The photo order isn't valid.",
+    "Product.LastImage": "You can't remove the last photo of a published product.",
+    "Product.NotReadyToPublish": "The product isn't ready to publish. Check what's missing.",
+    "Inventory.VariantNotFound": "That variant doesn't exist.",
+    "Inventory.OnDemandHasNoStock": "Made-to-order items have no stock.",
+    "Inventory.InsufficientStock": "There isn't enough stock for that removal."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -517,7 +535,9 @@
     "noAccessText": "This area is for store staff only.",
     "nav": {
       "dashboard": "Dashboard",
-      "orders": "Orders"
+      "orders": "Orders",
+      "products": "Products",
+      "inventory": "Inventory"
     },
     "report": {
       "day": "Day",
@@ -577,6 +597,114 @@
       "photos": "Photos",
       "cancelHint": "If the order is paid, the customer is refunded in full.",
       "cancelReason": "Cancellation reason"
+    },
+    "products": {
+      "add": "Add product",
+      "back": "Back to products",
+      "newHint": "Start with the basics. After saving you can add sizes, colors and photos.",
+      "searchHint": "Arabic or English name",
+      "none": "No products",
+      "product": "Product",
+      "category": "Category",
+      "from": "Price from",
+      "stock": "Stock",
+      "soldOut": "Sold out",
+      "variants_one": "1 variant",
+      "variants_other": "{{count}} variants",
+      "status": {
+        "Draft": "Draft",
+        "Published": "Published",
+        "Hidden": "Hidden"
+      },
+      "moveTo": {
+        "Published": "Publish",
+        "Hidden": "Hide",
+        "Draft": "Back to draft"
+      },
+      "visibility": "Visibility in the store",
+      "notReady": "This product isn't ready to publish",
+      "delete": "Delete product",
+      "deleteYes": "Yes, delete it",
+      "missing": "This product doesn't exist",
+      "issue": {
+        "descriptionAr": "Arabic description missing",
+        "descriptionEn": "English description missing",
+        "activeVariant": "At least one active variant is required",
+        "image": "At least one photo is required",
+        "perfumeDetails": "Perfume details missing"
+      },
+      "general": "Basics",
+      "nameAr": "Arabic name",
+      "nameEn": "English name",
+      "descriptionAr": "Arabic description",
+      "descriptionEn": "English description",
+      "slugAr": "Arabic link",
+      "slugEn": "English link",
+      "slugHint": "Leave empty and it is made from the name",
+      "type": "Type",
+      "brand": "Brand",
+      "sizeChart": "Size chart",
+      "choose": "Choose",
+      "none_": "None",
+      "types": {
+        "Apparel": "Apparel",
+        "Footwear": "Footwear",
+        "Perfume": "Perfume"
+      },
+      "scent": "Perfume details",
+      "create": "Create product",
+      "variantsTitle": "Variants (size and color)",
+      "addVariant": "Add variant",
+      "editVariant": "Edit variant",
+      "noVariants": "No variants yet. A product needs at least one to be sold.",
+      "price": "Price",
+      "priceEgp": "Price (EGP)",
+      "compareAt": "Price before discount (EGP)",
+      "compareAtHint": "Must be higher than the price",
+      "invalidAmount": "Enter a valid amount such as 199 or 199.5",
+      "inactive": "Inactive",
+      "onDemand": "Made to order: {{days}} days",
+      "sizeHint": "Such as S, 42 or One Size",
+      "fulfillment": "Fulfilment",
+      "fulfillments": {
+        "InStock": "From stock",
+        "OnDemand": "Made to order"
+      },
+      "initialStock": "Starting quantity",
+      "threshold": "Low-stock alert",
+      "thresholdHint": "Empty uses the store's limit",
+      "leadDays": "Preparation time (days)",
+      "leadRequired": "Enter the preparation time in days",
+      "sortOrder": "Order",
+      "active": "Variant is active",
+      "imagesTitle": "Photos",
+      "noImages": "No photos yet.",
+      "allColors": "All colors",
+      "imageColor": "Photo color",
+      "imageColorHint": "Pick a color if the photo shows only that color",
+      "upload": "Upload {{count}} photos",
+      "moveUp": "Move up",
+      "moveDown": "Move down"
+    },
+    "inventory": {
+      "lowOnly": "Low stock",
+      "searchHint": "SKU or product name",
+      "none": "No results",
+      "low": "Low",
+      "manage": "Manage",
+      "current": "Current stock: {{count}}",
+      "change": "Change",
+      "changeHint": "Positive to add, negative to remove",
+      "changeInvalid": "Enter a whole number, not zero",
+      "reason": "Reason",
+      "movements": "Stock movements",
+      "type": {
+        "InitialStock": "Starting stock",
+        "Sale": "Sale",
+        "SaleReleased": "Released from cancellation",
+        "Restock": "Returned to stock",
+        "ManualAdjustment": "Manual adjustment"
+      }
     }
   }
 }

@@ -264,3 +264,50 @@
     color: var(--color-text-muted);
   }
 }
+
+.twoCols {
+  display: grid;
+  gap: var(--space-4);
+
+  @include up(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.thumbCell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  img,
+  .thumbEmpty {
+    width: 40px;
+    height: 50px;
+    flex: none;
+    object-fit: contain;
+    background: var(--color-surface-muted);
+  }
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+    background: var(--color-surface-muted);
+  }
+}
