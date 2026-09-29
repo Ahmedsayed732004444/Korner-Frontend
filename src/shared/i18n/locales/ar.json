@@ -18,7 +18,11 @@
     "home": "الرئيسية",
     "breadcrumb": "مسار الصفحة",
     "was": "بدل",
-    "close": "اقفل"
+    "close": "اقفل",
+    "pagination": "التنقل بين الصفحات",
+    "previousPage": "الصفحة السابقة",
+    "nextPage": "الصفحة التالية",
+    "pageNumber": "صفحة {{page}}"
   },
   "badge": {
     "sale": "خصم",
@@ -179,6 +183,55 @@
   "catalog": {
     "colorsAvailable": "{{count}} ألوان متاحة",
     "emptyTitle": "مفيش منتجات هنا لسه",
-    "emptyText": "جرّب قسم تاني أو ارجع بعد شوية."
+    "emptyText": "جرّب قسم تاني أو ارجع بعد شوية.",
+    "oneSize": "مقاس واحد",
+    "categoryNotFound": "القسم ده مش موجود",
+    "categoryNotFoundText": "ممكن يكون اتنقل أو اتقفل. شوف كل المنتجات.",
+    "subcategories": "الأقسام الفرعية",
+    "resultsCount_zero": "مفيش منتجات",
+    "resultsCount_one": "منتج واحد",
+    "resultsCount_two": "منتجين",
+    "resultsCount_few": "{{count}} منتجات",
+    "resultsCount_many": "{{count}} منتج",
+    "resultsCount_other": "{{count}} منتج",
+    "sort": {
+      "label": "ترتيب",
+      "newest": "الأحدث",
+      "bestSellers": "الأكثر مبيعاً",
+      "priceAsc": "السعر: الأقل أولاً",
+      "priceDesc": "السعر: الأعلى أولاً"
+    },
+    "filters": {
+      "title": "الفلاتر",
+      "availability": "التوفر",
+      "inStockOnly": "المتاح فقط",
+      "onSaleOnly": "عليه خصم",
+      "color": "اللون",
+      "size": "المقاس",
+      "brand": "الماركة",
+      "price": "السعر (بالجنيه)",
+      "from": "من",
+      "to": "إلى",
+      "fromPrice": "من {{price}}",
+      "toPrice": "حتى {{price}}",
+      "active": "الفلاتر المفعّلة",
+      "remove": "شيل فلتر {{filter}}",
+      "clearAll": "امسح الفلاتر",
+      "showResults_zero": "مفيش نتايج",
+      "showResults_one": "اعرض المنتج",
+      "showResults_two": "اعرض المنتجين",
+      "showResults_few": "اعرض {{count}} منتجات",
+      "showResults_many": "اعرض {{count}} منتج",
+      "showResults_other": "اعرض {{count}} منتج"
+    }
+  },
+  "shop": {
+    "title": "كل المنتجات"
+  },
+  "search": {
+    "title": "البحث",
+    "titleFor": "نتائج البحث عن «{{query}}»",
+    "emptyTitle": "بتدوّر على إيه؟",
+    "emptyText": "اكتب اسم المنتج في خانة البحث فوق."
   }
 }

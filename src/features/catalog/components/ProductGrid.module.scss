@@ -22,3 +22,10 @@
   display: grid;
   gap: var(--space-2);
 }
+
+// The old results stay visible but faded while the new ones load.
+.refreshing {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease);
+}

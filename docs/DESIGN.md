@@ -320,3 +320,13 @@ app/  →  pages/  →  features/  →  shared/        (imports only point right
 - **Product card** (`features/catalog`): one link covers the whole card. The badge shows either "Sold out" or "-X%". Price shows the compare-at price struck through only while the product is on sale. Up to 4 color dots, then "+N". Images sit on a muted 4:5 frame with `object-fit: contain`.
 - **Hero on phones:** the photo is on top and the text below it, so the text never covers the model. On desktop the text sits on the photo's empty half, pinned to the physical left in both languages.
 - Every list has four states: loading (skeletons), failed (message + retry), empty, and data.
+
+**Product lists** (`/c/:slug`, `/shop`, `/search?q=`): one shared `ProductListing`.
+- **Filters:** availability, color, size, brand (hidden while the store has none) and price range. The panel is a sidebar from 992 px up and a bottom sheet below it. Choices apply at once, and the sheet's button says "Show N products". Price is applied when the field is left or Enter is pressed.
+- **State in the URL:** filters, sort and page (`?colors=..&sizes=M,L&min=500&sort=priceAsc&page=2`). Links can be shared, the back button undoes a filter, and defaults are left out. Changing a filter goes back to page 1.
+- **Every active filter is a chip** that removes it, plus "Clear filters". Sorting: newest, best sellers, price low-high, price high-low.
+- **While a new filter loads,** the old results stay visible but faded (no empty flash).
+- A category that doesn't exist answers with a "not found" state and a way to all products.
+- Sizes are shown per category (shoes show 41-44 only), because the facets come from the category being viewed.
+
+**Tests:** `npm test` runs Vitest on the pure logic (filter parsing/writing, page windows, money formatting). Behaviour in a real browser is checked with `scripts/snap.mjs` (screenshots, overflow, and `EVAL` for clicks).

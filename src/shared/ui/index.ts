@@ -10,3 +10,5 @@ export { QuantityInput, SizePicker, SwatchPicker, type PickerOption } from './Pi
 export { Skeleton, Spinner } from './Spinner'
 export { Tabs, type TabItem } from './Tabs'
 export { tabPanelProps } from './tabIds'
+export { Pagination } from './Pagination'
+export { SizeMultiPicker } from './MultiPickers'

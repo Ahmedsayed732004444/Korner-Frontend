@@ -1,0 +1,38 @@
+@use '@/shared/styles/tokens' as *;
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  cursor: pointer;
+
+  @include hover {
+    border-color: var(--color-primary);
+    background: var(--color-surface-muted);
+  }
+}
+
+.clear {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  cursor: pointer;
+}

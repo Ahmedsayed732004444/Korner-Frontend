@@ -8,14 +8,16 @@ interface DrawerProps {
   open: boolean
   onClose: () => void
   title: ReactNode
-  /** Which edge it slides from, following the reading direction. `top` is a full-width sheet (search). */
-  side?: 'start' | 'end' | 'top'
+  /** Which edge it slides from, following the reading direction. `top` is a full-width sheet (search), `bottom` a sheet that slides up (filters). */
+  side?: 'start' | 'end' | 'top' | 'bottom'
   children: ReactNode
+  /** Pinned to the bottom of the panel. */
+  footer?: ReactNode
   className?: string
 }
 
 // Built on the native <dialog>: it traps focus, closes on Escape and hides the rest of the page from screen readers.
-export function Drawer({ open, onClose, title, side = 'start', children, className }: DrawerProps) {
+export function Drawer({ open, onClose, title, side = 'start', children, footer, className }: DrawerProps) {
   const { t } = useTranslation()
   const dialog = useRef<HTMLDialogElement>(null)
 
@@ -44,6 +46,7 @@ export function Drawer({ open, onClose, title, side = 'start', children, classNa
           </button>
         </header>
         <div className={styles.body}>{children}</div>
+        {footer && <div className={styles.footer}>{footer}</div>}
       </div>
     </dialog>
   )

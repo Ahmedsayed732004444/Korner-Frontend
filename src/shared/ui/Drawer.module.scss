@@ -61,9 +61,26 @@
   animation-name: drop-in;
 }
 
+.bottom .panel {
+  width: 100%;
+  height: auto;
+  max-height: 88%;
+  margin-top: auto;
+}
+
+.bottom[open] .panel {
+  animation-name: rise-in;
+}
+
 @keyframes slide-in {
   from {
     transform: translateX(var(--from));
+  }
+}
+
+@keyframes rise-in {
+  from {
+    transform: translateY(100%);
   }
 }
 
@@ -104,4 +121,13 @@
 .body {
   flex: 1;
   padding: var(--space-4);
+}
+
+// Actions that must stay reachable while the content scrolls (e.g. "Show 12 results").
+.footer {
+  position: sticky;
+  bottom: 0;
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
 }

@@ -18,7 +18,11 @@
     "home": "Home",
     "breadcrumb": "Breadcrumb",
     "was": "Was",
-    "close": "Close"
+    "close": "Close",
+    "pagination": "Pagination",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "pageNumber": "Page {{page}}"
   },
   "badge": {
     "sale": "Sale",
@@ -176,6 +180,47 @@
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
     "emptyTitle": "Nothing here yet",
-    "emptyText": "Try another category or check back soon."
+    "emptyText": "Try another category or check back soon.",
+    "oneSize": "One size",
+    "categoryNotFound": "This category doesn't exist",
+    "categoryNotFoundText": "It may have moved or been closed. Browse all products instead.",
+    "subcategories": "Subcategories",
+    "resultsCount_one": "1 product",
+    "resultsCount_other": "{{count}} products",
+    "sort": {
+      "label": "Sort",
+      "newest": "Newest",
+      "bestSellers": "Best sellers",
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low"
+    },
+    "filters": {
+      "title": "Filters",
+      "availability": "Availability",
+      "inStockOnly": "In stock only",
+      "onSaleOnly": "On sale",
+      "color": "Color",
+      "size": "Size",
+      "brand": "Brand",
+      "price": "Price (EGP)",
+      "from": "From",
+      "to": "To",
+      "fromPrice": "From {{price}}",
+      "toPrice": "Up to {{price}}",
+      "active": "Active filters",
+      "remove": "Remove filter {{filter}}",
+      "clearAll": "Clear filters",
+      "showResults_one": "Show 1 product",
+      "showResults_other": "Show {{count}} products"
+    }
+  },
+  "shop": {
+    "title": "All products"
+  },
+  "search": {
+    "title": "Search",
+    "titleFor": "Results for “{{query}}”",
+    "emptyTitle": "What are you looking for?",
+    "emptyText": "Type a product name in the search box above."
   }
 }
