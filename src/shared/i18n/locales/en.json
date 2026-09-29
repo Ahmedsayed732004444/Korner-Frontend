@@ -313,7 +313,10 @@
     "Order.NotReturnedToOrigin": "The order hasn't come back to us yet.",
     "Order.RestockExceedsItems": "The quantity is more than available.",
     "Order.OutOfStock": "The new variant doesn't have enough stock.",
-    "Order.ItemNotFound": "That piece isn't in the order."
+    "Order.ItemNotFound": "That piece isn't in the order.",
+    "Content.BannerNotFound": "That banner doesn't exist.",
+    "Shipping.GovernorateNotFound": "That governorate doesn't exist.",
+    "Shipping.GovernorateNotAvailable": "We don't ship to that governorate."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -576,7 +579,9 @@
       "products": "Products",
       "inventory": "Inventory",
       "catalog": "Categories & sizes",
-      "returns": "Returns"
+      "returns": "Returns",
+      "content": "Content",
+      "settings": "Settings"
     },
     "report": {
       "day": "Day",
@@ -867,6 +872,63 @@
       "noSwap": "No other variant at the same price is available.",
       "restock": "Return to stock",
       "restockHint": "The order came back to us. Enter the quantity of each piece that is fine."
+    },
+    "content": {
+      "banners": "Banners",
+      "pages": "Pages",
+      "addBanner": "Add banner",
+      "editBanner": "Edit banner",
+      "noBanners": "No banners yet.",
+      "bannersHint": "Banners appear in the home page slider. Each has an Arabic and an English image.",
+      "untitled": "Untitled",
+      "always": "Always shown",
+      "titleAr": "Arabic title",
+      "titleEn": "English title",
+      "imageAr": "Arabic image",
+      "imageEn": "English image",
+      "link": "Link",
+      "linkHint": "/shop or a full https://... address",
+      "linkInvalid": "Enter a path starting with / or a full address",
+      "startsAt": "Starts at",
+      "endsAt": "Ends at",
+      "datesInvalid": "It must end after it starts",
+      "pagesHint": "The terms, privacy and other pages shown in the store. The text is shown exactly as written.",
+      "page": "Page",
+      "notWritten": "not written yet",
+      "bodyAr": "Arabic text",
+      "bodyEn": "English text",
+      "pageTypes": {
+        "Terms": "Terms & conditions",
+        "Privacy": "Privacy policy",
+        "Shipping": "Shipping & delivery",
+        "Returns": "Returns & exchanges",
+        "About": "About the store",
+        "Faq": "FAQ"
+      }
+    },
+    "settings": {
+      "store": "Store settings",
+      "shipping": "Shipping & governorates",
+      "freeShipping": "Free shipping from (EGP)",
+      "freeShippingHint": "Leave empty for no free shipping",
+      "highValue": "Review limit for a first order (EGP)",
+      "highValueHint": "A customer's first order above this is held for review",
+      "lowStock": "Low-stock alert level",
+      "lowStockHint": "You are alerted when a variant's stock drops to this",
+      "contact": "Contact details",
+      "supportPhone": "Support phone",
+      "supportEmail": "Support email",
+      "phoneInvalid": "Digits only, with an optional leading +",
+      "maintenance": "Maintenance mode",
+      "maintenanceOn": "Pause new orders",
+      "maintenanceHint": "Browsing keeps working; only ordering stops.",
+      "messageAr": "Arabic maintenance message",
+      "messageEn": "English maintenance message",
+      "shippingHint": "Shipping cost and delivery time per governorate. An inactive governorate isn't offered to customers.",
+      "shippingInvalid": "Check the marked rows: a valid fee, and 1 to 60 days for an active governorate.",
+      "active": "Active",
+      "fee": "Shipping fee (EGP)",
+      "days": "Delivery time (days)"
     }
   }
 }

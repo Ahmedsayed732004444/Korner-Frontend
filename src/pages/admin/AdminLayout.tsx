@@ -14,6 +14,8 @@ const sections = [
   { to: '/admin/returns', end: false, label: 'admin.nav.returns', permission: Permissions.ordersRead },
   { to: '/admin/products', end: false, label: 'admin.nav.products', permission: Permissions.catalogRead },
   { to: '/admin/catalog', end: false, label: 'admin.nav.catalog', permission: Permissions.catalogRead },
+  { to: '/admin/content', end: false, label: 'admin.nav.content', permission: Permissions.contentRead },
+  { to: '/admin/settings', end: false, label: 'admin.nav.settings', permission: Permissions.settingsRead },
   { to: '/admin/inventory', end: false, label: 'admin.nav.inventory', permission: Permissions.inventoryRead },
 ]
 
