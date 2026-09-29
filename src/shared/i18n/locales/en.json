@@ -508,5 +508,75 @@
     "recipient": "Recipient name",
     "makeDefault": "Make this my default address",
     "cancelEdit": "Cancel"
+  },
+  "admin": {
+    "title": "Admin",
+    "menu": "Admin menu",
+    "toStore": "Store",
+    "noAccess": "You don't have access here",
+    "noAccessText": "This area is for store staff only.",
+    "nav": {
+      "dashboard": "Dashboard",
+      "orders": "Orders"
+    },
+    "report": {
+      "day": "Day",
+      "todayHint": "Leave empty for today",
+      "ordersPlaced": "New orders",
+      "ordersConfirmed": "Orders confirmed",
+      "itemsSold": "Items sold",
+      "revenue": "Revenue",
+      "refunded": "Refunded",
+      "net": "Net",
+      "byStatus": "Orders by status",
+      "none": "No orders on this day."
+    },
+    "review": {
+      "banner_one": "1 order needs review",
+      "banner_other": "{{count}} orders need review",
+      "open": "Open them",
+      "reasons": "This order needs review before it can be prepared",
+      "reason": {
+        "PaymentAmountMismatch": "The amount paid differs from the order total",
+        "HighValueFirstOrder": "A high-value first order from this customer"
+      }
+    },
+    "orders": {
+      "filterByStatus": "Filter by status",
+      "all": "All",
+      "needsReview": "Needs review",
+      "search": "Search",
+      "searchHint": "Order number, mobile, email or name",
+      "none": "No orders",
+      "noneText": "Try another filter.",
+      "number": "Number",
+      "customer": "Customer",
+      "status": "Status",
+      "total": "Total",
+      "paid": "Paid",
+      "createdAt": "Date",
+      "review": "Review",
+      "back": "Back to orders",
+      "hasMadeToOrder": "Contains a made-to-order item",
+      "money": "Payment",
+      "notes": "Notes",
+      "attachment": "Attachment"
+    },
+    "actions": {
+      "title": "Actions",
+      "moveTo": "Move the order to",
+      "note": "Note",
+      "apply": "Apply",
+      "ship": "Record shipment",
+      "fixShipment": "Correct shipping details",
+      "trackingUrl": "Tracking link",
+      "clearReview": "Clear review",
+      "clearReviewHint": "The order can't be prepared until the review is cleared. Write what you checked.",
+      "reviewNote": "Review note",
+      "addNote": "Add note",
+      "photos": "Photos",
+      "cancelHint": "If the order is paid, the customer is refunded in full.",
+      "cancelReason": "Cancellation reason"
+    }
   }
 }

@@ -27,7 +27,19 @@ const developmentRoutes: RouteObject[] = env.isDevelopment
   ? [{ path: 'styleguide', lazy: async () => ({ Component: (await import('@/pages/StyleGuidePage')).StyleGuidePage }) }]
   : []
 
+// The staff area is loaded only when someone opens it, so shoppers never download it.
+const adminRoutes: RouteObject = {
+  path: 'admin',
+  lazy: async () => ({ Component: (await import('@/pages/admin/AdminLayout')).AdminLayout }),
+  children: [
+    { index: true, lazy: async () => ({ Component: (await import('@/pages/admin/AdminDashboardPage')).AdminDashboardPage }) },
+    { path: 'orders', lazy: async () => ({ Component: (await import('@/pages/admin/AdminOrdersPage')).AdminOrdersPage }) },
+    { path: 'orders/:id', lazy: async () => ({ Component: (await import('@/pages/admin/AdminOrderPage')).AdminOrderPage }) },
+  ],
+}
+
 export const router = createBrowserRouter([
+  adminRoutes,
   {
     element: <SiteLayout />,
     children: [

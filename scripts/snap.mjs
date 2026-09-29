@@ -44,6 +44,8 @@ try {
   const mobile = Number(width) < 768
   await send('Emulation.setDeviceMetricsOverride', { width: Number(width), height: Number(height), deviceScaleFactor: mobile ? 2 : 1, mobile })
   await send('Page.enable')
+  // Optional: PRELOAD="js" runs before the app starts on every page load (e.g. to put a session in localStorage).
+  if (process.env.PRELOAD) await send('Page.addScriptToEvaluateOnNewDocument', { source: process.env.PRELOAD })
   await send('Page.navigate', { url })
   await sleep(6000)
 

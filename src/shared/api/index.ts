@@ -1,4 +1,6 @@
 export { ApiError, http, type RequestOptions } from './http'
 export { errorMessage } from './errors'
+export { usePermissions } from './permissions'
+export { permissionsOf } from './tokenPermissions'
 export { toQuery, type Paginated } from './query'
 export { session, useSession, type AuthResponseDto, type Session, type SessionUser } from './session'

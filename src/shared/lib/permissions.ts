@@ -1,0 +1,20 @@
+// The permission names the API defines (Abstractions/Consts/DefaultPermissions.cs).
+export const Permissions = {
+  catalogRead: 'catalog:read',
+  catalogWrite: 'catalog:write',
+  settingsRead: 'settings:read',
+  settingsWrite: 'settings:write',
+  inventoryRead: 'inventory:read',
+  inventoryWrite: 'inventory:write',
+  paymentsRead: 'payments:read',
+  paymentsRefund: 'payments:refund',
+  ordersRead: 'orders:read',
+  ordersWrite: 'orders:write',
+  contentRead: 'content:read',
+  contentWrite: 'content:write',
+  reportsRead: 'reports:read',
+  usersRead: 'users:read',
+  usersWrite: 'users:write',
+  rolesRead: 'roles:read',
+  rolesWrite: 'roles:write',
+} as const

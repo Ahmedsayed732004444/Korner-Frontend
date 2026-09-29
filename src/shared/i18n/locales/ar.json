@@ -532,5 +532,75 @@
     "recipient": "اسم المستلم",
     "makeDefault": "خليه العنوان الأساسي",
     "cancelEdit": "إلغاء"
+  },
+  "admin": {
+    "title": "لوحة التحكم",
+    "menu": "قائمة الإدارة",
+    "toStore": "المتجر",
+    "noAccess": "مالكش صلاحية هنا",
+    "noAccessText": "الصفحة دي للعاملين في المتجر بس.",
+    "nav": {
+      "dashboard": "الرئيسية",
+      "orders": "الطلبات"
+    },
+    "report": {
+      "day": "اليوم",
+      "todayHint": "سيبه فاضي لليوم",
+      "ordersPlaced": "طلبات جديدة",
+      "ordersConfirmed": "طلبات اتأكدت",
+      "itemsSold": "قطع اتباعت",
+      "revenue": "الإيراد",
+      "refunded": "المسترد",
+      "net": "الصافي",
+      "byStatus": "الطلبات حسب الحالة",
+      "none": "مفيش طلبات في اليوم ده."
+    },
+    "review": {
+      "banner_one": "في طلب واحد محتاج مراجعة",
+      "banner_other": "في {{count}} طلبات محتاجة مراجعة",
+      "open": "افتحها",
+      "reasons": "الطلب ده محتاج مراجعة قبل ما يتجهز",
+      "reason": {
+        "PaymentAmountMismatch": "مبلغ الدفع مختلف عن قيمة الطلب",
+        "HighValueFirstOrder": "أول طلب من العميل بقيمة عالية"
+      }
+    },
+    "orders": {
+      "filterByStatus": "فلترة حسب الحالة",
+      "all": "الكل",
+      "needsReview": "محتاج مراجعة",
+      "search": "بحث",
+      "searchHint": "رقم الطلب أو الموبايل أو الإيميل أو الاسم",
+      "none": "مفيش طلبات",
+      "noneText": "جرّب فلتر تاني.",
+      "number": "الرقم",
+      "customer": "العميل",
+      "status": "الحالة",
+      "total": "الإجمالي",
+      "paid": "المدفوع",
+      "createdAt": "التاريخ",
+      "review": "مراجعة",
+      "back": "الرجوع للطلبات",
+      "hasMadeToOrder": "فيه منتج بالطلب",
+      "money": "الحسابات",
+      "notes": "ملاحظات",
+      "attachment": "مرفق"
+    },
+    "actions": {
+      "title": "إجراءات",
+      "moveTo": "انقل الطلب إلى",
+      "note": "ملاحظة",
+      "apply": "تطبيق",
+      "ship": "تسجيل الشحن",
+      "fixShipment": "تصحيح بيانات الشحن",
+      "trackingUrl": "رابط التتبع",
+      "clearReview": "إنهاء المراجعة",
+      "clearReviewHint": "الطلب مش هيتجهز قبل ما تخلّص المراجعة. اكتب اللي اتأكدت منه.",
+      "reviewNote": "ملاحظة المراجعة",
+      "addNote": "إضافة ملاحظة",
+      "photos": "صور",
+      "cancelHint": "لو الطلب مدفوع هيتم رد المبلغ كاملاً للعميل.",
+      "cancelReason": "سبب الإلغاء"
+    }
   }
 }
