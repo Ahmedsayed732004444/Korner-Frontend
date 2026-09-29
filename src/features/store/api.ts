@@ -12,6 +12,7 @@ export interface StoreSettings {
   returnWindowDays: number
   paymentMethods: ('Card' | 'Wallet')[]
   googleClientId: string | null
+  maxQuantityPerCartItem: number
 }
 
 export const storeKeys = {

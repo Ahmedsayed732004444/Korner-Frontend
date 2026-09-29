@@ -3,7 +3,8 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useLocation } from 'react-router-dom'
 import { GoogleSignInPrompt } from '@/features/auth'
-import { mergeGuestCartIntoAccount } from '@/features/cart'
+import { CartDrawer, CartDrawerProvider, mergeGuestCartIntoAccount } from '@/features/cart'
+import { sizeLabel } from '@/features/catalog'
 import { useStoreSettings } from '@/features/store'
 import { Footer } from './Footer'
 import { Header } from './Header'
@@ -12,6 +13,8 @@ import { TopBar } from './TopBar'
 
 // Pages where a sign-in prompt would interrupt buying or signing in.
 const noPromptPaths = ['/checkout', '/login', '/register', '/oauth', '/auth']
+
+const defaultMaxQuantity = 10
 
 export function SiteLayout() {
   const { t } = useTranslation()
@@ -29,7 +32,7 @@ export function SiteLayout() {
   }, [queryClient])
 
   return (
-    <>
+    <CartDrawerProvider>
       <a href="#main" className="skip-link">
         {t('common.skipToContent')}
       </a>
@@ -40,11 +43,12 @@ export function SiteLayout() {
         <Outlet />
       </main>
       <Footer settings={settings} />
+      <CartDrawer maxQuantity={settings?.maxQuantityPerCartItem ?? defaultMaxQuantity} sizeLabel={(size) => sizeLabel(size, t)} />
       <GoogleSignInPrompt
         clientId={settings?.googleClientId}
         enabled={!noPromptPaths.some((path) => pathname.startsWith(path))}
         onSignedIn={handleSignedIn}
       />
-    </>
+    </CartDrawerProvider>
   )
 }

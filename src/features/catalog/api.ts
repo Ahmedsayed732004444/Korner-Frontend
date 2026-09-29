@@ -50,6 +50,77 @@ export interface ProductFacets {
   maxPricePiasters: number | null
 }
 
+export interface ColorOption {
+  id: string
+  nameAr: string
+  nameEn: string
+  hexCode: string
+}
+
+export interface VariantOption {
+  id: string
+  colorId: string | null
+  size: string
+  pricePiasters: number
+  compareAtPricePiasters: number | null
+  fulfillmentType: 'InStock' | 'OnDemand'
+  leadTimeDays: number
+  isAvailable: boolean
+}
+
+export interface ProductImage {
+  id: string
+  url: string
+  colorId: string | null
+  altAr: string | null
+  altEn: string | null
+  sortOrder: number
+}
+
+export interface SizeChart {
+  nameAr: string
+  nameEn: string
+  notesAr: string | null
+  notesEn: string | null
+  columns: { headerAr: string; headerEn: string }[]
+  rows: { size: string; values: string[] }[]
+}
+
+export interface PerfumeDetails {
+  concentration: 'EauDeToilette' | 'EauDeParfum' | 'Parfum'
+  scentFamilyAr: string
+  scentFamilyEn: string
+  topNotesAr: string | null
+  topNotesEn: string | null
+  heartNotesAr: string | null
+  heartNotesEn: string | null
+  baseNotesAr: string | null
+  baseNotesEn: string | null
+}
+
+// One product's page. `delivery` is the range across the governorates the store ships to today.
+export interface ProductPage {
+  id: string
+  nameAr: string
+  nameEn: string
+  descriptionAr: string
+  descriptionEn: string
+  slugAr: string
+  slugEn: string
+  type: 'Apparel' | 'Footwear' | 'Perfume'
+  category: CategoryLink
+  parentCategory: CategoryLink | null
+  brand: { id: string; nameAr: string; nameEn: string } | null
+  perfume: PerfumeDetails | null
+  minPricePiasters: number
+  inStock: boolean
+  colors: ColorOption[]
+  variants: VariantOption[]
+  images: ProductImage[]
+  sizeChart: SizeChart | null
+  delivery: { minDays: number; maxDays: number } | null
+}
+
 export interface ProductListParams {
   /** Category slug (Arabic or English). */
   category?: string
@@ -70,6 +141,7 @@ export interface ProductListParams {
 export const catalogKeys = {
   categoryTree: ['catalog', 'categories'] as const,
   category: (slug: string) => ['catalog', 'category', slug] as const,
+  product: (slug: string) => ['catalog', 'product', slug] as const,
   products: (params: ProductListParams) => ['catalog', 'products', params] as const,
   facets: (category: string | undefined, searchValue: string | undefined) => ['catalog', 'facets', category ?? null, searchValue ?? null] as const,
 }
@@ -87,6 +159,15 @@ export function useCategoryPage(slug: string) {
     queryKey: catalogKeys.category(slug),
     queryFn: ({ signal }) => http<CategoryPage>(`categories/${encodeURIComponent(slug)}`, { signal }),
     staleTime: 10 * 60_000,
+    retry: false,
+  })
+}
+
+export function useProduct(slug: string) {
+  return useQuery({
+    queryKey: catalogKeys.product(slug),
+    queryFn: ({ signal }) => http<ProductPage>(`products/${encodeURIComponent(slug)}`, { signal }),
+    staleTime: 60_000,
     retry: false,
   })
 }

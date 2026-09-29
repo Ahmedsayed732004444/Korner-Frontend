@@ -1,0 +1,73 @@
+@use '@/shared/styles/tokens' as *;
+
+.gallery {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.empty {
+  aspect-ratio: 4 / 5;
+  background: var(--color-surface-muted);
+}
+
+.track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  background: var(--color-surface-muted);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+  }
+}
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.thumb {
+  display: block;
+  width: 64px;
+  padding: 0;
+  border: 2px solid transparent;
+  background: var(--color-surface-muted);
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+  }
+
+  @include hover {
+    border-color: var(--color-border-strong);
+  }
+}
+
+.thumbActive {
+  border-color: var(--color-primary);
+}

@@ -67,11 +67,12 @@ interface ButtonLinkProps {
   startIcon?: ReactNode
   endIcon?: ReactNode
   className?: string
+  onClick?: () => void
   children: ReactNode
 }
 
 // A link that looks like a button, so navigation stays a real link (right-click, open in new tab, screen readers).
-export function ButtonLink({ to, variant = 'primary', size = 'md', fullWidth = false, startIcon, endIcon, className, children }: ButtonLinkProps) {
+export function ButtonLink({ to, variant = 'primary', size = 'md', fullWidth = false, startIcon, endIcon, className, onClick, children }: ButtonLinkProps) {
   const classes = cn(styles.button, styles[variant], size !== 'md' && styles[size], fullWidth && styles.fullWidth, className)
   const content = (
     <span className={styles.content}>
@@ -82,11 +83,11 @@ export function ButtonLink({ to, variant = 'primary', size = 'md', fullWidth = f
   )
 
   return /^https?:\/\//.test(to) ? (
-    <a href={to} className={classes} rel="noopener noreferrer">
+    <a href={to} className={classes} rel="noopener noreferrer" onClick={onClick}>
       {content}
     </a>
   ) : (
-    <Link to={to} className={classes}>
+    <Link to={to} className={classes} onClick={onClick}>
       {content}
     </Link>
   )

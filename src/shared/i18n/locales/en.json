@@ -175,7 +175,14 @@
     "server": "We have a temporary problem. Please try again shortly.",
     "TooManyRequests": "Too many requests in a row. Wait a minute and try again.",
     "User.InvalidExternalLogin": "We couldn't sign you in with Google. Please try again.",
-    "User.DisabledUser": "This account is disabled. Please contact support."
+    "User.DisabledUser": "This account is disabled. Please contact support.",
+    "Cart.VariantNotAvailable": "This product isn't available right now.",
+    "Cart.InsufficientStock": "There aren't that many left in this size. Try a smaller quantity.",
+    "Cart.QuantityLimit": "You reached the maximum for this item.",
+    "Cart.Full": "Your cart has too many different items. Remove one and try again.",
+    "Cart.ItemNotFound": "That item isn't in your cart.",
+    "Cart.NotFound": "Your cart expired. Please start again.",
+    "Cart.GuestCartNotFound": "Your cart expired. Please start again."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -222,5 +229,72 @@
     "titleFor": "Results for “{{query}}”",
     "emptyTitle": "What are you looking for?",
     "emptyText": "Type a product name in the search box above."
+  },
+  "product": {
+    "gallery": "Product photos",
+    "photoOf": "Photo {{current}} of {{total}}",
+    "color": "Color",
+    "size": "Size",
+    "from": "From",
+    "chooseSize": "Choose a size first",
+    "buyNow": "Buy now",
+    "addToCart": "Add to cart",
+    "soldOut": "This product is sold out",
+    "soldOutText": "Check back later, or browse other products.",
+    "madeToOrder": "Made for you in {{days}} days",
+    "madeToOrderText": "This item is prepared after you order it, so it arrives after the preparation time above.",
+    "deliveryDays_one": "Arrives in 1 day",
+    "deliveryDays_other": "Arrives in {{count}} days",
+    "deliveryRange": "Arrives in {{min}} to {{max}} days",
+    "returns": "{{days}}-day returns",
+    "securePayment": "Secure card payment by Paymob",
+    "related": "You may also like",
+    "notFound": "This product doesn't exist",
+    "notFoundText": "It may have been removed, or the link is wrong. Browse the other products.",
+    "shippingText": "We ship to the governorates we cover, and you see the shipping cost and delivery date before you pay.",
+    "returnsText": "You can ask for a return within {{days}} days of receiving your order. Message us on WhatsApp or by email and we'll arrange the rest.",
+    "tabs": {
+      "label": "Product details",
+      "description": "Description",
+      "sizeChart": "Size chart",
+      "scent": "Scent",
+      "shipping": "Shipping & returns"
+    },
+    "perfume": {
+      "concentration": "Concentration",
+      "family": "Scent family",
+      "top": "Top notes",
+      "heart": "Heart notes",
+      "base": "Base notes",
+      "EauDeToilette": "Eau de toilette",
+      "EauDeParfum": "Eau de parfum",
+      "Parfum": "Parfum"
+    }
+  },
+  "cart": {
+    "title_zero": "Your cart",
+    "title_one": "Your cart (1 item)",
+    "title_other": "Your cart ({{count}} items)",
+    "added": "Added to your cart",
+    "subtotal": "Subtotal",
+    "shippingNote": "Shipping is worked out in the next step, by your governorate.",
+    "checkout": "Checkout",
+    "viewCart": "View cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyText": "Nothing here yet. Start with our new arrivals.",
+    "browse": "Browse products",
+    "priceChanged": "The price of one or more items changed since you added them. Please check the prices.",
+    "madeToOrder": "Made to order: {{days}} days",
+    "freeShippingReached": "Your order ships free",
+    "freeShippingRemaining": "Add {{amount}} more to get free shipping",
+    "freeShippingLabel": "Progress toward free shipping",
+    "quantityOf": "Quantity of {{name}}",
+    "remove": "Remove {{name}} from the cart",
+    "issues": {
+      "priceChanged": "Price changed",
+      "fewLeft_one": "Only 1 left",
+      "fewLeft_other": "Only {{count}} left",
+      "unavailable": "Not available now"
+    }
   }
 }

@@ -2,6 +2,9 @@
 
 .button {
   position: relative;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   display: grid;
   place-items: center;
   width: var(--touch-target);
