@@ -68,7 +68,10 @@ try {
   })
   console.log(JSON.stringify(overflow.result.result.value))
 
-  const text = await send('Runtime.evaluate', { returnByValue: true, expression: "document.getElementById('root')?.innerText.replace(/s+/g, ' ').slice(0, 160) ?? 'NO ROOT'" })
+  const text = await send('Runtime.evaluate', {
+    returnByValue: true,
+    expression: String.raw`document.getElementById('root')?.innerText.replace(/\s+/g, ' ').slice(0, 160) ?? 'NO ROOT'`,
+  })
   console.log('page text:', text.result.result.value || '(empty)')
 
   const scrollHeight = (await send('Runtime.evaluate', { returnByValue: true, expression: 'document.documentElement.scrollHeight' })).result.result.value
