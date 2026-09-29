@@ -185,7 +185,17 @@
     "Cart.Full": "السلة فيها أصناف كتير. شيل حاجة وحاول تاني.",
     "Cart.ItemNotFound": "القطعة دي مش في السلة.",
     "Cart.NotFound": "السلة انتهت. ابدأ من جديد.",
-    "Cart.GuestCartNotFound": "السلة انتهت. ابدأ من جديد."
+    "Cart.GuestCartNotFound": "السلة انتهت. ابدأ من جديد.",
+    "Checkout.EmptyCart": "السلة فاضية.",
+    "Checkout.CartHasIssues": "في منتجات في السلة محتاجة مراجعة.",
+    "Checkout.PricesChanged": "الأسعار اتغيرت. راجع السلة الأول.",
+    "Checkout.OutOfStock": "منتج في السلة خلص.",
+    "Checkout.StoreInMaintenance": "الطلبات متوقفة مؤقتاً. جرّب بعد شوية.",
+    "Payment.GatewayUnavailable": "بوابة الدفع مش متاحة دلوقتي. حاول بعد شوية.",
+    "Payment.OrderNotPayable": "الطلب ده مش محتاج دفع.",
+    "Payment.MethodUnavailable": "طريقة الدفع دي مش متاحة.",
+    "Payment.TooManyAttempts": "وصلت للحد الأقصى من محاولات الدفع.",
+    "Order.NotFound": "مش لاقيين الطلب ده."
   },
   "catalog": {
     "colorsAvailable": "{{count}} ألوان متاحة",
@@ -331,6 +341,53 @@
   "checkout": {
     "governorate": "المحافظة",
     "chooseGovernorate": "اختار المحافظة",
-    "continueShopping": "كمّل تسوّق"
+    "continueShopping": "كمّل تسوّق",
+    "pageTitle": "إتمام الشراء",
+    "title": "إتمام الشراء",
+    "contact": "بيانات التواصل",
+    "address": "عنوان التوصيل",
+    "payment": "طريقة الدفع",
+    "name": "الاسم بالكامل",
+    "phone": "رقم الموبايل",
+    "phoneHint": "هنبعتلك عليه تحديثات الطلب",
+    "email": "الإيميل",
+    "emailHint": "هيوصلك عليه تأكيد الطلب",
+    "area": "المنطقة",
+    "street": "الشارع",
+    "building": "رقم المبنى",
+    "floor": "الدور",
+    "apartment": "الشقة",
+    "landmark": "علامة مميزة",
+    "acceptTerms": "موافق على",
+    "marketing": "ابعتولي العروض والجديد على الإيميل",
+    "pay": "ادفع {{amount}}",
+    "maintenance": "الطلبات متوقفة مؤقتاً. جرّب بعد شوية.",
+    "orderCreated": "اتسجل طلبك رقم {{number}}. كمّل الدفع عشان نأكده.",
+    "method": {
+      "Card": "كارت بنكي",
+      "Wallet": "محفظة موبايل"
+    },
+    "errors": {
+      "required": "الخانة دي مطلوبة",
+      "phone": "اكتب 11 رقم يبدأ بـ 010 أو 011 أو 012 أو 015",
+      "email": "اكتب إيميل صحيح",
+      "terms": "لازم توافق على الشروط عشان تكمّل"
+    }
+  },
+  "result": {
+    "title": "نتيجة الدفع",
+    "confirming": "بنأكد الدفع",
+    "confirmingText": "ثواني وهنعرف. متقفلش الصفحة.",
+    "paidTitle": "تم الدفع، شكراً ليك",
+    "paidText": "طلبك رقم {{number}} اتأكد بمبلغ {{amount}}.",
+    "expected": "ميعاد التوصيل المتوقع: {{date}}",
+    "emailSent": "بعتنالك تأكيد الطلب على الإيميل.",
+    "track": "تابع طلبك",
+    "failedTitle": "الدفع ماتمش",
+    "failedText": "طلبك رقم {{number}} لسه محجوز ليك لفترة قصيرة. تقدر تحاول تدفع تاني.",
+    "retry": "حاول الدفع تاني",
+    "backToCart": "ارجع للسلة",
+    "unknownTitle": "مش لاقيين طلب نعرض نتيجته",
+    "unknownText": "لو دفعت من جهاز تاني، تابع طلبك برقم الطلب ورقم الموبايل."
   }
 }

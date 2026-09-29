@@ -1,0 +1,35 @@
+@use '@/shared/styles/tokens' as *;
+
+.page {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  max-width: 560px;
+  padding-block: var(--space-16);
+  text-align: center;
+
+  h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-extrabold);
+  }
+
+  p {
+    color: var(--color-text-muted);
+  }
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.failure {
+  color: var(--color-error);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}

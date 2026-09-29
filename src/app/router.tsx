@@ -1,6 +1,8 @@
 import { createBrowserRouter, type RouteObject } from 'react-router-dom'
 import { env } from '@/shared/config/env'
 import { CartPage } from '@/pages/CartPage'
+import { CheckoutPage } from '@/pages/CheckoutPage'
+import { CheckoutResultPage } from '@/pages/CheckoutResultPage'
 import { CategoryPage } from '@/pages/CategoryPage'
 import { HomePage } from '@/pages/HomePage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
@@ -17,7 +19,7 @@ const developmentRoutes: RouteObject[] = env.isDevelopment
 // Routes from docs/DESIGN.md section 1 whose page is still to come. The ones the backend puts in emails and redirects
 // must keep these exact paths.
 const plannedRoutes = [
-  'checkout', 'checkout/result', 'orders/track',
+  'orders/track',
   'login', 'register', 'auth/emailConfirmation', 'auth/forgetPassword', 'oauth/callback', 'account/*', 'pages/:type',
 ]
 
@@ -29,6 +31,8 @@ export const router = createBrowserRouter([
       { path: 'c/:slug', element: <CategoryPage /> },
       { path: 'p/:slug', element: <ProductPage /> },
       { path: 'cart', element: <CartPage /> },
+      { path: 'checkout', element: <CheckoutPage /> },
+      { path: 'checkout/result', element: <CheckoutResultPage /> },
       { path: 'shop', element: <ShopPage /> },
       { path: 'search', element: <SearchPage /> },
       ...plannedRoutes.map((path) => ({ path, element: <PlaceholderPage /> })),

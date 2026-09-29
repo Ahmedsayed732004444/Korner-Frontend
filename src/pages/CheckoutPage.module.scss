@@ -21,13 +21,37 @@
   }
 }
 
-.lines {
+.fields {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-6);
 }
 
-.continue {
-  justify-self: start;
+.group {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  legend {
+    margin-bottom: var(--space-3);
+    padding: 0;
+    color: var(--color-text);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.consents {
+  display: grid;
+  gap: var(--space-3);
 }
 
 .summary {
@@ -41,9 +65,38 @@
     font-size: var(--text-xl);
   }
 
+  // On phones the pay button follows the fields; the summary sits after them.
   @include up(lg) {
     position: sticky;
     top: 96px;
+  }
+}
+
+.items {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  img {
+    width: 48px;
+    height: 60px;
+    object-fit: contain;
+    background: var(--color-surface-muted);
+  }
+
+  small {
+    display: block;
+    color: var(--color-text-muted);
   }
 }
 

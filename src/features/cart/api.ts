@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { http, session, useSession } from '@/shared/api'
 
 export type CartItemIssue = 'PriceChanged' | 'InsufficientStock' | 'OutOfStock' | 'Unavailable'
@@ -86,6 +86,8 @@ export function useCart(governorateId: number | null = null) {
     queryKey: cartKeys.cart(current?.user.id ?? null, governorateId),
     queryFn: ({ signal }) => http<Cart>(governorateId ? `cart?governorateId=${governorateId}` : 'cart', { signal, headers: cartHeaders() }),
     staleTime: 30_000,
+    // Choosing a governorate re-asks for the quote; the page keeps showing the last cart meanwhile instead of blanking.
+    placeholderData: keepPreviousData,
   })
 }
 

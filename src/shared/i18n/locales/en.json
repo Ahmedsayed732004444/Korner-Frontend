@@ -182,7 +182,17 @@
     "Cart.Full": "Your cart has too many different items. Remove one and try again.",
     "Cart.ItemNotFound": "That item isn't in your cart.",
     "Cart.NotFound": "Your cart expired. Please start again.",
-    "Cart.GuestCartNotFound": "Your cart expired. Please start again."
+    "Cart.GuestCartNotFound": "Your cart expired. Please start again.",
+    "Checkout.EmptyCart": "Your cart is empty.",
+    "Checkout.CartHasIssues": "Some items in your cart need attention.",
+    "Checkout.PricesChanged": "Prices changed. Please review your cart first.",
+    "Checkout.OutOfStock": "An item in your cart sold out.",
+    "Checkout.StoreInMaintenance": "Orders are paused for now. Please try again soon.",
+    "Payment.GatewayUnavailable": "The payment service isn't available right now. Please try again shortly.",
+    "Payment.OrderNotPayable": "This order doesn't need payment.",
+    "Payment.MethodUnavailable": "That payment method isn't available.",
+    "Payment.TooManyAttempts": "You reached the maximum number of payment attempts.",
+    "Order.NotFound": "We couldn't find that order."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -310,6 +320,53 @@
   "checkout": {
     "governorate": "Governorate",
     "chooseGovernorate": "Choose a governorate",
-    "continueShopping": "Continue shopping"
+    "continueShopping": "Continue shopping",
+    "pageTitle": "Checkout",
+    "title": "Checkout",
+    "contact": "Contact details",
+    "address": "Delivery address",
+    "payment": "Payment method",
+    "name": "Full name",
+    "phone": "Mobile number",
+    "phoneHint": "We'll send your order updates here",
+    "email": "Email",
+    "emailHint": "Your order confirmation goes here",
+    "area": "Area",
+    "street": "Street",
+    "building": "Building",
+    "floor": "Floor",
+    "apartment": "Apartment",
+    "landmark": "Landmark",
+    "acceptTerms": "I agree to the",
+    "marketing": "Send me offers and news by email",
+    "pay": "Pay {{amount}}",
+    "maintenance": "Orders are paused for now. Please try again soon.",
+    "orderCreated": "Your order {{number}} is saved. Finish paying to confirm it.",
+    "method": {
+      "Card": "Bank card",
+      "Wallet": "Mobile wallet"
+    },
+    "errors": {
+      "required": "This field is required",
+      "phone": "Use 11 digits starting with 010, 011, 012 or 015",
+      "email": "Enter a valid email",
+      "terms": "Please accept the terms to continue"
+    }
+  },
+  "result": {
+    "title": "Payment result",
+    "confirming": "Confirming your payment",
+    "confirmingText": "This takes a few seconds. Please keep this page open.",
+    "paidTitle": "Payment received, thank you",
+    "paidText": "Your order {{number}} is confirmed for {{amount}}.",
+    "expected": "Expected delivery: {{date}}",
+    "emailSent": "We emailed you the order confirmation.",
+    "track": "Track your order",
+    "failedTitle": "The payment didn't go through",
+    "failedText": "Your order {{number}} is still held for you for a short time. You can try paying again.",
+    "retry": "Try paying again",
+    "backToCart": "Back to cart",
+    "unknownTitle": "No order to show a result for",
+    "unknownText": "If you paid on another device, track your order with the order number and mobile number."
   }
 }
