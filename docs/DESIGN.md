@@ -29,6 +29,33 @@ Process for every part we build: **Analyze → Extract → Establish → Design 
 
 **User goals:** find a product → choose color/size → know the final price and delivery date → pay safely → track the order.
 
+**Click budget: payment in 5 clicks or fewer** (a product rule, checked on every page we build)
+
+| # | Fast path ("Buy now") | Cart path |
+|---|---|---|
+| 1 | Product card | Product card |
+| 2 | Size (color is pre-selected) | Size |
+| 3 | **Buy now** → checkout | Add to cart → cart drawer opens |
+| 4 | Governorate (the address is typed, not clicked) | **Checkout** in the drawer |
+| 5 | **Pay** → Paymob | **Pay** → Paymob |
+
+Rules that keep it true:
+- Sign-in is **never** required; guest checkout is the default.
+- The first available color is pre-selected, and a single size is pre-selected.
+- Checkout is one page, and signed-in customers get their saved address filled in.
+- The cart opens as a drawer, not a page.
+- Nothing (prompts, pop-ups) appears on checkout and payment pages.
+
+**Sign-in prompt (first visit only)**
+- **When:** 2.5 s after the first page load of a first visit, for signed-out visitors only.
+  - Never on `/checkout*`, `/login`, `/register`, `/auth/*` or `/oauth/*`.
+  - It's remembered in `localStorage`, so it doesn't come back.
+- **What:** Google One Tap, top-right. The backend verifies Google's ID token at `POST auth/google`.
+  - If the browser can't show One Tap (no Google session, blocked), a small card with Google's own button appears in the same corner.
+  - The card doesn't appear if the visitor closed One Tap themselves.
+- **After sign-in:** the guest cart is merged into the account cart (`cart/merge`), so nothing in the cart is lost.
+- **Setup:** Google Console → the OAuth client → **Authorized JavaScript origins** must list every storefront origin (`http://localhost:5173` in development, plus the production domain).
+
 **Key user flows**
 1. **Buy (guest):** Home/Category → Product → pick color → pick size → Add to cart → Cart (pick governorate → see shipping and delivery) → Checkout form → Paymob → `/checkout/result` (polls payment status) → Track order.
 2. **Find:** Search or Category → filter (size, color, price, brand, availability) → sort → Product.

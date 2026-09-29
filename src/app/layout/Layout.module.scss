@@ -1,0 +1,322 @@
+@use '@/shared/styles/tokens' as *;
+
+// ---------- Top bar ----------
+.topBar {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--text-sm);
+}
+
+.topBarInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 36px;
+  padding-block: var(--space-1);
+  text-align: center;
+
+  @include up(md) {
+    justify-content: space-between;
+    text-align: start;
+  }
+}
+
+.topBarLinks {
+  display: none;
+  gap: var(--space-6);
+
+  a {
+    color: inherit;
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @include up(md) {
+    display: flex;
+  }
+}
+
+// ---------- Header ----------
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 64px;
+
+  @include up(lg) {
+    gap: var(--space-8);
+    min-height: 76px;
+  }
+}
+
+.desktopNav {
+  display: none;
+
+  @include up(lg) {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: var(--space-8);
+  }
+
+  a {
+    position: relative;
+    padding-block: var(--space-2);
+    color: var(--color-text);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+
+    // The template's red underline for the current page.
+    &::after {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transition: transform var(--duration-fast) var(--ease);
+    }
+
+    @media (hover: hover) {
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.navActive::after {
+  transform: scaleX(1) !important;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-inline-start: auto;
+
+  @include up(lg) {
+    margin-inline-start: 0;
+    gap: var(--space-2);
+  }
+}
+
+.iconButton {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+
+  @include hover {
+    color: var(--color-accent);
+  }
+}
+
+.languageButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-target);
+  padding-inline: var(--space-2);
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+
+  @include hover {
+    color: var(--color-accent);
+  }
+}
+
+.mobileOnly {
+  @include up(lg) {
+    display: none;
+  }
+}
+
+.desktopOnly {
+  display: none !important;
+
+  @include up(lg) {
+    display: inline-flex !important;
+  }
+}
+
+// ---------- Mobile menu ----------
+.mobileNav {
+  display: grid;
+
+  a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+  }
+}
+
+.mobileSubNav {
+  display: grid;
+  padding-inline-start: var(--space-4);
+
+  a {
+    font-size: var(--text-md);
+    font-weight: var(--weight-regular);
+  }
+}
+
+.mobileMenuFooter {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+
+  a,
+  .textButton {
+    display: flex;
+    align-items: center;
+    min-height: var(--touch-target);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+}
+
+.textButton {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+// ---------- Search ----------
+.searchForm {
+  display: grid;
+  gap: var(--space-4);
+  padding-block: var(--space-2) var(--space-4);
+
+  @include up(md) {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}
+
+// ---------- Footer ----------
+.footer {
+  margin-top: var(--section-gap);
+  padding-top: var(--space-12);
+  background: var(--color-primary);
+  color: #b7b7b7;
+  font-size: var(--text-sm);
+
+  h2 {
+    margin-bottom: var(--space-4);
+    color: var(--color-text-inverse);
+    font-size: var(--text-md);
+  }
+
+  ul {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    color: inherit;
+    text-decoration: none;
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-text-inverse);
+      }
+    }
+  }
+}
+
+.footerGrid {
+  display: grid;
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
+
+  @include up(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include up(lg) {
+    grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  }
+}
+
+// The logo is dark on light elsewhere; in the footer it switches to white.
+.footerBrand {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+
+  a {
+    justify-self: start;
+    color: var(--color-text-inverse);
+    min-height: auto;
+  }
+}
+
+.payments {
+  color: var(--color-text-inverse);
+  font-weight: var(--weight-semibold);
+}
+
+.contactLink {
+  gap: var(--space-2);
+}
+
+.footerBottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-block: var(--space-6);
+  border-top: 1px solid #2d2d2d;
+}
+
+.footerLegal {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.credit {
+  width: 100%;
+  font-size: var(--text-xs);
+  color: #8a8a8a;
+  direction: ltr;
+  text-align: center;
+}

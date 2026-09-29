@@ -1,0 +1,33 @@
+@use '@/shared/styles/tokens' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  justify-content: center;
+  color: var(--color-text);
+  text-decoration: none;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}
+
+// Only the icon on phones; the name/"Sign in" appears where there's room.
+.label {
+  display: none;
+  max-width: 12ch;
+  overflow: hidden;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include up(lg) {
+    display: inline;
+  }
+}
