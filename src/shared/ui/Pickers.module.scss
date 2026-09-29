@@ -1,0 +1,168 @@
+@use '@/shared/styles/tokens' as *;
+
+.group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  padding: 0;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.selected {
+  color: var(--color-text-muted);
+  font-weight: var(--weight-regular);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.native {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+// Swatch: 28px circle inside a 44px target.
+.swatch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.dot {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.3);
+  transition: box-shadow var(--duration-fast) var(--ease);
+}
+
+.swatch:has(.native:checked) .dot {
+  box-shadow:
+    0 0 0 2px var(--color-bg),
+    0 0 0 4px var(--color-primary);
+}
+
+.swatch:has(.native:focus-visible) {
+  @include focus-ring;
+}
+
+// Sold out: still visible and focusable, crossed out, can't be chosen (error prevention, not hiding).
+.unavailable {
+  cursor: not-allowed;
+
+  .dot {
+    opacity: 0.5;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 34px;
+    height: 2px;
+    background: var(--color-text);
+    transform: rotate(-45deg);
+  }
+}
+
+// Size chip
+.chip {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+
+  @media (hover: hover) {
+    &:hover:not(.unavailableChip) {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &:has(.native:checked) {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+
+  &:has(.native:focus-visible) {
+    @include focus-ring;
+  }
+}
+
+.unavailableChip {
+  color: var(--color-text-subtle);
+  border-style: dashed;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+// Quantity
+.quantity {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--color-border-strong);
+}
+
+.stepper {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+
+  @include hover {
+    background: var(--color-surface-muted);
+  }
+
+  &:disabled {
+    color: var(--color-text-subtle);
+    cursor: not-allowed;
+  }
+}
+
+.value {
+  width: 3ch;
+  min-width: var(--touch-target);
+  border: 0;
+  border-inline: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}

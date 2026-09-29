@@ -1,0 +1,179 @@
+@use '@/shared/styles/tokens' as *;
+
+// align-content: start keeps label and control together when a neighbour in the same row is taller.
+.field {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+}
+
+.label {
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.required {
+  color: var(--color-error);
+  margin-inline-start: 2px;
+}
+
+.optional {
+  color: var(--color-text-subtle);
+  font-weight: var(--weight-regular);
+  margin-inline-start: var(--space-1);
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-md); // 16px stops iOS from zooming into the field
+  transition: border-color var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease);
+
+  &::placeholder {
+    color: var(--color-text-subtle);
+  }
+
+  @include hover {
+    border-color: var(--color-text-muted);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--color-focus);
+    box-shadow: 0 0 0 2px var(--color-focus);
+  }
+
+  &:disabled {
+    background: var(--color-surface-muted);
+    color: var(--color-text-subtle);
+    cursor: not-allowed;
+  }
+
+  // The icon sits at the field's end; an ltr field inside an rtl page flips its own padding, so both sides are reserved.
+  &[aria-invalid='true'] {
+    border-color: var(--color-error);
+    padding-inline: calc(var(--space-4) + 24px);
+  }
+}
+
+textarea.input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.success .input {
+  border-color: var(--color-success);
+  padding-inline: calc(var(--space-4) + 24px);
+}
+
+.select {
+  appearance: none;
+  padding-inline-end: calc(var(--space-4) + 24px);
+  cursor: pointer;
+}
+
+.statusIcon,
+.chevron {
+  position: absolute;
+  inset-inline-end: var(--space-3);
+  pointer-events: none;
+}
+
+.statusIcon {
+  color: var(--color-error);
+}
+
+.success .statusIcon {
+  color: var(--color-success);
+}
+
+.chevron {
+  color: var(--color-text-muted);
+}
+
+.hint,
+.message {
+  display: flex;
+  gap: var(--space-1);
+  align-items: flex-start;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.hint {
+  color: var(--color-text-muted);
+}
+
+.message {
+  color: var(--color-error);
+}
+
+.success .message {
+  color: var(--color-success);
+}
+
+// Checkbox & radio: the whole row is the touch target, the box stays small.
+.choice {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-height: var(--touch-target);
+  padding-block: var(--space-2);
+  color: var(--color-text);
+  cursor: pointer;
+
+  &.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.choiceInput {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--color-primary);
+  cursor: inherit;
+
+  &[aria-invalid='true'] {
+    outline: 2px solid var(--color-error);
+    outline-offset: 1px;
+  }
+}
+
+.choiceText {
+  display: grid;
+  gap: 2px;
+}
+
+.choiceHint {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.group {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: var(--space-2);
+  padding: 0;
+}

@@ -1,0 +1,123 @@
+@use '@/shared/styles/tokens' as *;
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid transparent;
+  border-radius: var(--radius-none);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-label);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled:not([aria-busy='true']),
+  &[aria-disabled='true'] {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  &:lang(en) {
+    text-transform: uppercase;
+  }
+}
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+
+  @include hover {
+    background: var(--color-primary-hover);
+  }
+}
+
+.secondary {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+
+  @include hover {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-text);
+
+  @include hover {
+    background: var(--color-surface-muted);
+  }
+}
+
+// The template's "SHOP NOW" link: underlined, no box.
+.link {
+  min-height: auto;
+  padding: var(--space-1) 0;
+  background: transparent;
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-primary);
+
+  @include hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+}
+
+.sm {
+  min-height: 36px;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+}
+
+.lg {
+  min-height: 52px;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-md);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.iconOnly {
+  width: var(--touch-target);
+  padding: 0;
+}
+
+// Loading keeps the button's size: the label stays in place (invisible) under the spinner.
+.loading {
+  cursor: progress;
+
+  .content {
+    visibility: hidden;
+  }
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}

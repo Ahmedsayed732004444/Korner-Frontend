@@ -1,0 +1,124 @@
+@use '@/shared/styles/tokens' as *;
+
+// Price
+.price {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.current {
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+}
+
+.onSale {
+  color: var(--color-accent);
+}
+
+.compare {
+  color: var(--color-text-subtle);
+  font-size: 0.85em;
+  text-decoration: line-through;
+}
+
+.price-sm {
+  font-size: var(--text-md);
+}
+
+.price-md {
+  font-size: var(--text-lg);
+}
+
+.price-lg {
+  font-size: var(--text-3xl);
+}
+
+// Section title (template: small red eyebrow + big centered heading)
+.sectionTitle {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.start {
+  text-align: start;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-label);
+
+  &:lang(en) {
+    text-transform: uppercase;
+  }
+}
+
+.heading {
+  font-size: var(--text-4xl);
+}
+
+// Breadcrumb
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.crumbLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  color: var(--color-text);
+  text-decoration: none;
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.crumbCurrent {
+  color: var(--color-text-subtle);
+}
+
+.separator {
+  color: var(--color-text-subtle);
+}
+
+// Logo (temporary text mark: "Korner" + the template's red square)
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  color: var(--color-text);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  direction: ltr;
+}
+
+.logoDot {
+  width: 0.28em;
+  height: 0.28em;
+  background: var(--color-accent);
+}
