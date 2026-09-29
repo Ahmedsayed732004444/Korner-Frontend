@@ -276,7 +276,22 @@
     "Product.NotReadyToPublish": "The product isn't ready to publish. Check what's missing.",
     "Inventory.VariantNotFound": "That variant doesn't exist.",
     "Inventory.OnDemandHasNoStock": "Made-to-order items have no stock.",
-    "Inventory.InsufficientStock": "There isn't enough stock for that removal."
+    "Inventory.InsufficientStock": "There isn't enough stock for that removal.",
+    "Category.NotFound": "That category doesn't exist.",
+    "Category.ParentNotFound": "The parent category doesn't exist.",
+    "Category.InvalidParent": "That category can't be the parent.",
+    "Category.DuplicatedSlug": "That link is used by another category.",
+    "Category.HasChildren": "This category has sub-categories. Delete or move them first.",
+    "Category.HasProducts": "This category has products. Move them to another category first.",
+    "Brand.NotFound": "That brand doesn't exist.",
+    "Brand.DuplicatedSlug": "That link is used by another brand.",
+    "Brand.InUse": "This brand is used by products.",
+    "Color.NotFound": "That color doesn't exist.",
+    "Color.DuplicatedName": "That color already exists.",
+    "Color.InUse": "This color is used by products.",
+    "SizeChart.NotFound": "That size chart doesn't exist.",
+    "SizeChart.BrandNotFound": "That brand doesn't exist.",
+    "SizeChart.InUse": "This chart is used by products."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -537,7 +552,8 @@
       "dashboard": "Dashboard",
       "orders": "Orders",
       "products": "Products",
-      "inventory": "Inventory"
+      "inventory": "Inventory",
+      "catalog": "Categories & sizes"
     },
     "report": {
       "day": "Day",
@@ -704,6 +720,48 @@
         "SaleReleased": "Released from cancellation",
         "Restock": "Returned to stock",
         "ManualAdjustment": "Manual adjustment"
+      }
+    },
+    "lookups": {
+      "categories": "Categories",
+      "brands": "Brands",
+      "colors": "Colors",
+      "sizeCharts": "Size charts",
+      "addCategory": "Add category",
+      "editCategory": "Edit category",
+      "parent": "Parent category",
+      "topLevel": "Top level",
+      "visible": "Visible in the store",
+      "image": "Category image",
+      "addBrand": "Add brand",
+      "editBrand": "Edit brand",
+      "noBrands": "No brands yet.",
+      "slug": "Link",
+      "logo": "Brand logo",
+      "addColor": "Add color",
+      "editColor": "Edit color",
+      "hex": "Color code",
+      "hexInvalid": "Enter a code such as #1E9DF1",
+      "pick": "Pick",
+      "addChart": "Add size chart",
+      "editChart": "Edit size chart",
+      "anyType": "Any type",
+      "anyBrand": "Any brand",
+      "notesAr": "Arabic notes",
+      "notesEn": "English notes",
+      "header": "Column heading",
+      "addColumn": "Column",
+      "addRow": "Add size",
+      "removeColumn": "Remove column",
+      "removeRow": "Remove row",
+      "uploadImage": "Upload image",
+      "gridProblem": {
+        "columns": "Add at least one column",
+        "rows": "Add at least one size",
+        "headers": "Column headings need Arabic and English",
+        "sizes": "Every row needs a size",
+        "duplicateSizes": "Sizes must be different",
+        "cells": "Fill in every cell"
       }
     }
   }

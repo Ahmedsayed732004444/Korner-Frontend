@@ -38,6 +38,7 @@ const adminRoutes: RouteObject = {
     { path: 'products', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductsPage')).AdminProductsPage }) },
     { path: 'products/new', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductPage')).AdminProductPage }) },
     { path: 'products/:id', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductPage')).AdminProductPage }) },
+    { path: 'catalog', lazy: async () => ({ Component: (await import('@/pages/admin/AdminLookupsPage')).AdminLookupsPage }) },
     { path: 'inventory', lazy: async () => ({ Component: (await import('@/pages/admin/AdminInventoryPage')).AdminInventoryPage }) },
   ],
 }

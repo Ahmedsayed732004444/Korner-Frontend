@@ -279,7 +279,22 @@
     "Product.NotReadyToPublish": "المنتج مش جاهز للنشر. راجع اللي ناقص.",
     "Inventory.VariantNotFound": "النسخة مش موجودة.",
     "Inventory.OnDemandHasNoStock": "المنتجات بالطلب ملهاش مخزون.",
-    "Inventory.InsufficientStock": "المخزون مش كفاية للنقص ده."
+    "Inventory.InsufficientStock": "المخزون مش كفاية للنقص ده.",
+    "Category.NotFound": "الفئة مش موجودة.",
+    "Category.ParentNotFound": "الفئة الأم مش موجودة.",
+    "Category.InvalidParent": "مينفعش تختار الفئة دي كفئة أم.",
+    "Category.DuplicatedSlug": "الرابط ده مستخدم في فئة تانية.",
+    "Category.HasChildren": "الفئة دي فيها فئات فرعية. احذفها أو انقلها الأول.",
+    "Category.HasProducts": "الفئة دي فيها منتجات. انقلها لفئة تانية الأول.",
+    "Brand.NotFound": "الماركة مش موجودة.",
+    "Brand.DuplicatedSlug": "الرابط ده مستخدم في ماركة تانية.",
+    "Brand.InUse": "الماركة دي مستخدمة في منتجات.",
+    "Color.NotFound": "اللون مش موجود.",
+    "Color.DuplicatedName": "اللون ده متسجل قبل كده.",
+    "Color.InUse": "اللون ده مستخدم في منتجات.",
+    "SizeChart.NotFound": "جدول المقاسات مش موجود.",
+    "SizeChart.BrandNotFound": "الماركة مش موجودة.",
+    "SizeChart.InUse": "الجدول ده مستخدم في منتجات."
   },
   "catalog": {
     "colorsAvailable": "{{count}} ألوان متاحة",
@@ -561,7 +576,8 @@
       "dashboard": "الرئيسية",
       "orders": "الطلبات",
       "products": "المنتجات",
-      "inventory": "المخزون"
+      "inventory": "المخزون",
+      "catalog": "الفئات والمقاسات"
     },
     "report": {
       "day": "اليوم",
@@ -731,6 +747,48 @@
         "SaleReleased": "رجوع من إلغاء",
         "Restock": "إعادة للمخزن",
         "ManualAdjustment": "تعديل يدوي"
+      }
+    },
+    "lookups": {
+      "categories": "الفئات",
+      "brands": "الماركات",
+      "colors": "الألوان",
+      "sizeCharts": "جداول المقاسات",
+      "addCategory": "إضافة فئة",
+      "editCategory": "تعديل الفئة",
+      "parent": "الفئة الأم",
+      "topLevel": "فئة رئيسية",
+      "visible": "ظاهرة في المتجر",
+      "image": "صورة الفئة",
+      "addBrand": "إضافة ماركة",
+      "editBrand": "تعديل الماركة",
+      "noBrands": "لسه مفيش ماركات.",
+      "slug": "الرابط",
+      "logo": "شعار الماركة",
+      "addColor": "إضافة لون",
+      "editColor": "تعديل اللون",
+      "hex": "كود اللون",
+      "hexInvalid": "اكتب كود زي #1E9DF1",
+      "pick": "اختيار",
+      "addChart": "إضافة جدول مقاسات",
+      "editChart": "تعديل جدول المقاسات",
+      "anyType": "كل الأنواع",
+      "anyBrand": "كل الماركات",
+      "notesAr": "ملاحظات بالعربي",
+      "notesEn": "ملاحظات بالإنجليزي",
+      "header": "عنوان العمود",
+      "addColumn": "عمود",
+      "addRow": "إضافة مقاس",
+      "removeColumn": "احذف العمود",
+      "removeRow": "احذف الصف",
+      "uploadImage": "رفع الصورة",
+      "gridProblem": {
+        "columns": "ضيف عمود واحد على الأقل",
+        "rows": "ضيف مقاس واحد على الأقل",
+        "headers": "عناوين الأعمدة لازم تتكتب بالعربي والإنجليزي",
+        "sizes": "كل صف لازم يكون له مقاس",
+        "duplicateSizes": "المقاسات لازم تكون مختلفة",
+        "cells": "كل الخانات لازم تتملى"
       }
     }
   }
