@@ -68,6 +68,7 @@ Rules that keep it true:
 |---|---|---|
 | `/` | Home | `banners`, `categories`, `products` |
 | `/c/:slug` | Category | `categories/{slug}`, `products`, `products/facets` |
+| `/shop` | All products | `products`, `products/facets` |
 | `/search?q=` | Search results | `products?SearchValue=` |
 | `/p/:slug` | Product | `products/{slug}` |
 | `/cart` | Cart | `cart`, `shipping/governorates` |
@@ -310,3 +311,12 @@ app/  →  pages/  →  features/  →  shared/        (imports only point right
   This is the only code that talks to the backend.
 - **Features** don't import other features; the pages compose them. Each feature exposes a public `index.ts`.
 - **Shared things** move to `shared/` on their third use (Rule of Three), not earlier.
+
+---
+
+## Built so far (kept in sync with the code)
+
+**Home page** (`/`): hero slider (`GET banners`, no autoplay), trust strip, category tiles (`GET categories`), and a product section with three tabs (best sellers / new arrivals / on sale, each one request, only the open tab is fetched).
+- **Product card** (`features/catalog`): one link covers the whole card. The badge shows either "Sold out" or "-X%". Price shows the compare-at price struck through only while the product is on sale. Up to 4 color dots, then "+N". Images sit on a muted 4:5 frame with `object-fit: contain`.
+- **Hero on phones:** the photo is on top and the text below it, so the text never covers the model. On desktop the text sits on the photo's empty half, pinned to the physical left in both languages.
+- Every list has four states: loading (skeletons), failed (message + retry), empty, and data.

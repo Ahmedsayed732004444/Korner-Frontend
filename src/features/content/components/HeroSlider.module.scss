@@ -1,0 +1,192 @@
+@use '@/shared/styles/tokens' as *;
+
+.placeholder {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+
+  @include up(md) {
+    aspect-ratio: 1920 / 801;
+    max-height: 640px;
+  }
+}
+
+.hero {
+  position: relative;
+  background: var(--color-bg-muted);
+}
+
+.track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+
+  // Phone: the photo on top, the text under it, so the text never covers the model.
+  display: grid;
+
+  @include up(md) {
+    display: block;
+    max-height: 640px;
+    overflow: hidden;
+  }
+}
+
+.image {
+  width: 100%;
+  // The width/height attributes only reserve space; without this they would set a fixed 801px height.
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  // The model sits on the right side of the photo.
+  object-position: 78% center;
+
+  @include up(md) {
+    aspect-ratio: 1920 / 801;
+    object-position: center;
+  }
+}
+
+.textWrap {
+  padding-block: var(--space-6) var(--space-12);
+
+  @include up(md) {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding-block: 0;
+    // The photo's empty half is on the physical left in both languages, so the text is pinned there.
+    justify-content: flex-start;
+    direction: ltr;
+  }
+}
+
+.text {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  max-width: 34rem;
+  // Keeps the language's own direction even though the wrapper is pinned left.
+  direction: inherit;
+
+  @include up(md) {
+    gap: var(--space-4);
+    max-width: 38%;
+  }
+}
+
+:global([dir='rtl']) .textWrap .text {
+  direction: rtl;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-label);
+
+  &:lang(en) {
+    text-transform: uppercase;
+  }
+}
+
+.title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-extrabold);
+
+  @include up(lg) {
+    font-size: var(--text-5xl);
+  }
+}
+
+.subtitle {
+  max-width: 34ch;
+  color: var(--color-text-muted);
+}
+
+// ---------- Controls ----------
+.arrow {
+  position: absolute;
+  top: 50%;
+  display: none;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  @include up(md) {
+    display: grid;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  @include hover {
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+}
+
+.prev {
+  inset-inline-start: var(--space-4);
+}
+
+.next {
+  inset-inline-end: var(--space-4);
+}
+
+.dots {
+  position: absolute;
+  inset-inline: 0;
+  bottom: var(--space-3);
+  display: flex;
+  justify-content: center;
+}
+
+// A 44px touch target around a small dot.
+.dot {
+  position: relative;
+  width: var(--touch-target);
+  height: 24px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-pill);
+    background: var(--color-border-strong);
+    transition: width var(--duration-fast) var(--ease), background-color var(--duration-fast) var(--ease);
+  }
+}
+
+.dotActive::after {
+  width: 24px;
+  background: var(--color-primary);
+}

@@ -45,7 +45,14 @@ try {
   await send('Emulation.setDeviceMetricsOverride', { width: Number(width), height: Number(height), deviceScaleFactor: mobile ? 2 : 1, mobile })
   await send('Page.enable')
   await send('Page.navigate', { url })
-  await sleep(4000)
+  await sleep(6000)
+
+  // Optional: EVAL="js" runs in the page first (clicks, typing), then EVAL_WAIT ms pass before the screenshot.
+  if (process.env.EVAL) {
+    const result = await send('Runtime.evaluate', { returnByValue: true, awaitPromise: true, expression: process.env.EVAL })
+    console.log('eval:', JSON.stringify(result.result.result?.value ?? result.result.exceptionDetails?.text))
+    await sleep(Number(process.env.EVAL_WAIT ?? 2500))
+  }
 
   const overflow = await send('Runtime.evaluate', {
     returnByValue: true,
@@ -60,6 +67,9 @@ try {
     })()`,
   })
   console.log(JSON.stringify(overflow.result.result.value))
+
+  const text = await send('Runtime.evaluate', { returnByValue: true, expression: "document.getElementById('root')?.innerText.replace(/s+/g, ' ').slice(0, 160) ?? 'NO ROOT'" })
+  console.log('page text:', text.result.result.value || '(empty)')
 
   const scrollHeight = (await send('Runtime.evaluate', { returnByValue: true, expression: 'document.documentElement.scrollHeight' })).result.result.value
   const fullHeight = Math.min(scrollHeight, 12000)

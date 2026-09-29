@@ -1,0 +1,42 @@
+@use '@/shared/styles/tokens' as *;
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.start {
+  justify-content: flex-start;
+}
+
+.tab {
+  flex-shrink: 0;
+  min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-4);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--color-text-subtle);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
+
+  @include hover {
+    color: var(--color-text);
+  }
+}
+
+// Muted grey alone isn't enough to show the selected tab (colour-blind users): it also gets the dark underline.
+.selected {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-text);
+}

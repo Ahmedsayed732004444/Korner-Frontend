@@ -24,12 +24,38 @@
     "sale": "خصم",
     "new": "جديد",
     "soldOut": "خلصت",
-    "onDemand": "بالطلب"
+    "onDemand": "بالطلب",
+    "percentOff": "خصم {{percent}}%"
   },
   "home": {
     "comingSoon": "المتجر بيتجهّز",
     "comingSoonText": "بنبني واجهة كورنر جزء جزء. شوف مكتبة المكونات لحد ما الصفحات تجهز.",
-    "openStyleGuide": "افتح مكتبة المكونات"
+    "openStyleGuide": "افتح مكتبة المكونات",
+    "heroLabel": "عروض المتجر",
+    "heroEyebrow": "جديد في كورنر",
+    "shopNow": "تسوّق الآن",
+    "previousSlide": "الشريحة السابقة",
+    "nextSlide": "الشريحة التالية",
+    "slideOf": "شريحة {{current}} من {{total}}",
+    "categoriesEyebrow": "تسوّق حسب القسم",
+    "categoriesTitle": "اختار قسمك",
+    "productsEyebrow": "اختيارات كورنر",
+    "productsTitle": "منتجات تعجبك",
+    "tabs": {
+      "bestSellers": "الأكثر مبيعاً",
+      "newArrivals": "وصل حديثاً",
+      "onSale": "العروض"
+    },
+    "viewAll": "شوف كل المنتجات",
+    "trust": {
+      "label": "ليه تشتري من كورنر",
+      "payTitle": "دفع آمن",
+      "payText": "بالكارت أونلاين عن طريق Paymob",
+      "returnTitle": "استرجاع واضح",
+      "returnText": "سياسة استرجاع خلال {{days}} يوم",
+      "deliveryTitle": "التوصيل لحد بيتك",
+      "deliveryText": "بتعرف سعر الشحن وميعاد التوصيل قبل الدفع"
+    }
   },
   "styleguide": {
     "title": "مكتبة المكونات",
@@ -149,5 +175,10 @@
     "TooManyRequests": "طلبات كتير ورا بعض. استنى دقيقة وحاول تاني.",
     "User.InvalidExternalLogin": "ماقدرناش نسجّل دخولك بجوجل. حاول تاني.",
     "User.DisabledUser": "الحساب ده متوقف. كلّم خدمة العملاء."
+  },
+  "catalog": {
+    "colorsAvailable": "{{count}} ألوان متاحة",
+    "emptyTitle": "مفيش منتجات هنا لسه",
+    "emptyText": "جرّب قسم تاني أو ارجع بعد شوية."
   }
 }

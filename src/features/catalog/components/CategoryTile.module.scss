@@ -1,0 +1,73 @@
+@use '@/shared/styles/tokens' as *;
+
+.tile {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+}
+
+.media {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--color-surface-muted);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-base) var(--ease);
+  }
+}
+
+.name {
+  margin-top: var(--space-2);
+  font-size: var(--text-2xl);
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::after {
+      @include focus-ring;
+    }
+  }
+}
+
+// The template's underlined "SHOP NOW": decorative, since the title above is the real link.
+.cta {
+  padding-bottom: 2px;
+  border-bottom: 2px solid var(--color-primary);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-label);
+
+  &:lang(en) {
+    text-transform: uppercase;
+  }
+}
+
+@media (hover: hover) {
+  .tile:hover {
+    .media img {
+      transform: scale(1.05);
+    }
+
+    .cta {
+      border-bottom-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+}

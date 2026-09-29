@@ -11,7 +11,7 @@ const developmentRoutes: RouteObject[] = env.isDevelopment
 
 // Routes from docs/DESIGN.md section 1; the ones the backend puts in emails and redirects must keep these exact paths.
 const plannedRoutes = [
-  'c/:slug', 'search', 'p/:slug', 'cart', 'checkout', 'checkout/result', 'orders/track',
+  'c/:slug', 'shop', 'search', 'p/:slug', 'cart', 'checkout', 'checkout/result', 'orders/track',
   'login', 'register', 'auth/emailConfirmation', 'auth/forgetPassword', 'oauth/callback', 'account/*', 'pages/:type',
 ]
 
