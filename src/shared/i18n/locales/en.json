@@ -295,6 +295,21 @@
       "fewLeft_one": "Only 1 left",
       "fewLeft_other": "Only {{count}} left",
       "unavailable": "Not available now"
-    }
+    },
+    "pageTitle": "Cart",
+    "summary": "Order summary",
+    "governorateHint": "So we can work out shipping and delivery date",
+    "shipping": "Shipping",
+    "free": "Free",
+    "chooseToSee": "Choose a governorate",
+    "delivery": "Delivery",
+    "total": "Total",
+    "acknowledge": "OK, I saw the prices",
+    "stockIssues": "Some items in your cart are not available in that quantity. Change the quantity or remove them to continue."
+  },
+  "checkout": {
+    "governorate": "Governorate",
+    "chooseGovernorate": "Choose a governorate",
+    "continueShopping": "Continue shopping"
   }
 }

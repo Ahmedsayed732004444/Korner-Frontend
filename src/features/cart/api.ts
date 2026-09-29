@@ -75,15 +75,16 @@ export function cartHeaders(): Record<string, string> {
 
 export const cartKeys = {
   all: ['cart'] as const,
-  cart: (userId: string | null) => ['cart', userId ?? 'guest'] as const,
+  cart: (userId: string | null, governorateId: number | null = null) => ['cart', userId ?? 'guest', governorateId] as const,
 }
 
 // Keyed by the signed-in user, so signing in or out switches to the right cart without mixing them.
-export function useCart() {
+// With a governorate the cart also carries the shipping quote and the total.
+export function useCart(governorateId: number | null = null) {
   const current = useSession()
   return useQuery({
-    queryKey: cartKeys.cart(current?.user.id ?? null),
-    queryFn: ({ signal }) => http<Cart>('cart', { signal, headers: cartHeaders() }),
+    queryKey: cartKeys.cart(current?.user.id ?? null, governorateId),
+    queryFn: ({ signal }) => http<Cart>(governorateId ? `cart?governorateId=${governorateId}` : 'cart', { signal, headers: cartHeaders() }),
     staleTime: 30_000,
   })
 }
@@ -96,7 +97,9 @@ function useCartMutation<TVariables>(request: (variables: TVariables) => Promise
     mutationFn: request,
     onSuccess: (cart) => {
       if (!session.get()) guestCart.remember(cart.id)
+      // Cached carts with a shipping quote are stale after any change; the plain cart is replaced in place.
       queryClient.setQueryData(cartKeys.cart(session.get()?.user.id ?? null), cart)
+      void queryClient.invalidateQueries({ queryKey: cartKeys.all, predicate: (query) => query.queryKey[2] !== null })
     },
   })
 }
@@ -115,6 +118,11 @@ export function useUpdateCartItem() {
 
 export function useRemoveCartItem() {
   return useCartMutation((variantId: string) => http<Cart>(`cart/items/${variantId}`, { method: 'DELETE', headers: cartHeaders() }))
+}
+
+// The shopper has seen the new prices; checkout refuses a cart whose price changes weren't acknowledged.
+export function useAcknowledgeCartChanges() {
+  return useCartMutation(() => http<Cart>('cart/acknowledge-changes', { method: 'POST', headers: cartHeaders() }))
 }
 
 // After signing in, the guest cart joins the account cart (same variant: the larger quantity wins).

@@ -316,6 +316,21 @@
       "fewLeft_many": "باقي {{count}} بس",
       "fewLeft_other": "باقي {{count}} بس",
       "unavailable": "غير متاح دلوقتي"
-    }
+    },
+    "pageTitle": "السلة",
+    "summary": "ملخص الطلب",
+    "governorateHint": "عشان نحسبلك الشحن وميعاد التوصيل",
+    "shipping": "الشحن",
+    "free": "مجاني",
+    "chooseToSee": "اختار المحافظة",
+    "delivery": "التوصيل",
+    "total": "الإجمالي",
+    "acknowledge": "تمام، شفت الأسعار",
+    "stockIssues": "في منتجات في السلة مش متاحة بالكمية دي. عدّل الكمية أو شيلها عشان تكمّل."
+  },
+  "checkout": {
+    "governorate": "المحافظة",
+    "chooseGovernorate": "اختار المحافظة",
+    "continueShopping": "كمّل تسوّق"
   }
 }
