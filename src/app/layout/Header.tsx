@@ -1,6 +1,7 @@
 import { useState, type FormEvent, type MouseEvent } from 'react'
 import { Languages, Menu, Search } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { switchLanguage } from '@/shared/i18n'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { AccountButton, signOut } from '@/features/auth'
 import { CartButton } from '@/features/cart'
@@ -20,7 +21,7 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false)
 
   const categoryPath = (category: CategoryNode) => `/c/${localize(category.slugAr, category.slugEn)}`
-  const switchLanguage = () => i18n.changeLanguage(i18n.language === 'ar' ? 'en' : 'ar')
+  const toggleLanguage = () => void switchLanguage(i18n.language === 'ar' ? 'en' : 'ar')
 
   return (
     <header className={styles.header}>
@@ -46,7 +47,7 @@ export function Header() {
           <button type="button" className={styles.iconButton} onClick={() => setSearchOpen(true)} aria-label={t('layout.search')}>
             <Search size={22} strokeWidth={1.75} aria-hidden="true" />
           </button>
-          <button type="button" className={`${styles.languageButton} ${styles.desktopOnly}`} onClick={switchLanguage} lang={i18n.language === 'ar' ? 'en' : 'ar'}>
+          <button type="button" className={`${styles.languageButton} ${styles.desktopOnly}`} onClick={toggleLanguage} lang={i18n.language === 'ar' ? 'en' : 'ar'}>
             <Languages size={18} aria-hidden="true" />
             {t('common.switchLanguage')}
           </button>
@@ -57,7 +58,7 @@ export function Header() {
         </div>
       </div>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} categories={categories} categoryPath={categoryPath} onSwitchLanguage={switchLanguage} />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} categories={categories} categoryPath={categoryPath} onSwitchLanguage={toggleLanguage} />
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   )

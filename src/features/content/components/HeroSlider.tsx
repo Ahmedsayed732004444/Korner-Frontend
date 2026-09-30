@@ -35,7 +35,14 @@ export function HeroSlider() {
   const goTo = (index: number) =>
     track.current?.children[index]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })
 
-  if (isLoading) return <Skeleton className={styles.placeholder} />
+  // Same shape as a loaded slide (on phones: picture, then text), so the page below doesn't jump when banners arrive.
+  if (isLoading)
+    return (
+      <div className={styles.hero} aria-busy="true">
+        <Skeleton className={styles.placeholder} />
+        <div className={styles.placeholderText} />
+      </div>
+    )
   if (!banners?.length) return null
 
   return (

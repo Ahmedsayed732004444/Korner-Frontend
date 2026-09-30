@@ -3,7 +3,12 @@
 .page {
   display: grid;
   gap: var(--space-6);
-  padding-block: var(--space-6) var(--space-16);
+  // Room for the pinned checkout bar on phones.
+  padding-block: var(--space-6) calc(var(--space-16) + 48px);
+
+  @include up(lg) {
+    padding-bottom: var(--space-16);
+  }
 }
 
 .title {
@@ -77,4 +82,38 @@
   color: var(--color-text-muted);
   font-size: var(--text-sm);
   text-align: center;
+}
+
+.mobileBar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--gutter);
+  padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+
+  span {
+    display: grid;
+    line-height: 1.2;
+  }
+
+  small {
+    color: var(--color-text-muted);
+  }
+
+  strong {
+    font-size: var(--text-lg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @include up(lg) {
+    display: none;
+  }
 }

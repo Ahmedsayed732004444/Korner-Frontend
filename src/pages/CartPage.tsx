@@ -111,7 +111,7 @@ export function CartPage() {
             </div>
             <div>
               <dt>{t('cart.shipping')}</dt>
-              <dd>{shipping ? (shipping.isFreeShipping ? t('cart.free') : formatPiasters(shipping.shippingFeePiasters, i18n.language)) : t('cart.chooseToSee')}</dd>
+              <dd>{shipping ? (shipping.isFreeShipping ? <span className="text-positive">{t('cart.free')}</span> : formatPiasters(shipping.shippingFeePiasters, i18n.language)) : t('cart.chooseToSee')}</dd>
             </div>
             {shipping && (
               <div>
@@ -136,6 +136,19 @@ export function CartPage() {
           <p className={styles.secure}>{t('product.securePayment')}</p>
         </aside>
       </div>
+
+      {/* On phones the summary is below every item, so the total and the way forward stay pinned to the bottom. */}
+      {!blocked && (
+        <div className={styles.mobileBar}>
+          <span>
+            <small>{t('cart.total')}</small>
+            <strong>{formatPiasters(cart.totalPiasters ?? cart.subtotalPiasters, i18n.language)}</strong>
+          </span>
+          <ButtonLink to="/checkout" size="lg">
+            {t('cart.checkout')}
+          </ButtonLink>
+        </div>
+      )}
     </div>
   )
 }

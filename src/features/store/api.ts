@@ -20,10 +20,12 @@ export const storeKeys = {
 }
 
 // Settings change rarely; one fetch per 5 minutes is plenty, and maintenance mode still shows up quickly.
+export const storeSettingsQuery = {
+  queryKey: storeKeys.settings,
+  queryFn: ({ signal }: { signal: AbortSignal }) => http<StoreSettings>('store/settings', { signal }),
+  staleTime: 5 * 60_000,
+}
+
 export function useStoreSettings() {
-  return useQuery({
-    queryKey: storeKeys.settings,
-    queryFn: ({ signal }) => http<StoreSettings>('store/settings', { signal }),
-    staleTime: 5 * 60_000,
-  })
+  return useQuery(storeSettingsQuery)
 }

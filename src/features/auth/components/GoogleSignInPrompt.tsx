@@ -47,7 +47,17 @@ export function GoogleSignInPrompt({ clientId, enabled, onSignedIn }: GoogleSign
     if (!active || alreadySeen()) return
 
     let cancelled = false
-    const timer = window.setTimeout(async () => {
+    let timer: number | undefined
+    // Google's script is heavy, so it only loads once the visitor starts using the page (scroll, tap, key), then waits a
+    // moment: the first screen is never slowed down by it.
+    const interactions = ['pointerdown', 'keydown', 'scroll', 'touchstart'] as const
+    const start = () => {
+      interactions.forEach((name) => window.removeEventListener(name, start))
+      timer = window.setTimeout(show, delayMs)
+    }
+    interactions.forEach((name) => window.addEventListener(name, start, { once: true, passive: true }))
+
+    const show = async () => {
       try {
         const google = await loadGoogleIdentity()
         if (cancelled) return
@@ -77,10 +87,11 @@ export function GoogleSignInPrompt({ clientId, enabled, onSignedIn }: GoogleSign
       } catch {
         // Google unreachable: no prompt, nothing else changes.
       }
-    }, delayMs)
+    }
 
     return () => {
       cancelled = true
+      interactions.forEach((name) => window.removeEventListener(name, start))
       window.clearTimeout(timer)
       window.google?.accounts.id.cancel()
     }

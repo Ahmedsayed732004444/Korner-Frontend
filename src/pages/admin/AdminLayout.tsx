@@ -1,6 +1,7 @@
 import { Languages } from 'lucide-react'
 import { ShieldX } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { switchLanguage } from '@/shared/i18n'
 import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { signOut } from '@/features/auth'
 import { useSession, usePermissions } from '@/shared/api'
@@ -54,7 +55,7 @@ export function AdminLayout() {
         </nav>
         <div className={styles.tools}>
           <Link to="/">{t('admin.toStore')}</Link>
-          <Button size="sm" variant="ghost" startIcon={<Languages size={16} aria-hidden="true" />} onClick={() => void i18n.changeLanguage(i18n.language === 'ar' ? 'en' : 'ar')}>
+          <Button size="sm" variant="ghost" startIcon={<Languages size={16} aria-hidden="true" />} onClick={() => void switchLanguage(i18n.language === 'ar' ? 'en' : 'ar')}>
             {i18n.language === 'ar' ? 'English' : 'العربية'}
           </Button>
           <Button size="sm" variant="secondary" onClick={() => void signOut()}>

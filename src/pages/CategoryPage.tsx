@@ -17,11 +17,14 @@ export function CategoryPage() {
   const name = category ? localize(category.nameAr, category.nameEn) : undefined
   useDocumentTitle(name)
 
+  // The products load at the same time as the category, in the same layout, so nothing moves when the name arrives.
   if (isLoading) {
     return (
-      <div className="container" style={{ paddingBlock: 'var(--space-8)' }}>
-        <Skeleton style={{ height: 40, width: 220 }} />
-      </div>
+      <ProductListing
+        category={slug}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: '…' }]}
+        header={<Skeleton style={{ height: 40, width: 220 }} />}
+      />
     )
   }
 

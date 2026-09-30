@@ -1,85 +1,71 @@
 import { createBrowserRouter, type RouteObject } from 'react-router-dom'
 import { env } from '@/shared/config/env'
-import { CartPage } from '@/pages/CartPage'
-import { CheckoutPage } from '@/pages/CheckoutPage'
-import { CheckoutResultPage } from '@/pages/CheckoutResultPage'
-import { ConfirmEmailPage } from '@/pages/ConfirmEmailPage'
-import { ContentPage } from '@/pages/ContentPage'
-import { ForgetPasswordPage } from '@/pages/ForgetPasswordPage'
-import { LoginPage } from '@/pages/LoginPage'
-import { OAuthCallbackPage } from '@/pages/OAuthCallbackPage'
-import { RegisterPage } from '@/pages/RegisterPage'
-import { TrackOrderPage } from '@/pages/TrackOrderPage'
-import { AccountAddressesPage } from '@/pages/account/AccountAddressesPage'
-import { AccountLayout } from '@/pages/account/AccountLayout'
-import { AccountOrderPage } from '@/pages/account/AccountOrderPage'
-import { AccountOrdersPage } from '@/pages/account/AccountOrdersPage'
-import { AccountProfilePage } from '@/pages/account/AccountProfilePage'
-import { CategoryPage } from '@/pages/CategoryPage'
+import { loadStaffText } from '@/shared/i18n'
 import { HomePage } from '@/pages/HomePage'
-import { NotFoundPage } from '@/pages/NotFoundPage'
-import { ProductPage } from '@/pages/ProductPage'
-import { SearchPage } from '@/pages/SearchPage'
-import { ShopPage } from '@/pages/ShopPage'
 import { SiteLayout } from './layout/SiteLayout'
 
-const developmentRoutes: RouteObject[] = env.isDevelopment
-  ? [{ path: 'styleguide', lazy: async () => ({ Component: (await import('@/pages/StyleGuidePage')).StyleGuidePage }) }]
-  : []
+// Every page except the home page is its own file, downloaded the first time someone opens it. On a phone that means
+// the first screen only parses the code it needs.
+const page = (load: () => Promise<Record<string, unknown>>, name: string) => async () => ({ Component: (await load())[name] as React.ComponentType })
 
-// The staff area is loaded only when someone opens it, so shoppers never download it.
+const developmentRoutes: RouteObject[] = env.isDevelopment ? [{ path: 'styleguide', lazy: async () => ({ Component: (await Promise.all([import('@/pages/StyleGuidePage'), loadStaffText()]))[0].StyleGuidePage }) }] : []
+
 const adminRoutes: RouteObject = {
   path: 'admin',
-  lazy: async () => ({ Component: (await import('@/pages/admin/AdminLayout')).AdminLayout }),
+  lazy: async () => {
+    const [layout] = await Promise.all([import('@/pages/admin/AdminLayout'), loadStaffText()])
+    return { Component: layout.AdminLayout }
+  },
   children: [
-    { index: true, lazy: async () => ({ Component: (await import('@/pages/admin/AdminDashboardPage')).AdminDashboardPage }) },
-    { path: 'orders', lazy: async () => ({ Component: (await import('@/pages/admin/AdminOrdersPage')).AdminOrdersPage }) },
-    { path: 'orders/:id', lazy: async () => ({ Component: (await import('@/pages/admin/AdminOrderPage')).AdminOrderPage }) },
-    { path: 'returns', lazy: async () => ({ Component: (await import('@/pages/admin/AdminReturnsPage')).AdminReturnsPage }) },
-    { path: 'returns/:id', lazy: async () => ({ Component: (await import('@/pages/admin/AdminReturnPage')).AdminReturnPage }) },
-    { path: 'products', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductsPage')).AdminProductsPage }) },
-    { path: 'products/new', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductPage')).AdminProductPage }) },
-    { path: 'products/:id', lazy: async () => ({ Component: (await import('@/pages/admin/AdminProductPage')).AdminProductPage }) },
-    { path: 'catalog', lazy: async () => ({ Component: (await import('@/pages/admin/AdminLookupsPage')).AdminLookupsPage }) },
-    { path: 'content', lazy: async () => ({ Component: (await import('@/pages/admin/AdminContentPage')).AdminContentPage }) },
-    { path: 'settings', lazy: async () => ({ Component: (await import('@/pages/admin/AdminSettingsPage')).AdminSettingsPage }) },
-    { path: 'access', lazy: async () => ({ Component: (await import('@/pages/admin/AdminAccessPage')).AdminAccessPage }) },
-    { path: 'inventory', lazy: async () => ({ Component: (await import('@/pages/admin/AdminInventoryPage')).AdminInventoryPage }) },
+    { index: true, lazy: page(() => import('@/pages/admin/AdminDashboardPage'), 'AdminDashboardPage') },
+    { path: 'orders', lazy: page(() => import('@/pages/admin/AdminOrdersPage'), 'AdminOrdersPage') },
+    { path: 'orders/:id', lazy: page(() => import('@/pages/admin/AdminOrderPage'), 'AdminOrderPage') },
+    { path: 'returns', lazy: page(() => import('@/pages/admin/AdminReturnsPage'), 'AdminReturnsPage') },
+    { path: 'returns/:id', lazy: page(() => import('@/pages/admin/AdminReturnPage'), 'AdminReturnPage') },
+    { path: 'products', lazy: page(() => import('@/pages/admin/AdminProductsPage'), 'AdminProductsPage') },
+    { path: 'products/new', lazy: page(() => import('@/pages/admin/AdminProductPage'), 'AdminProductPage') },
+    { path: 'products/:id', lazy: page(() => import('@/pages/admin/AdminProductPage'), 'AdminProductPage') },
+    { path: 'catalog', lazy: page(() => import('@/pages/admin/AdminLookupsPage'), 'AdminLookupsPage') },
+    { path: 'content', lazy: page(() => import('@/pages/admin/AdminContentPage'), 'AdminContentPage') },
+    { path: 'settings', lazy: page(() => import('@/pages/admin/AdminSettingsPage'), 'AdminSettingsPage') },
+    { path: 'access', lazy: page(() => import('@/pages/admin/AdminAccessPage'), 'AdminAccessPage') },
+    { path: 'inventory', lazy: page(() => import('@/pages/admin/AdminInventoryPage'), 'AdminInventoryPage') },
   ],
 }
 
 export const router = createBrowserRouter([
-  adminRoutes,
+  { ...adminRoutes, hydrateFallbackElement: <div className="page-placeholder" /> },
   {
     element: <SiteLayout />,
+    hydrateFallbackElement: <div className="page-placeholder" />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'c/:slug', element: <CategoryPage /> },
-      { path: 'p/:slug', element: <ProductPage /> },
-      { path: 'cart', element: <CartPage /> },
-      { path: 'checkout', element: <CheckoutPage /> },
-      { path: 'checkout/result', element: <CheckoutResultPage /> },
-      { path: 'orders/track', element: <TrackOrderPage /> },
-      { path: 'login', element: <LoginPage /> },
-      { path: 'register', element: <RegisterPage /> },
-      { path: 'auth/emailConfirmation', element: <ConfirmEmailPage /> },
-      { path: 'auth/forgetPassword', element: <ForgetPasswordPage /> },
-      { path: 'oauth/callback', element: <OAuthCallbackPage /> },
-      { path: 'pages/:type', element: <ContentPage /> },
+      { path: 'c/:slug', lazy: page(() => import('@/pages/CategoryPage'), 'CategoryPage') },
+      { path: 'p/:slug', lazy: page(() => import('@/pages/ProductPage'), 'ProductPage') },
+      { path: 'shop', lazy: page(() => import('@/pages/ShopPage'), 'ShopPage') },
+      { path: 'search', lazy: page(() => import('@/pages/SearchPage'), 'SearchPage') },
+      { path: 'cart', lazy: page(() => import('@/pages/CartPage'), 'CartPage') },
+      { path: 'checkout', lazy: page(() => import('@/pages/CheckoutPage'), 'CheckoutPage') },
+      { path: 'checkout/result', lazy: page(() => import('@/pages/CheckoutResultPage'), 'CheckoutResultPage') },
+      { path: 'orders/track', lazy: page(() => import('@/pages/TrackOrderPage'), 'TrackOrderPage') },
+      { path: 'login', lazy: page(() => import('@/pages/LoginPage'), 'LoginPage') },
+      { path: 'register', lazy: page(() => import('@/pages/RegisterPage'), 'RegisterPage') },
+      { path: 'auth/emailConfirmation', lazy: page(() => import('@/pages/ConfirmEmailPage'), 'ConfirmEmailPage') },
+      { path: 'auth/forgetPassword', lazy: page(() => import('@/pages/ForgetPasswordPage'), 'ForgetPasswordPage') },
+      { path: 'oauth/callback', lazy: page(() => import('@/pages/OAuthCallbackPage'), 'OAuthCallbackPage') },
+      { path: 'pages/:type', lazy: page(() => import('@/pages/ContentPage'), 'ContentPage') },
       {
         path: 'account',
-        element: <AccountLayout />,
+        lazy: page(() => import('@/pages/account/AccountLayout'), 'AccountLayout'),
         children: [
-          { index: true, element: <AccountProfilePage /> },
-          { path: 'orders', element: <AccountOrdersPage /> },
-          { path: 'orders/:number', element: <AccountOrderPage /> },
-          { path: 'addresses', element: <AccountAddressesPage /> },
+          { index: true, lazy: page(() => import('@/pages/account/AccountProfilePage'), 'AccountProfilePage') },
+          { path: 'orders', lazy: page(() => import('@/pages/account/AccountOrdersPage'), 'AccountOrdersPage') },
+          { path: 'orders/:number', lazy: page(() => import('@/pages/account/AccountOrderPage'), 'AccountOrderPage') },
+          { path: 'addresses', lazy: page(() => import('@/pages/account/AccountAddressesPage'), 'AccountAddressesPage') },
         ],
       },
-      { path: 'shop', element: <ShopPage /> },
-      { path: 'search', element: <SearchPage /> },
       ...developmentRoutes,
-      { path: '*', element: <NotFoundPage /> },
+      { path: '*', lazy: page(() => import('@/pages/NotFoundPage'), 'NotFoundPage') },
     ],
   },
 ])

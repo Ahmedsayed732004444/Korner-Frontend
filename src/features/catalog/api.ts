@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { http, toQuery, type Paginated } from '@/shared/api'
 
 export interface CategoryNode {
@@ -146,12 +146,14 @@ export const catalogKeys = {
   facets: (category: string | undefined, searchValue: string | undefined) => ['catalog', 'facets', category ?? null, searchValue ?? null] as const,
 }
 
+export const categoryTreeQuery = {
+  queryKey: catalogKeys.categoryTree,
+  queryFn: ({ signal }: { signal: AbortSignal }) => http<CategoryNode[]>('categories', { signal }),
+  staleTime: 10 * 60_000,
+}
+
 export function useCategoryTree() {
-  return useQuery({
-    queryKey: catalogKeys.categoryTree,
-    queryFn: ({ signal }) => http<CategoryNode[]>('categories', { signal }),
-    staleTime: 10 * 60_000,
-  })
+  return useQuery(categoryTreeQuery)
 }
 
 export function useCategoryPage(slug: string) {
@@ -172,33 +174,45 @@ export function useProduct(slug: string) {
   })
 }
 
-export function useProducts(params: ProductListParams) {
-  const priceFilters = [
+function productsUrl(params: ProductListParams, pageNumber: number | undefined) {
+  const filters = [
     params.minPricePiasters !== undefined ? `price:gte:${params.minPricePiasters}` : null,
     params.maxPricePiasters !== undefined ? `price:lte:${params.maxPricePiasters}` : null,
     params.onSaleOnly ? 'isOnSale:eq:true' : null,
     params.brandIds?.length ? `brandId:in:${params.brandIds.join(',')}` : null,
   ].filter((filter): filter is string => filter !== null)
 
+  return `products${toQuery({
+    Category: params.category,
+    SearchValue: params.searchValue,
+    SortColumn: params.sort,
+    Colors: params.colors,
+    Sizes: params.sizes,
+    Filter: filters,
+    AvailableOnly: params.availableOnly || undefined,
+    PageNumber: pageNumber,
+    PageSize: params.pageSize,
+  })}`
+}
+
+export function useProducts(params: ProductListParams) {
   return useQuery({
     queryKey: catalogKeys.products(params),
-    queryFn: ({ signal }) =>
-      http<Paginated<ProductCard>>(
-        `products${toQuery({
-          Category: params.category,
-          SearchValue: params.searchValue,
-          SortColumn: params.sort,
-          Colors: params.colors,
-          Sizes: params.sizes,
-          Filter: priceFilters,
-          AvailableOnly: params.availableOnly || undefined,
-          PageNumber: params.pageNumber,
-          PageSize: params.pageSize,
-        })}`,
-        { signal },
-      ),
+    queryFn: ({ signal }) => http<Paginated<ProductCard>>(productsUrl(params, params.pageNumber), { signal }),
     staleTime: 2 * 60_000,
     // While a new filter loads, the previous results stay on screen (dimmed) instead of flashing empty.
+    placeholderData: keepPreviousData,
+  })
+}
+
+// The shop's lists grow as the shopper scrolls: each page is appended to the ones already shown.
+export function useInfiniteProducts(params: Omit<ProductListParams, 'pageNumber'>) {
+  return useInfiniteQuery({
+    queryKey: [...catalogKeys.products(params), 'infinite'],
+    queryFn: ({ signal, pageParam }) => http<Paginated<ProductCard>>(productsUrl(params, pageParam), { signal }),
+    initialPageParam: 1,
+    getNextPageParam: (last) => (last.hasNextPage ? last.pageNumber + 1 : undefined),
+    staleTime: 2 * 60_000,
     placeholderData: keepPreviousData,
   })
 }

@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { ArrowRight, Languages, ShoppingBag } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { switchLanguage } from '@/shared/i18n'
 import {
   Alert,
   Badge,
@@ -55,7 +56,7 @@ export function StyleGuidePage() {
           <h1 style={{ fontSize: 'var(--text-3xl)', marginTop: 'var(--space-4)' }}>{t('styleguide.title')}</h1>
           <p className={styles.intro}>{t('styleguide.intro')}</p>
         </div>
-        <Button variant="secondary" startIcon={<Languages size={18} aria-hidden="true" />} onClick={() => i18n.changeLanguage(i18n.language === 'ar' ? 'en' : 'ar')}>
+        <Button variant="secondary" startIcon={<Languages size={18} aria-hidden="true" />} onClick={() => void switchLanguage(i18n.language === 'ar' ? 'en' : 'ar')}>
           {t('common.switchLanguage')}
         </Button>
       </header>

@@ -1,18 +1,19 @@
-import { useState, type ReactNode } from 'react'
+import { useCallback, useState, type ReactNode } from 'react'
 import { SlidersHorizontal } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import {
   ActiveFilters,
   FilterPanel,
+  LoadMore,
   ProductGrid,
   activeFilterCount,
   sortKeys,
   toProductParams,
   useFacets,
+  useInfiniteProducts,
   useListing,
-  useProducts,
 } from '@/features/catalog'
-import { Breadcrumb, Button, Drawer, Pagination, Select, type Crumb } from '@/shared/ui'
+import { Breadcrumb, Button, Drawer, Select, type Crumb } from '@/shared/ui'
 import styles from './ProductListing.module.scss'
 
 interface ProductListingProps {
@@ -31,14 +32,14 @@ export function ProductListing({ category, searchValue, breadcrumb, header }: Pr
   const [filtersOpen, setFiltersOpen] = useState(false)
 
   const facets = useFacets(category, searchValue)
-  const products = useProducts(toProductParams(state, { category, searchValue }))
+  const { pageNumber: _, ...params } = toProductParams(state, { category, searchValue })
+  const products = useInfiniteProducts(params)
+  const pages = products.data?.pages
+  const items = pages?.flatMap((page) => page.items)
   const filterCount = activeFilterCount(state)
-  const total = products.data?.totalCount
-
-  const changePage = (page: number) => {
-    update({ page })
-    document.getElementById('listing-top')?.scrollIntoView({ block: 'start' })
-  }
+  const total = pages?.[0]?.totalCount
+  const { fetchNextPage } = products
+  const loadMore = useCallback(() => void fetchNextPage(), [fetchNextPage])
 
   return (
     <div className="container">
@@ -76,8 +77,9 @@ export function ProductListing({ category, searchValue, breadcrumb, header }: Pr
 
           <ActiveFilters facets={facets.data} state={state} onChange={update} onClear={clear} />
 
+          <h2 className="visually-hidden">{t('catalog.productsHeading')}</h2>
           <ProductGrid
-            products={products.data?.items}
+            products={items}
             isLoading={products.isLoading}
             isRefreshing={products.isPlaceholderData}
             error={products.error}
@@ -86,7 +88,16 @@ export function ProductListing({ category, searchValue, breadcrumb, header }: Pr
             emptyAction={filterCount > 0 ? <Button onClick={clear}>{t('catalog.filters.clearAll')}</Button> : undefined}
           />
 
-          <Pagination page={products.data?.pageNumber ?? state.page} totalPages={products.data?.totalPages ?? 1} onChange={changePage} />
+          {items && !products.isPlaceholderData && (
+            <LoadMore
+              shown={items.length}
+              total={total ?? 0}
+              hasMore={products.hasNextPage}
+              loading={products.isFetchingNextPage}
+              batches={pages?.length ?? 0}
+              onLoad={loadMore}
+            />
+          )}
         </div>
       </div>
 

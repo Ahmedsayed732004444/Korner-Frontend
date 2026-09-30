@@ -37,10 +37,12 @@ export function useContentPage(type: string) {
 }
 
 // The API already leaves out banners that are switched off or outside their schedule.
+export const bannersQuery = {
+  queryKey: contentKeys.banners,
+  queryFn: ({ signal }: { signal: AbortSignal }) => http<Banner[]>('banners', { signal }),
+  staleTime: 5 * 60_000,
+}
+
 export function useBanners() {
-  return useQuery({
-    queryKey: contentKeys.banners,
-    queryFn: ({ signal }) => http<Banner[]>('banners', { signal }),
-    staleTime: 5 * 60_000,
-  })
+  return useQuery(bannersQuery)
 }

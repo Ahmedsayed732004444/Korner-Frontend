@@ -16,6 +16,7 @@ import {
 import { useStoreSettings } from '@/features/store'
 import { ApiError } from '@/shared/api'
 import { useLocalize } from '@/shared/lib/localize'
+import { formatPiasters } from '@/shared/lib/money'
 import { useDocumentTitle } from '@/shared/lib/useDocumentTitle'
 import { Alert, Badge, Breadcrumb, Button, EmptyState, Price, SectionTitle, Skeleton } from '@/shared/ui'
 import { PurchasePanel, type BuyMode } from './product/PurchasePanel'
@@ -57,7 +58,7 @@ export function ProductPage() {
 }
 
 function ProductView({ product }: { product: ProductData }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const localize = useLocalize()
   const navigate = useNavigate()
   const { data: settings } = useStoreSettings()
@@ -125,6 +126,9 @@ function ProductView({ product }: { product: ProductData }) {
               <Price amount={selection.price} compareAt={selection.compareAtPrice} size="lg" />
               {percentOff && <Badge tone="sale">{t('badge.percentOff', { percent: percentOff })}</Badge>}
             </div>
+            {selection.compareAtPrice !== null && selection.compareAtPrice > selection.price && (
+              <p className="text-positive">{t('product.youSave', { amount: formatPiasters(selection.compareAtPrice - selection.price, i18n.language) })}</p>
+            )}
           </div>
 
           <PurchasePanel

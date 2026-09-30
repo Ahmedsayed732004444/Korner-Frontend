@@ -280,8 +280,8 @@ export function CheckoutPage() {
               <dt>{t('cart.shipping')}</dt>
               <dd>
                 {order
-                  ? order.shippingFeePiasters === 0 ? t('cart.free') : formatPiasters(order.shippingFeePiasters, i18n.language)
-                  : shipping ? (shipping.isFreeShipping ? t('cart.free') : formatPiasters(shipping.shippingFeePiasters, i18n.language)) : t('cart.chooseToSee')}
+                  ? order.shippingFeePiasters === 0 ? <span className="text-positive">{t('cart.free')}</span> : formatPiasters(order.shippingFeePiasters, i18n.language)
+                  : shipping ? (shipping.isFreeShipping ? <span className="text-positive">{t('cart.free')}</span> : formatPiasters(shipping.shippingFeePiasters, i18n.language)) : t('cart.chooseToSee')}
               </dd>
             </div>
             <div className={styles.total}>

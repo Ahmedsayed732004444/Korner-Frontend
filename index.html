@@ -11,9 +11,19 @@
     <meta property="og:site_name" content="Korner" />
     <meta property="og:title" content="Korner" />
     <meta property="og:description" content="ملابس وأحذية وعطور، توصيل لكل محافظات مصر." />
+    <!-- The shell below paints before any JavaScript runs (fast first paint on phones); React replaces it. Same heights as the real header. -->
+    <style>
+      body { margin: 0; background: #fff; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+      .shell-top { height: 36px; background: #111; }
+      .shell-header { display: flex; align-items: center; height: 64px; padding-inline: 16px; border-bottom: 1px solid #e5e5e5; }
+      .shell-logo { color: #111; font-size: 24px; font-weight: 700; }
+      .shell-logo span { color: #c8232c; }
+      .shell-main { min-height: 100vh; background: #f3f2ee; }
+      @media (min-width: 992px) { .shell-header { height: 76px; padding-inline: 40px; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div class="shell-top"></div><div class="shell-header"><div class="shell-logo">Korner<span>.</span></div></div><div class="shell-main"></div></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

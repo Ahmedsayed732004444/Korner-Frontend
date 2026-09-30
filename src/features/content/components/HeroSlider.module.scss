@@ -10,6 +10,15 @@
   }
 }
 
+// Height of a slide's text block on phones (eyebrow, two-line title, subtitle, button).
+.placeholderText {
+  height: 286px;
+
+  @include up(md) {
+    display: none;
+  }
+}
+
 .hero {
   position: relative;
   background: var(--color-bg-muted);

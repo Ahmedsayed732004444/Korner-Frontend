@@ -29,6 +29,29 @@
     color: var(--color-text);
   }
 
+  // Each promise gets its own colour: payment = trust (blue), returns = care (amber), delivery = speed (green).
+  svg {
+    flex: none;
+    box-sizing: content-box;
+    padding: var(--space-3);
+    border-radius: 50%;
+  }
+
+  li:nth-child(1) svg {
+    background: var(--color-info-soft);
+    color: var(--color-info);
+  }
+
+  li:nth-child(2) svg {
+    background: var(--color-warning-soft);
+    color: var(--color-warning);
+  }
+
+  li:nth-child(3) svg {
+    background: var(--color-success-soft);
+    color: var(--color-success);
+  }
+
   h2 {
     font-size: var(--text-md);
   }

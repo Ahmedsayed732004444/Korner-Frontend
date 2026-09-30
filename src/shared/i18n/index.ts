@@ -1,7 +1,6 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import ar from './locales/ar.json'
-import en from './locales/en.json'
 
 export const languages = ['ar', 'en'] as const
 export type Language = (typeof languages)[number]
@@ -33,13 +32,32 @@ function applyToDocument(language: string) {
 
 i18n.on('languageChanged', applyToDocument)
 
-void i18n.use(initReactI18next).init({
-  resources: { ar: { translation: ar }, en: { translation: en } },
-  lng: savedLanguage(),
-  fallbackLng: 'ar',
-  interpolation: { escapeValue: false },
-})
+// The staff screens' text comes with the staff area.
+// Arabic (almost every visitor) ships with the page so the first screen needs no extra request; English loads when chosen.
+const shopText = { ar: async () => ({ default: ar }), en: () => import('./locales/en.json') }
+const staffText = { ar: () => import('./locales/staff.ar.json'), en: () => import('./locales/staff.en.json') }
+let staffWanted = false
 
-applyToDocument(i18n.language)
+async function load(language: Language) {
+  const bundles = [shopText[language](), ...(staffWanted ? [staffText[language]()] : [])]
+  for (const bundle of await Promise.all(bundles)) i18n.addResourceBundle(language, 'translation', bundle.default, true, true)
+}
+
+export async function initI18n() {
+  const language = savedLanguage()
+  await i18n.use(initReactI18next).init({ resources: {}, partialBundledLanguages: true, lng: language, fallbackLng: false, interpolation: { escapeValue: false } })
+  await load(language)
+  applyToDocument(language)
+}
+
+export async function switchLanguage(language: Language) {
+  await load(language)
+  await i18n.changeLanguage(language)
+}
+
+export async function loadStaffText() {
+  staffWanted = true
+  await load(i18n.language === 'en' ? 'en' : 'ar')
+}
 
 export default i18n

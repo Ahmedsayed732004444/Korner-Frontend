@@ -106,3 +106,16 @@ textarea {
 .tabular {
   font-variant-numeric: tabular-nums;
 }
+
+// The page area always fills the screen, so the footer never shows first and then jumps down once content arrives.
+main,
+.page-placeholder {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+// Good news (free shipping, savings, fast delivery) is green everywhere, so shoppers learn the colour once.
+.text-positive {
+  color: var(--color-success);
+  font-weight: var(--weight-bold);
+}

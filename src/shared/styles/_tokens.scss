@@ -1,3 +1,4 @@
+@use 'sass:map';
 // Design tokens — docs/DESIGN.md §3–6. Components use these variables, never raw values.
 
 $breakpoints: (
@@ -8,7 +9,7 @@ $breakpoints: (
 );
 
 @mixin up($name) {
-  @media (min-width: map-get($breakpoints, $name)) {
+  @media (min-width: map.get($breakpoints, $name)) {
     @content;
   }
 }
@@ -30,7 +31,7 @@ $breakpoints: (
   // Color
   --color-primary: #111111;
   --color-primary-hover: #333333;
-  --color-accent: #e53637;
+  --color-accent: #c8232c;
   --color-accent-soft: #fdecec;
   --color-bg: #ffffff;
   --color-bg-muted: #f3f2ee;
@@ -66,7 +67,7 @@ $breakpoints: (
   --weight-regular: 400;
   --weight-semibold: 600;
   --weight-bold: 700;
-  --weight-extrabold: 800;
+  --weight-extrabold: 700;
   --leading-heading: 1.25;
   --leading-body: 1.6;
   --tracking-label: 0.12em;
