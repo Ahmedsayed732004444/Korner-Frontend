@@ -44,14 +44,7 @@ export function HeroSlider() {
         {banners.map((banner, index) => {
           const title = localize(banner.titleAr, banner.titleEn)
           return (
-            <li
-              key={banner.id}
-              data-index={index}
-              className={styles.slide}
-              role="group"
-              aria-roledescription="slide"
-              aria-label={t('home.slideOf', { current: index + 1, total: banners.length })}
-            >
+            <li key={banner.id} data-index={index} className={styles.slide}>
               <img
                 src={localize(banner.imageUrlAr, banner.imageUrlEn)}
                 alt=""
@@ -69,6 +62,7 @@ export function HeroSlider() {
                   {banner.linkUrl && (
                     <ButtonLink to={banner.linkUrl} size="lg" endIcon={<ArrowRight size={18} aria-hidden="true" className="flip-rtl" />}>
                       {t('home.shopNow')}
+                      {title && <span className="visually-hidden"> — {title}</span>}
                     </ButtonLink>
                   )}
                 </div>
