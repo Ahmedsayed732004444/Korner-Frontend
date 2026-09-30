@@ -326,7 +326,11 @@
     "Role.DuplicatedRole": "في دور بنفس الاسم.",
     "User.ProtectedUser": "حساب الأدمن الرئيسي مينفعش يتوقف أو يشيل دوره.",
     "User.UserNotFound": "المستخدم مش موجود.",
-    "User.NotFound": "المستخدم مش موجود."
+    "User.NotFound": "المستخدم مش موجود.",
+    "Shipping.CarrierDisabled": "شركة الشحن غير مفعّلة. سجّل الشحنة يدوي.",
+    "Shipping.CarrierCityNotSupported": "شركة الشحن مبتوصلش للمحافظة دي. سجّل الشحنة يدوي.",
+    "Shipping.CarrierRejected": "شركة الشحن رفضت الشحنة. راجع بيانات العميل والعنوان.",
+    "Shipping.CarrierUnavailable": "شركة الشحن مش بترد دلوقتي. حاول تاني بعد شوية."
   },
   "catalog": {
     "colorsAvailable": "{{count}} ألوان متاحة",
@@ -672,7 +676,9 @@
       "addNote": "إضافة ملاحظة",
       "photos": "صور",
       "cancelHint": "لو الطلب مدفوع هيتم رد المبلغ كاملاً للعميل.",
-      "cancelReason": "سبب الإلغاء"
+      "cancelReason": "سبب الإلغاء",
+      "shipCarrier": "شحن عبر {{carrier}}",
+      "shipCarrierHint": "هنحجز الشحنة عند {{carrier}} ونسجّل رقم التتبع تلقائياً، والعميل بيوصله إيميل الشحن. أو سجّل الشحنة يدوي تحت."
     },
     "products": {
       "add": "إضافة منتج",

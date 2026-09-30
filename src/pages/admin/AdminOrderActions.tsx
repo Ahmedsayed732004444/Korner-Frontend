@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next'
 import {
   useAddOrderNote,
   useCancelOrderAsAdmin,
+  useCarrier,
   useChangeOrderStatus,
   useClearReview,
   useShipOrder,
+  useShipWithCarrier,
   type AdminOrder,
 } from '@/features/adminOrders'
 import { errorMessage, usePermissions } from '@/shared/api'
@@ -30,6 +32,7 @@ export function OrderActions({ order }: { order: AdminOrder }) {
       <h2>{t('admin.actions.title')}</h2>
       {needsReview && <ClearReviewForm id={order.id} />}
       {nextStatuses.length > 0 && !needsReview && <StatusForm id={order.id} statuses={nextStatuses} />}
+      {order.status === 'Processing' && <CarrierShipForm order={order} />}
       {order.canShip && <ShipForm id={order.id} order={order} />}
       {!order.canShip && order.trackingNumber && <ShipForm id={order.id} order={order} correcting />}
       <NoteForm id={order.id} />
@@ -58,6 +61,26 @@ function StatusForm({ id, statuses }: { id: string; statuses: OrderStatus[] }) {
         {t('admin.actions.apply')}
       </Button>
     </form>
+  )
+}
+
+function CarrierShipForm({ order }: { order: AdminOrder }) {
+  const { t } = useTranslation()
+  const { data: carrier } = useCarrier()
+  const ship = useShipWithCarrier(order.id)
+  if (!carrier?.isEnabled) return null
+
+  return (
+    <div className={styles.form}>
+      <h3>{t('admin.actions.shipCarrier', { carrier: carrier.name })}</h3>
+      <p>{t('admin.actions.shipCarrierHint', { carrier: carrier.name })}</p>
+      {ship.error && <Alert tone="error" title={errorMessage(ship.error, t)} />}
+      <div>
+        <Button onClick={() => ship.mutate()} loading={ship.isPending}>
+          {t('admin.actions.shipCarrier', { carrier: carrier.name })}
+        </Button>
+      </div>
+    </div>
   )
 }
 

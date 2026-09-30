@@ -323,7 +323,11 @@
     "Role.DuplicatedRole": "A role with this name already exists.",
     "User.ProtectedUser": "The main admin account can't be disabled or lose its role.",
     "User.UserNotFound": "That user doesn't exist.",
-    "User.NotFound": "That user doesn't exist."
+    "User.NotFound": "That user doesn't exist.",
+    "Shipping.CarrierDisabled": "The shipping carrier is not connected. Record the shipment manually.",
+    "Shipping.CarrierCityNotSupported": "The carrier does not deliver to this governorate. Record the shipment manually.",
+    "Shipping.CarrierRejected": "The carrier refused the shipment. Check the customer details and address.",
+    "Shipping.CarrierUnavailable": "The carrier is not responding. Try again in a moment."
   },
   "catalog": {
     "colorsAvailable": "{{count}} colors available",
@@ -648,7 +652,9 @@
       "addNote": "Add note",
       "photos": "Photos",
       "cancelHint": "If the order is paid, the customer is refunded in full.",
-      "cancelReason": "Cancellation reason"
+      "cancelReason": "Cancellation reason",
+      "shipCarrier": "Ship with {{carrier}}",
+      "shipCarrierHint": "We book the parcel with {{carrier}} and record the tracking number automatically; the customer gets the shipping email. Or record it manually below."
     },
     "products": {
       "add": "Add product",

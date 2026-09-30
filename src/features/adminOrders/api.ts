@@ -171,6 +171,21 @@ export function useAddOrderNote(id: string) {
   })
 }
 
+export interface CarrierInfo {
+  name: string
+  isEnabled: boolean
+}
+
+// Whether a carrier (Bosta) is connected, so the order screen can offer to book the parcel.
+export function useCarrier() {
+  return useQuery({ queryKey: ['admin', 'orders', 'carrier'], queryFn: ({ signal }) => http<CarrierInfo>('admin/orders/carrier', { signal }), staleTime: 5 * 60_000 })
+}
+
+// The API books the parcel with the carrier and records the tracking number, exactly like a manual shipment.
+export function useShipWithCarrier(id: string) {
+  return useOrderAction(() => http<{ carrierName: string; trackingNumber: string; trackingUrl: string }>(`admin/orders/${id}/carrier-shipment`, { method: 'POST' }))
+}
+
 export function useClearReview(id: string) {
   return useOrderAction((note: string) => http<void>(`admin/orders/${id}/clear-review`, { method: 'POST', body: { note } }))
 }
