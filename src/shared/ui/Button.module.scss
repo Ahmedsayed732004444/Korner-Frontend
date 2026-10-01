@@ -46,6 +46,16 @@
   }
 }
 
+// The one action that matters most on a screen (buy now, pay): the accent colour draws the eye to it.
+.accent {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+
+  @include hover {
+    background: var(--color-accent-hover);
+  }
+}
+
 .secondary {
   background: transparent;
   border-color: var(--color-primary);

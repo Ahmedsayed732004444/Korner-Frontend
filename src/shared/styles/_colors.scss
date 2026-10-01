@@ -1,0 +1,56 @@
+// ═══════════════════════════════════════════════════════════════════════════
+//  EVERY colour of the site is defined here, and only here.
+//  To re-colour Korner, change the palette below; everything else follows,
+//  including the first-paint shell, the phone's browser bar and the favicon
+//  (read from this file at build time by vite.config.ts).
+//
+//  Keep text colours at 4.5:1 contrast or more against the backgrounds they sit
+//  on (check with `npm run audit`, the accessibility score must stay 100).
+// ═══════════════════════════════════════════════════════════════════════════
+
+:root {
+  // ---------- Palette: "Sand & Petrol" ----------
+  --color-primary: #0f3d3e; // petrol: top bar, footer, main buttons, links
+  --color-primary-hover: #165456;
+  --color-accent: #b4532a; // terracotta: sale prices and badges, the most important action
+  --color-accent-hover: #9a4523;
+  --color-accent-soft: #f7e7de;
+
+  --color-bg: #faf7f2; // warm ivory page background
+  --color-bg-muted: #efe8dd; // sand sections
+  --color-surface: #ffffff; // cards, forms, header
+  --color-surface-muted: #f3eee6; // behind product photos, skeletons
+
+  --color-text: #1f1f1f;
+  --color-text-muted: #57534e;
+  --color-text-subtle: #6b665f;
+  --color-text-inverse: #ffffff;
+
+  --color-border: #e6ded2;
+  --color-border-strong: #b9ae9e;
+
+  // ---------- Meaning (keep these recognisable) ----------
+  --color-success: #1e7b45; // free shipping, savings, fast delivery
+  --color-success-soft: #e8f5ee;
+  --color-warning: #9a5b00;
+  --color-warning-soft: #fdf3e1;
+  --color-error: #b42318;
+  --color-error-soft: #fdecea;
+  --color-info: #1d5fa8;
+  --color-info-soft: #e8f0fa;
+  --color-focus: #1d5fa8;
+
+  // ---------- On the dark (primary) footer ----------
+  --color-footer-text: #c9d6d3;
+  --color-footer-subtle: #9fb5b1;
+  --color-footer-line: rgb(255 255 255 / 0.14);
+
+  // ---------- Effects ----------
+  --color-overlay: rgb(15 61 62 / 0.45); // behind drawers
+  --color-skeleton-shine: #ebe3d6;
+  --color-swatch-ring: rgb(0 0 0 / 0.3); // keeps white/light colour swatches visible
+  --color-on-dark-border: rgb(255 255 255 / 0.35);
+  --shadow-sm: 0 1px 2px rgb(31 31 31 / 0.06), 0 1px 3px rgb(31 31 31 / 0.04);
+  --shadow-md: 0 4px 12px rgb(31 31 31 / 0.08);
+  --shadow-lg: 0 12px 32px rgb(31 31 31 / 0.16);
+}

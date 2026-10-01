@@ -230,7 +230,7 @@
   margin-top: var(--section-gap);
   padding-top: var(--space-12);
   background: var(--color-primary);
-  color: #b7b7b7;
+  color: var(--color-footer-text);
   font-size: var(--text-sm);
 
   h2 {
@@ -305,7 +305,7 @@
   justify-content: space-between;
   gap: var(--space-3) var(--space-6);
   padding-block: var(--space-6);
-  border-top: 1px solid #2d2d2d;
+  border-top: 1px solid var(--color-footer-line);
 }
 
 .footerLegal {
@@ -316,7 +316,7 @@
 .credit {
   width: 100%;
   font-size: var(--text-xs);
-  color: #8a8a8a;
+  color: var(--color-footer-subtle);
   direction: ltr;
   text-align: center;
 }

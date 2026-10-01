@@ -8,6 +8,7 @@ import { formatPiasters } from '@/shared/lib/money'
 import { useDocumentTitle } from '@/shared/lib/useDocumentTitle'
 import { Alert, ButtonLink, EmptyState, OrderStatusBadge, Pagination, Skeleton } from '@/shared/ui'
 import styles from './Account.module.scss'
+import { thumbnail } from '@/shared/lib/images'
 
 export function AccountOrdersPage() {
   const { t, i18n } = useTranslation()
@@ -30,7 +31,7 @@ export function AccountOrdersPage() {
           {data.items.map((order) => (
             <li key={order.number}>
               <Link to={`/account/orders/${order.number}`} className={styles.orderRow}>
-                {order.imageUrl ? <img src={order.imageUrl} alt="" width={56} height={70} loading="lazy" /> : <span />}
+                {order.imageUrl ? <img src={thumbnail(order.imageUrl)} alt="" width={56} height={70} loading="lazy" /> : <span />}
                 <span>
                   <strong>{t('track.orderNumber', { number: order.number })}</strong>
                   <small>

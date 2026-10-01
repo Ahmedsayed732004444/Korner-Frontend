@@ -1,5 +1,6 @@
 @use 'sass:map';
-// Design tokens — docs/DESIGN.md §3–6. Components use these variables, never raw values.
+// Breakpoints and mixins for component styles (no CSS output, so importing it everywhere costs nothing).
+// The CSS variables live in _variables.scss and every colour in _colors.scss.
 
 $breakpoints: (
   sm: 576px,
@@ -25,100 +26,4 @@ $breakpoints: (
 @mixin focus-ring {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
-}
-
-:root {
-  // Color
-  --color-primary: #111111;
-  --color-primary-hover: #333333;
-  --color-accent: #c8232c;
-  --color-accent-soft: #fdecec;
-  --color-bg: #ffffff;
-  --color-bg-muted: #f3f2ee;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f5f5f5;
-  --color-text: #111111;
-  --color-text-muted: #5c5c5c;
-  --color-text-subtle: #767676;
-  --color-text-inverse: #ffffff;
-  --color-border: #e5e5e5;
-  --color-border-strong: #b7b7b7;
-  --color-success: #1e7b45;
-  --color-success-soft: #e8f5ee;
-  --color-warning: #9a5b00;
-  --color-warning-soft: #fdf3e1;
-  --color-error: #b42318;
-  --color-error-soft: #fdecea;
-  --color-info: #1d5fa8;
-  --color-info-soft: #e8f0fa;
-  --color-focus: #1d5fa8;
-
-  // Typography
-  --font-sans: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-md: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: clamp(1.5rem, 1.1rem + 1.6vw, 1.875rem);
-  --text-4xl: clamp(1.875rem, 1.2rem + 2.6vw, 2.25rem);
-  --text-5xl: clamp(2.25rem, 1.3rem + 3.8vw, 3rem);
-  --weight-regular: 400;
-  --weight-semibold: 600;
-  --weight-bold: 700;
-  --weight-extrabold: 700;
-  --leading-heading: 1.25;
-  --leading-body: 1.6;
-  --tracking-label: 0.12em;
-
-  // Spacing (4 px base)
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-24: 6rem;
-
-  // Layout
-  --container-max: 1200px;
-  --gutter: var(--space-4);
-  --section-gap: var(--space-12);
-  --touch-target: 44px;
-
-  // Shape & elevation
-  --radius-none: 0;
-  --radius-sm: 2px;
-  --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgb(17 17 17 / 0.06), 0 1px 3px rgb(17 17 17 / 0.04);
-  --shadow-md: 0 4px 12px rgb(17 17 17 / 0.08);
-  --shadow-lg: 0 12px 32px rgb(17 17 17 / 0.16);
-
-  // Motion
-  --duration-fast: 150ms;
-  --duration-base: 250ms;
-  --ease: cubic-bezier(0.2, 0, 0, 1);
-
-  @include up(md) {
-    --gutter: var(--space-6);
-    --section-gap: var(--space-24);
-  }
-}
-
-// Arabic needs its own font, taller lines and never any letter spacing (it breaks letter joining).
-:root:lang(ar) {
-  --font-sans: 'Cairo', 'Nunito Sans', system-ui, sans-serif;
-  --leading-heading: 1.4;
-  --leading-body: 1.8;
-  --tracking-label: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --duration-fast: 0ms;
-    --duration-base: 0ms;
-  }
 }

@@ -120,29 +120,28 @@ The routes marked "link in email" or "redirect" must never change; the backend b
 
 ## 3. Design system — color
 
-Semantic tokens only; components never use raw hex values.
+**Every colour lives in one file: `src/shared/styles/_colors.scss`.** To re-colour the site, change the palette there and
+nothing else. Components only use the variables; `index.html` (first-paint shell, phone browser bar, favicon) gets its
+colours from the same file at build time (`paletteInHtml` in `vite.config.ts`). After a change, run `npm run audit`:
+Accessibility must stay 100 (text needs 4.5:1 contrast on its background).
+
+Current palette: **Sand & Petrol**. Product photos look warmer on ivory than on pure white, and the softer contrast is
+easier on the eyes for long browsing on a phone.
 
 | Token | Value | Use |
 |---|---|---|
-| `--color-primary` | `#111111` | Primary buttons, headings, active states |
-| `--color-primary-hover` | `#333333` | Hover on primary |
-| `--color-accent` | `#e53637` | Sale badge, active nav underline, logo dot. **Never** for errors or primary CTAs |
-| `--color-accent-soft` | `#fdecec` | Sale badge background on light surfaces |
-| `--color-bg` | `#ffffff` | Page |
-| `--color-bg-muted` | `#f3f2ee` | Hero, breadcrumb band, product details top |
-| `--color-surface` | `#ffffff` | Cards, drawers, dialogs |
-| `--color-surface-muted` | `#f5f5f5` | Product image background, table headers |
-| `--color-text` | `#111111` | Headings and main text |
-| `--color-text-muted` | `#5c5c5c` | Body copy and secondary text (6.6:1 on white) |
-| `--color-text-subtle` | `#767676` | Hints and meta (4.5:1 on white, the minimum; not for long text) |
-| `--color-text-inverse` | `#ffffff` | On primary/dark |
-| `--color-border` | `#e5e5e5` | Dividers, cards |
-| `--color-border-strong` | `#b7b7b7` | Inputs |
-| `--color-success` / `-soft` | `#1e7b45` / `#e8f5ee` | Paid, delivered, saved |
+| `--color-primary` / `-hover` | `#0f3d3e` / `#165456` | Petrol: top bar, footer, main buttons, links |
+| `--color-accent` / `-hover` / `-soft` | `#b4532a` / `#9a4523` / `#f7e7de` | Terracotta: sale prices and badges, the key action (Buy now, Pay) via `<Button variant="accent">` |
+| `--color-bg` | `#faf7f2` | Warm ivory page |
+| `--color-bg-muted` | `#efe8dd` | Sand sections |
+| `--color-surface` / `-muted` | `#ffffff` / `#f3eee6` | Cards, forms, header / behind product photos |
+| `--color-text` / `-muted` / `-subtle` | `#1f1f1f` / `#57534e` / `#6b665f` | Text (15.4, 7.1 and 5.3:1 on the page) |
+| `--color-border` / `-strong` | `#e6ded2` / `#b9ae9e` | Dividers / inputs |
+| `--color-success` / `-soft` | `#1e7b45` / `#e8f5ee` | Good news: free shipping, savings, fast delivery, paid |
 | `--color-warning` / `-soft` | `#9a5b00` / `#fdf3e1` | Price changed, low stock, pending |
-| `--color-error` / `-soft` | `#b42318` / `#fdecea` | Validation, failed payment. Darker than the accent so the two are never confused |
-| `--color-info` / `-soft` | `#1d5fa8` / `#e8f0fa` | Neutral notices, maintenance |
-| `--color-focus` | `#1d5fa8` | Focus ring (visible on white, black and muted backgrounds) |
+| `--color-error` / `-soft` | `#b42318` / `#fdecea` | Validation, failed payment |
+| `--color-info` / `-soft`, `--color-focus` | `#1d5fa8` / `#e8f0fa` | Neutral notices, focus ring |
+| `--color-footer-*`, `--color-overlay`, shadows… | see the file | Footer text on petrol, drawer backdrop, effects |
 
 States never rely on color alone: errors and warnings always come with an icon and text.
 

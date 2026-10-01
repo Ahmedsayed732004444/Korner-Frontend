@@ -14,7 +14,7 @@
   color: inherit;
 
   &::backdrop {
-    background: rgb(17 17 17 / 0.5);
+    background: var(--color-overlay);
   }
 
   &[open] .panel {

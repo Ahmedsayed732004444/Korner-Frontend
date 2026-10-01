@@ -4,6 +4,7 @@ import { cn } from '@/shared/lib/cn'
 import { useLocalize } from '@/shared/lib/localize'
 import type { ProductImage } from '../api'
 import styles from './ProductGallery.module.scss'
+import { responsiveImage, thumbnail } from '@/shared/lib/images'
 
 interface ProductGalleryProps {
   images: ProductImage[]
@@ -43,7 +44,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
         {images.map((image, index) => (
           <li key={image.id} data-index={index} className={styles.slide}>
             <img
-              src={image.url}
+              {...responsiveImage(image.url, '(min-width: 992px) 58vw, 100vw')}
               alt={localize(image.altAr, image.altEn) ?? name}
               width={800}
               height={1000}
@@ -66,7 +67,7 @@ export function ProductGallery({ images, name }: ProductGalleryProps) {
                 aria-label={t('product.photoOf', { current: index + 1, total: images.length })}
                 aria-current={index === active}
               >
-                <img src={image.url} alt="" width={72} height={90} loading="lazy" />
+                <img src={thumbnail(image.url)} alt="" width={72} height={90} loading="lazy" />
               </button>
             </li>
           ))}

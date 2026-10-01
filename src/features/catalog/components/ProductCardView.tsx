@@ -6,6 +6,7 @@ import { Badge, Price } from '@/shared/ui'
 import type { ProductCard } from '../api'
 import { discountPercent } from '../discount'
 import styles from './ProductCardView.module.scss'
+import { responsiveImage } from '@/shared/lib/images'
 
 const maxColorDots = 4
 
@@ -20,7 +21,7 @@ export function ProductCardView({ product }: { product: ProductCard }) {
   return (
     <article className={cn(styles.card, !product.inStock && styles.soldOut)}>
       <div className={styles.media}>
-        {product.imageUrl && <img src={product.imageUrl} alt="" loading="lazy" decoding="async" width={520} height={650} />}
+        {product.imageUrl && <img {...responsiveImage(product.imageUrl, '(min-width: 992px) 25vw, (min-width: 768px) 33vw, 50vw')} alt="" loading="lazy" decoding="async" width={520} height={650} />}
         <div className={styles.badges}>
           {!product.inStock ? (
             <Badge tone="dark">{t('badge.soldOut')}</Badge>

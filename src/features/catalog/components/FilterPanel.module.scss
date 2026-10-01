@@ -54,7 +54,7 @@
   width: 16px;
   height: 16px;
   border-radius: var(--radius-pill);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.3);
+  box-shadow: inset 0 0 0 1px var(--color-swatch-ring);
 }
 
 .price {

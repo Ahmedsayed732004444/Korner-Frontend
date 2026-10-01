@@ -2,23 +2,24 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='{{--color-primary|url}}'/%3E%3Ctext x='29' y='46' font-family='Arial,sans-serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23fff'%3EK%3C/text%3E%3Ccircle cx='50' cy='45' r='5' fill='{{--color-accent|url}}'/%3E%3C/svg%3E" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111111" />
+    <meta name="theme-color" content="{{--color-primary}}" />
     <title>Korner</title>
     <meta name="description" content="Korner متجر مصري أونلاين للملابس والأحذية والعطور. دفع آمن بالكارت وتوصيل لكل محافظات مصر. Clothes, shoes and perfume delivered across Egypt." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Korner" />
     <meta property="og:title" content="Korner" />
     <meta property="og:description" content="ملابس وأحذية وعطور، توصيل لكل محافظات مصر." />
-    <!-- The shell below paints before any JavaScript runs (fast first paint on phones); React replaces it. Same heights as the real header. -->
+    <!-- The shell below paints before any JavaScript runs (fast first paint on phones); React replaces it. Same heights as the real
+         header. {{--color-…}} values come from src/shared/styles/_colors.scss at build time (vite.config.ts). -->
     <style>
-      body { margin: 0; background: #fff; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
-      .shell-top { height: 36px; background: #111; }
-      .shell-header { display: flex; align-items: center; height: 64px; padding-inline: 16px; border-bottom: 1px solid #e5e5e5; }
-      .shell-logo { color: #111; font-size: 24px; font-weight: 700; }
-      .shell-logo span { color: #c8232c; }
-      .shell-main { min-height: 100vh; background: #f3f2ee; }
+      body { margin: 0; background: {{--color-bg}}; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+      .shell-top { height: 36px; background: {{--color-primary}}; }
+      .shell-header { display: flex; align-items: center; height: 64px; padding-inline: 16px; border-bottom: 1px solid {{--color-border}}; background: {{--color-surface}}; }
+      .shell-logo { color: {{--color-text}}; font-size: 24px; font-weight: 700; }
+      .shell-logo span { color: {{--color-accent}}; }
+      .shell-main { min-height: 100vh; background: {{--color-bg}}; }
       @media (min-width: 992px) { .shell-header { height: 76px; padding-inline: 40px; } }
     </style>
   </head>

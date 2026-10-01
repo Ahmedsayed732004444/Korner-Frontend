@@ -25,6 +25,7 @@ import { formatPiasters } from '@/shared/lib/money'
 import { useDocumentTitle } from '@/shared/lib/useDocumentTitle'
 import { Alert, Button, ButtonLink, Checkbox, ChoiceGroup, EmptyState, Input, Radio, Select, Skeleton } from '@/shared/ui'
 import styles from './CheckoutPage.module.scss'
+import { thumbnail } from '@/shared/lib/images'
 
 // Server field names ("CustomerPhone", "Address.Street") mapped to the form's fields.
 const serverFields: Record<string, CheckoutField> = {
@@ -259,7 +260,7 @@ export function CheckoutPage() {
             <ul className={styles.items}>
               {cart?.items.map((item) => (
                 <li key={item.variantId}>
-                  {item.imageUrl && <img src={item.imageUrl} alt="" width={48} height={60} loading="lazy" />}
+                  {item.imageUrl && <img src={thumbnail(item.imageUrl)} alt="" width={48} height={60} loading="lazy" />}
                   <span>
                     {localize(item.productNameAr, item.productNameEn)}
                     <small>
@@ -289,7 +290,7 @@ export function CheckoutPage() {
               <dd>{formatPiasters(total, i18n.language)}</dd>
             </div>
           </dl>
-          <Button type="submit" size="lg" fullWidth loading={submitting} disabled={maintenance}>
+          <Button type="submit" size="lg" fullWidth variant="accent" loading={submitting} disabled={maintenance}>
             {t('checkout.pay', { amount: formatPiasters(total, i18n.language) })}
           </Button>
           <p className={styles.secure}>{t('product.securePayment')}</p>

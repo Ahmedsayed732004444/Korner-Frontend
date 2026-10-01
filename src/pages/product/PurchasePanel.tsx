@@ -87,7 +87,7 @@ export const PurchasePanel = forwardRef<HTMLDivElement, PurchasePanelProps>(func
               </p>
             )}
           </div>
-          <Button size="lg" fullWidth startIcon={<Zap size={18} aria-hidden="true" />} loading={busy === 'buy'} disabled={busy === 'add'} onClick={() => onSubmit('buy')}>
+          <Button size="lg" fullWidth variant="accent" startIcon={<Zap size={18} aria-hidden="true" />} loading={busy === 'buy'} disabled={busy === 'add'} onClick={() => onSubmit('buy')}>
             {t('product.buyNow')}
           </Button>
           <Button size="lg" fullWidth variant="secondary" startIcon={<ShoppingBag size={18} aria-hidden="true" />} loading={busy === 'add'} disabled={busy === 'buy'} onClick={() => onSubmit('add')}>

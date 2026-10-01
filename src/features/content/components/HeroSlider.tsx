@@ -6,6 +6,7 @@ import { useLocalize } from '@/shared/lib/localize'
 import { ButtonLink, Skeleton } from '@/shared/ui'
 import { useBanners } from '../api'
 import styles from './HeroSlider.module.scss'
+import { responsiveImage } from '@/shared/lib/images'
 
 // Swipes on phones, arrows and dots elsewhere. No autoplay: moving content is hard to read and can't be paused by everyone.
 export function HeroSlider() {
@@ -53,7 +54,7 @@ export function HeroSlider() {
           return (
             <li key={banner.id} data-index={index} className={styles.slide}>
               <img
-                src={localize(banner.imageUrlAr, banner.imageUrlEn)}
+                {...responsiveImage(localize(banner.imageUrlAr, banner.imageUrlEn), '100vw')}
                 alt=""
                 className={styles.image}
                 width={1920}

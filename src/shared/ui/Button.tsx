@@ -4,7 +4,7 @@ import { cn } from '@/shared/lib/cn'
 import { Spinner } from './Spinner'
 import styles from './Button.module.scss'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'link'
+export type ButtonVariant = 'primary' | 'accent' | 'secondary' | 'ghost' | 'link'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -53,7 +53,7 @@ export function Button({
         {children}
         {endIcon}
       </span>
-      {loading && <Spinner size="sm" tone={variant === 'primary' ? 'inverse' : 'default'} className={styles.spinner} />}
+      {loading && <Spinner size="sm" tone={variant === 'primary' || variant === 'accent' ? 'inverse' : 'default'} className={styles.spinner} />}
     </button>
   )
 }

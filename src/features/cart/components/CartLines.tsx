@@ -7,6 +7,7 @@ import { formatPiasters } from '@/shared/lib/money'
 import { Badge, Price, QuantityInput } from '@/shared/ui'
 import type { CartItem, FreeShippingProgress } from '../api'
 import styles from './CartLines.module.scss'
+import { thumbnail } from '@/shared/lib/images'
 
 export function CartLineList({ children }: { children: ReactNode }) {
   return <ul className={styles.lines}>{children}</ul>
@@ -51,7 +52,7 @@ export function CartLine({ item, maxQuantity, sizeLabel, busy, onQuantity, onRem
 
   return (
     <li className={styles.line}>
-      {item.imageUrl && <img src={item.imageUrl} alt="" width={72} height={90} loading="lazy" />}
+      {item.imageUrl && <img src={thumbnail(item.imageUrl)} alt="" width={72} height={90} loading="lazy" />}
       <div className={styles.lineBody}>
         <Link to={`/p/${localize(item.productSlugAr, item.productSlugEn)}`} className={styles.lineName} onClick={onNavigate}>
           {name}

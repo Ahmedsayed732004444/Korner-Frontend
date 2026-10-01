@@ -5,6 +5,7 @@ import { useLocalize } from '@/shared/lib/localize'
 import { formatPiasters } from '@/shared/lib/money'
 import type { OrderStatus } from '@/shared/lib/orderStatus'
 import styles from './OrderParts.module.scss'
+import { thumbnail } from '@/shared/lib/images'
 
 interface OrderItemView {
   productNameAr: string
@@ -25,7 +26,7 @@ export function OrderItems({ items }: { items: OrderItemView[] }) {
     <ul className={styles.items} aria-label={t('track.items')}>
       {items.map((item, index) => (
         <li key={index}>
-          {item.imageUrl ? <img src={item.imageUrl} alt="" width={48} height={60} loading="lazy" /> : <span />}
+          {item.imageUrl ? <img src={thumbnail(item.imageUrl)} alt="" width={48} height={60} loading="lazy" /> : <span />}
           <span>
             {localize(item.productNameAr, item.productNameEn)}
             <small>
