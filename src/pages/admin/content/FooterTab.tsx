@@ -104,7 +104,7 @@ function FooterForm({ initial, canWrite }: { initial: FooterInput; canWrite: boo
         <h3>{t('admin.footer.social')}</h3>
         <div className={styles.twoCols}>
           {socialPlatforms.map((platform) => (
-            <Input key={platform} label={platform} hint={t('admin.footer.socialHint')} type="url" dir="ltr" optional value={socialUrl(platform)} onChange={(e) => setSocial(platform, e.target.value)} />
+            <Input key={platform} label={platform} hint={<>{t('admin.footer.socialHint')} <bdi dir="ltr">https://</bdi></>} type="url" dir="ltr" optional value={socialUrl(platform)} onChange={(e) => setSocial(platform, e.target.value)} />
           ))}
         </div>
 
@@ -144,7 +144,7 @@ function LinksEditor({ links, max, onChange }: { links: EditableLink[]; max: num
         <div key={index} className={styles.linkRow}>
           <Input label={t('admin.footer.labelAr')} value={link.labelAr} onChange={(e) => update(index, { labelAr: e.target.value })} required />
           <Input label={t('admin.footer.labelEn')} dir="ltr" value={link.labelEn} onChange={(e) => update(index, { labelEn: e.target.value })} required />
-          <Input label={t('admin.footer.url')} hint={t('admin.footer.urlHint')} dir="ltr" value={link.url} onChange={(e) => update(index, { url: e.target.value })} required />
+          <Input label={t('admin.footer.url')} hint={<bdi dir="ltr">/pages/faq · https://… · tel:… · mailto:…</bdi>} dir="ltr" value={link.url} onChange={(e) => update(index, { url: e.target.value })} required />
           <span className={styles.actions}>
             <Button size="sm" variant="ghost" onClick={() => onChange(move(links, index, -1))} disabled={index === 0} aria-label={t('admin.products.moveUp')}>
               <ArrowUp size={16} aria-hidden="true" />
