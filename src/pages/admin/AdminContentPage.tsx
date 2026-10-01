@@ -5,10 +5,11 @@ import { Permissions } from '@/shared/lib/permissions'
 import { useDocumentTitle } from '@/shared/lib/useDocumentTitle'
 import { Alert } from '@/shared/ui'
 import { BannersTab } from './content/BannersTab'
+import { FooterTab } from './content/FooterTab'
 import { PagesTab } from './content/PagesTab'
 import styles from './Admin.module.scss'
 
-const tabs = ['banners', 'pages'] as const
+const tabs = ['banners', 'pages', 'footer'] as const
 
 export function AdminContentPage() {
   const { t } = useTranslation()
@@ -29,7 +30,9 @@ export function AdminContentPage() {
           </button>
         ))}
       </div>
-      {tab === 'banners' ? <BannersTab canWrite={can(Permissions.contentWrite)} /> : <PagesTab canWrite={can(Permissions.contentWrite)} />}
+      {tab === 'banners' && <BannersTab canWrite={can(Permissions.contentWrite)} />}
+      {tab === 'pages' && <PagesTab canWrite={can(Permissions.contentWrite)} />}
+      {tab === 'footer' && <FooterTab canWrite={can(Permissions.contentWrite)} />}
     </>
   )
 }

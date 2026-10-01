@@ -342,7 +342,8 @@
         "Returns": "الاسترجاع والاستبدال",
         "About": "عن المتجر",
         "Faq": "الأسئلة الشائعة"
-      }
+      },
+      "footer": "الفوتر"
     },
     "settings": {
       "store": "إعدادات المتجر",
@@ -402,6 +403,38 @@
         "write": "تعديل",
         "refund": "رد فلوس"
       }
+    },
+    "footer": {
+      "title": "الفوتر (آخر الصفحة)",
+      "hint": "كل اللي بيظهر في آخر كل صفحة في المتجر. التعديل بيظهر للعملاء فوراً بعد الحفظ.",
+      "about": "النبذة",
+      "taglineAr": "النبذة بالعربي",
+      "taglineEn": "النبذة بالإنجليزي",
+      "taglineHint": "سيبها فاضية للنبذة الافتراضية",
+      "automatic": "أعمدة تلقائية",
+      "showCategories": "عمود \"تسوّق\" بالفئات",
+      "showCategoriesHint": "بيتبني لوحده من الفئات الظاهرة",
+      "showContact": "عمود \"كلّمنا\"",
+      "showContactHint": "الواتساب والتليفون والإيميل من صفحة الإعدادات",
+      "columns": "أعمدة الروابط",
+      "addColumn": "إضافة عمود",
+      "column": "عمود {{number}}",
+      "removeColumn": "احذف العمود",
+      "columnTitleAr": "عنوان العمود بالعربي",
+      "columnTitleEn": "عنوان العمود بالإنجليزي",
+      "labelAr": "النص بالعربي",
+      "labelEn": "النص بالإنجليزي",
+      "url": "الرابط",
+      "urlHint": "/pages/faq أو https://… أو tel: أو mailto:",
+      "addLink": "إضافة رابط",
+      "removeLink": "احذف الرابط",
+      "social": "السوشيال ميديا",
+      "socialHint": "رابط كامل يبدأ بـ https://، وسيبه فاضي لو مش مستخدم",
+      "bottom": "روابط آخر سطر",
+      "copyrightAr": "سطر الحقوق بالعربي",
+      "copyrightEn": "سطر الحقوق بالإنجليزي",
+      "copyrightHint": "السنة بتتضاف لوحدها",
+      "creditNote": "جملة \"Design based on a template by Colorlib\" ثابتة لأن رخصة التيمبلت المجانية بتطلبها."
     }
   },
   "styleguide": {

@@ -339,7 +339,8 @@
         "Returns": "Returns & exchanges",
         "About": "About the store",
         "Faq": "FAQ"
-      }
+      },
+      "footer": "Footer"
     },
     "settings": {
       "store": "Store settings",
@@ -399,6 +400,38 @@
         "write": "Edit",
         "refund": "Refund"
       }
+    },
+    "footer": {
+      "title": "Footer (page bottom)",
+      "hint": "Everything at the bottom of every store page. Changes show to customers as soon as you save.",
+      "about": "About line",
+      "taglineAr": "Arabic about line",
+      "taglineEn": "English about line",
+      "taglineHint": "Leave empty for the default line",
+      "automatic": "Automatic columns",
+      "showCategories": "\"Shop\" column with categories",
+      "showCategoriesHint": "Built from the visible categories",
+      "showContact": "\"Contact us\" column",
+      "showContactHint": "WhatsApp, phone and email from the Settings page",
+      "columns": "Link columns",
+      "addColumn": "Add column",
+      "column": "Column {{number}}",
+      "removeColumn": "Remove column",
+      "columnTitleAr": "Arabic column title",
+      "columnTitleEn": "English column title",
+      "labelAr": "Arabic text",
+      "labelEn": "English text",
+      "url": "Link",
+      "urlHint": "/pages/faq, https://…, tel: or mailto:",
+      "addLink": "Add link",
+      "removeLink": "Remove link",
+      "social": "Social media",
+      "socialHint": "A full https:// address; leave empty if not used",
+      "bottom": "Bottom line links",
+      "copyrightAr": "Arabic copyright line",
+      "copyrightEn": "English copyright line",
+      "copyrightHint": "The year is added automatically",
+      "creditNote": "\"Design based on a template by Colorlib\" stays because the free template license requires it."
     }
   },
   "styleguide": {

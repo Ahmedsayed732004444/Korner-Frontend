@@ -100,3 +100,40 @@ export function useDeleteBanner() {
 export function useSavePage() {
   return useContentAction((change: { type: PageType; input: PageInput }) => http<AdminPage>(`admin/pages/${change.type}`, { method: 'PUT', body: change.input }))
 }
+
+export type SocialPlatform = 'Facebook' | 'Instagram' | 'TikTok' | 'YouTube' | 'X' | 'Snapchat'
+export const socialPlatforms: SocialPlatform[] = ['Facebook', 'Instagram', 'TikTok', 'YouTube', 'X', 'Snapchat']
+
+export interface EditableLink {
+  labelAr: string
+  labelEn: string
+  url: string
+}
+
+export interface EditableColumn {
+  titleAr: string
+  titleEn: string
+  links: EditableLink[]
+}
+
+export interface FooterInput {
+  taglineAr: string | null
+  taglineEn: string | null
+  showCategories: boolean
+  showContact: boolean
+  columns: EditableColumn[]
+  socialLinks: { platform: SocialPlatform; url: string }[]
+  bottomLinks: EditableLink[]
+  copyrightAr: string | null
+  copyrightEn: string | null
+}
+
+type Footer = FooterInput & { updatedAt: string | null }
+
+export function useAdminFooter() {
+  return useQuery({ queryKey: ['admin', 'content', 'footer'], queryFn: ({ signal }) => http<Footer>('admin/footer', { signal }) })
+}
+
+export function useSaveFooter() {
+  return useContentAction((input: FooterInput) => http<Footer>('admin/footer', { method: 'PUT', body: input }))
+}

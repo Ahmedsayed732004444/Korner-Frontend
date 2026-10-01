@@ -46,3 +46,41 @@ export const bannersQuery = {
 export function useBanners() {
   return useQuery(bannersQuery)
 }
+
+export type SocialPlatform = 'Facebook' | 'Instagram' | 'TikTok' | 'YouTube' | 'X' | 'Snapchat'
+
+export interface FooterLink {
+  labelAr: string
+  labelEn: string
+  url: string
+}
+
+export interface FooterColumn {
+  titleAr: string
+  titleEn: string
+  links: FooterLink[]
+}
+
+export interface Footer {
+  taglineAr: string | null
+  taglineEn: string | null
+  showCategories: boolean
+  showContact: boolean
+  columns: FooterColumn[]
+  socialLinks: { platform: SocialPlatform; url: string }[]
+  bottomLinks: FooterLink[]
+  copyrightAr: string | null
+  copyrightEn: string | null
+  updatedAt: string | null
+}
+
+// Edited by staff in Content > Footer; the API caches it and clears the cache on every save.
+export const footerQuery = {
+  queryKey: ['content', 'footer'] as const,
+  queryFn: ({ signal }: { signal: AbortSignal }) => http<Footer>('footer', { signal }),
+  staleTime: 10 * 60_000,
+}
+
+export function useFooter() {
+  return useQuery(footerQuery)
+}
